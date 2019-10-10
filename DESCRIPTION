@@ -1,11 +1,22 @@
 Package: qgert
-Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Title: Qualitas Genetic Evaluation Routine Tools
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Peter",
+           family = "von Rohr",
+           role = c("aut", "cre"),
+           email = "peter.vonrohr@qualitasag.ch")
+Description: Results of routine genetic evaluations are post-processed to generate different reports
+    for quality assurance. The validity of the results of a given analysis is assessed by a comparison 
+    to the results of a previous analysis. This package provides a number of tools for such comparisons.
+License: MIT + file LICENSE
 Encoding: UTF-8
+Language: en
 LazyData: true
+URL: https://github.com/pvrqualitasag/qgert
+BugReports: https://github.com/pvrqualitasag/qgert/issues
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+RoxygenNote: 6.1.1

@@ -1,0 +1,31 @@
+---
+title: "Getting Started With QGERT"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting Started With QGERT}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, eval=FALSE}
+library(qgert)
+```
+
+
+## Abstract
+Routine genetic evaluations are assessed by comparing the results of a given evaluation run to the results of a previous run. Such comparisons are mostly done by the means of scatter plots. The goal of this package is to provide tools to seamlessly generate the plots that are required for quality assurance and error checking.
+
+
+## Introduction
+
+
+## Plots
+
+
