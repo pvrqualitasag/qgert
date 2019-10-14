@@ -83,10 +83,14 @@ This can now be used to do a scatter plot
 
 ```{r}
 n_cor_current_prev <- cor(tbl_plot_nrk$previous.estimate, tbl_plot_nrk$current.estimate)
+n_mean_previous <- mean(tbl_plot_nrk$previous.estimate)
+n_sd_previous <- sd(tbl_plot_nrk$previous.estimate)
 n_mean_current <- mean(tbl_plot_nrk$current.estimate)
 n_sd_current <- sd(tbl_plot_nrk$current.estimate)
 xrng <- range(tbl_plot_nrk$current.estimate)
+x_pos_txt <- floor(xrng[2])
 yrng <- range(tbl_plot_nrk$previous.estimate)
+y_pos_txt <- ceiling(yrng[1]) + 0.5
 library(ggplot2)
 tbl_plot_nrk %>%
   ggplot(aes(x=current.estimate, y=previous.estimate)) + 
@@ -94,14 +98,11 @@ tbl_plot_nrk %>%
   geom_abline(slope = 1, intercept = 0) + 
   ggtitle(label = "Comparison Plot for NRK") + 
   geom_text(aes(x, y, label = paste0('Correlation: ', round(n_cor_current_prev, digits = 3))),
-                data = data.frame(x = xrng[2], y = yrng[1]), hjust = 1, size = 3)
-
-  # geom_text(aes(x, y, label = c(paste0('SD: ', round(n_sd_current, digits = 1)),
-  #                               paste0('Mean: ', round(n_mean_current, digits = 1)),
-  #                                   paste0('Correlation: ', round(n_cor_current_prev, digits = 3))),
-  #           data = data.frame(x = rep(xrng[2], 3), y = yrng[1] + 2*(0:2)), hjust = 1, size = 2))
-
-
+                data = data.frame(x = x_pos_txt, y = y_pos_txt + 2), hjust = 1, size = 3) + 
+  geom_text(aes(x, y, label = paste0('Mean: ', round(n_mean_previous, digits = 1), ' | ', round(n_mean_current, digits = 1))),
+                data = data.frame(x = x_pos_txt, y = y_pos_txt + 1), hjust = 1, size = 3) + 
+  geom_text(aes(x, y, label = paste0('SD: ', round(n_sd_previous, digits = 1), ' | ', round(n_sd_current, digits = 1))),
+                data = data.frame(x = x_pos_txt, y = y_pos_txt), hjust = 1, size = 3)
 
 ```
 
