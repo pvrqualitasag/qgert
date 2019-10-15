@@ -1,3 +1,8 @@
+## qgert 0.2.0
+
+* Merge scripts from project `bashtools` into qgert.
+
+
 ## qgert 0.1.0
 
 * Migration of comparison plot report features from zwsroutine tools to qgert
