@@ -25,6 +25,7 @@
 #' @param ps_report_text text that is included in the report before plotting
 #' @param ps_rmd_report name of report source file
 #' @param pb_debug flag indicating whether debug info is printed
+#' @param plogger log4r logger object
 #'
 #' @examples
 #' \dontrun{
@@ -49,7 +50,7 @@ create_ge_plot_report <- function(ps_gedir,
 
   if (pb_debug) {
     if (is.null(plogger)){
-      lgr <- get_qgert_logger()
+      lgr <- get_qgert_logger(ps_logfile = 'create_ge_plot_report.log', ps_level = 'INFO')
     } else {
       lgr <- plogger
     }
