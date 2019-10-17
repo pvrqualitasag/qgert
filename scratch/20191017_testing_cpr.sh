@@ -37,7 +37,7 @@ R -e 'qgert::create_ge_compare_plot_report_fbk(pn_cur_ge_label=1908, pn_prev_ge_
 
 In R:
 
-remove.packages('qgert')
+remove.packages('qgert') # must be followed by restarting R
 devtools::install_github("pvrqualitasag/qgert", ref = "0.2.1", upgrade = "always")
 qgert::create_ge_compare_plot_report_fbk(pn_cur_ge_label=1908,
                                          pn_prev_ge_label = 1904,
