@@ -15,7 +15,9 @@ qgert_log_error(plogger, ps_caller, ps_msg)
 Wrapper for log4r error
 }
 \examples{
+\dontrun{
 qgert_logger <- get_qgert_logger()
 qgert_log_level(qgert_logger, 'ERROR')
-qgert_log_error(qgert_logger)
+qgert_log_error(qgert_logger, 'Examples', 'test message')
+}
 }

@@ -15,7 +15,9 @@
 #' @export get_qgert_logger
 #'
 #' @examples
+#' \dontrun{
 #' qgert_logger <- get_qgert_logger()
+#' }
 get_qgert_logger <- function(ps_logfile = 'qgert.log', ps_level = 'FATAL'){
   qgert_logger <- log4r::create.logger(logfile = ps_logfile, level = ps_level)
   return(qgert_logger)
@@ -30,9 +32,11 @@ get_qgert_logger <- function(ps_logfile = 'qgert.log', ps_level = 'FATAL'){
 #' @export qgert_log_info
 #'
 #' @examples
+#' \dontrun{
 #' qgert_logger <- get_qgert_logger()
 #' qgert_log_level(qgert_logger, 'INFO')
-#' qgert_log_info(qgert_logger)
+#' qgert_log_info(qgert_logger, 'Examples', 'test message')
+#' }
 qgert_log_info <- function(plogger, ps_caller, ps_msg){
   s_msg <- paste0(ps_caller, ' -- ', ps_msg, collapse = '')
   log4r::info(logger = plogger, message = s_msg)
@@ -47,9 +51,11 @@ qgert_log_info <- function(plogger, ps_caller, ps_msg){
 #' @export qgert_log_debug
 #'
 #' @examples
+#' \dontrun{
 #' qgert_logger <- get_qgert_logger()
 #' qgert_log_level(qgert_logger, 'DEBUG')
-#' qgert_log_debug(qgert_logger)
+#' qgert_log_debug(qgert_logger, 'Examples', 'test message')
+#' }
 qgert_log_debug <- function(plogger, ps_caller, ps_msg){
   s_msg <- paste0(ps_caller, ' -- ', ps_msg, collapse = '')
   log4r::debug(logger = plogger, message = s_msg)
@@ -64,9 +70,11 @@ qgert_log_debug <- function(plogger, ps_caller, ps_msg){
 #' @export qgert_log_warn
 #'
 #' @examples
+#' \dontrun{
 #' qgert_logger <- get_qgert_logger()
 #' qgert_log_level(qgert_logger, 'WARN')
-#' qgert_log_warn(qgert_logger)
+#' qgert_log_warn(qgert_logger, 'Examples', 'test message')
+#' }
 qgert_log_warn <- function(plogger, ps_caller, ps_msg){
   s_msg <- paste0(ps_caller, ' -- ', ps_msg, collapse = '')
   log4r::warn(logger = plogger, message = s_msg)
@@ -81,9 +89,11 @@ qgert_log_warn <- function(plogger, ps_caller, ps_msg){
 #' @export qgert_log_error
 #'
 #' @examples
+#' \dontrun{
 #' qgert_logger <- get_qgert_logger()
 #' qgert_log_level(qgert_logger, 'ERROR')
-#' qgert_log_error(qgert_logger)
+#' qgert_log_error(qgert_logger, 'Examples', 'test message')
+#' }
 qgert_log_error <- function(plogger, ps_caller, ps_msg){
   s_msg <- paste0(ps_caller, ' -- ', ps_msg, collapse = '')
   log4r::error(logger = plogger, message = s_msg)
@@ -98,9 +108,11 @@ qgert_log_error <- function(plogger, ps_caller, ps_msg){
 #' @export qgert_log_fatal
 #'
 #' @examples
+#' \dontrun{
 #' qgert_logger <- get_qgert_logger()
 #' qgert_log_level(qgert_logger, 'FATAL')
-#' qgert_log_fatal(qgert_logger)
+#' qgert_log_fatal(qgert_logger, 'Examples', 'test message')
+#' }
 qgert_log_fatal <- function(plogger, ps_caller, ps_msg){
   s_msg <- paste0(ps_caller, ' -- ', ps_msg, collapse = '')
   log4r::fatal(logger = plogger, message = s_msg)
@@ -115,8 +127,10 @@ qgert_log_fatal <- function(plogger, ps_caller, ps_msg){
 #' @export qgert_log_level
 #'
 #' @examples
+#' \dontrun{
 #' qgert_logger <- get_qgert_logger()
 #' qgert_log_level(qgert_logger, 'INFO')
+#' }
 qgert_log_level <- function(plogger, ps_level = c('DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL')){
   if (!missing(ps_level) & length(ps_level) > 1) stop(" *** ERROR in level(): only one 'level' allowed.")
   ps_level <- match.arg(ps_level)

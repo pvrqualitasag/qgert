@@ -18,5 +18,7 @@ qgert_logger
 Create log4r Logger for package
 }
 \examples{
+\dontrun{
 qgert_logger <- get_qgert_logger()
+}
 }

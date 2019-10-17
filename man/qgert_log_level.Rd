@@ -16,6 +16,8 @@ qgert_log_level(plogger, ps_level = c("DEBUG", "INFO", "WARN", "ERROR",
 Wrapper to set the level of a logger
 }
 \examples{
+\dontrun{
 qgert_logger <- get_qgert_logger()
 qgert_log_level(qgert_logger, 'INFO')
+}
 }

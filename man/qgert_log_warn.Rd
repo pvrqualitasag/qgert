@@ -15,7 +15,9 @@ qgert_log_warn(plogger, ps_caller, ps_msg)
 Wrapper for log4r warn
 }
 \examples{
+\dontrun{
 qgert_logger <- get_qgert_logger()
 qgert_log_level(qgert_logger, 'WARN')
-qgert_log_warn(qgert_logger)
+qgert_log_warn(qgert_logger, 'Examples', 'test message')
+}
 }

@@ -15,7 +15,9 @@ qgert_log_info(plogger, ps_caller, ps_msg)
 Wrapper for log4r info
 }
 \examples{
+\dontrun{
 qgert_logger <- get_qgert_logger()
 qgert_log_level(qgert_logger, 'INFO')
-qgert_log_info(qgert_logger)
+qgert_log_info(qgert_logger, 'Examples', 'test message')
+}
 }

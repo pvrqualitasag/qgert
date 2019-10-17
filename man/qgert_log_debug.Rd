@@ -15,7 +15,9 @@ qgert_log_debug(plogger, ps_caller, ps_msg)
 Wrapper for log4r debug
 }
 \examples{
+\dontrun{
 qgert_logger <- get_qgert_logger()
 qgert_log_level(qgert_logger, 'DEBUG')
-qgert_log_debug(qgert_logger)
+qgert_log_debug(qgert_logger, 'Examples', 'test message')
+}
 }

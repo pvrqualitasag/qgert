@@ -15,7 +15,9 @@ qgert_log_fatal(plogger, ps_caller, ps_msg)
 Wrapper for log4r fatal
 }
 \examples{
+\dontrun{
 qgert_logger <- get_qgert_logger()
 qgert_log_level(qgert_logger, 'FATAL')
-qgert_log_fatal(qgert_logger)
+qgert_log_fatal(qgert_logger, 'Examples', 'test message')
+}
 }
