@@ -15,9 +15,9 @@
 #' A comparison plot report containing all generated plots of a GE side-by-side
 #' with the plots from the previous GE are constructed for VRDGGOZW_PROV
 #'
-#' @param ps_cur_ge_label label of current genetic evaluation (GE)
-#' @param ps_prev_ge_label label of previous GE
-#' @param ps_prevgsrun_label label of bi-weekly gs-runs before publication date of ps_prev_ge_label
+#' @param pn_cur_ge_label label of current genetic evaluation (GE)
+#' @param pn_prev_ge_label label of previous GE
+#' @param ps_prevgsrun_label label of bi-weekly gs-runs before publication date of pn_prev_ge_label
 #' @param ps_template template document for report
 #' @param pl_plot_opts list of options specifying input for plot report creator
 #' @param pb_debug flag whether debug output should be shown
@@ -25,15 +25,15 @@
 #'
 #' @examples
 #' \dontrun{
-#' create_ge_compare_plot_report_vrdggozw_prov(ps_cur_ge_label    = '1908',
-#'                                        ps_prev_ge_label   = '1904',
+#' create_ge_compare_plot_report_vrdggozw_prov(pn_cur_ge_label    = '1908',
+#'                                        pn_prev_ge_label   = '1904',
 #'                                        ps_prevgsrun_label = '0719',
 #'                                        pb_debug           = TRUE)
 #' }
 #'
 #' @export create_ge_compare_plot_report_vrdggozw_prov
-create_ge_compare_plot_report_vrdggozw_prov <- function(ps_cur_ge_label,
-                                               ps_prev_ge_label,
+create_ge_compare_plot_report_vrdggozw_prov <- function(pn_cur_ge_label,
+                                               pn_prev_ge_label,
                                                ps_prevgsrun_label,
                                                ps_template  = system.file("templates", "compare_plots.Rmd.template", package = 'qgert'),
                                                pl_plot_opts = NULL,
@@ -82,7 +82,7 @@ create_ge_compare_plot_report_vrdggozw_prov <- function(ps_cur_ge_label,
                  ps_msg    = paste0(" ** GE workdir: ", s_ge_dir, collapse = ""))
       # archive directory
       s_arch_dir <- file.path(l_plot_opts$arch_dir_stem,
-                              ps_prev_ge_label,
+                              pn_prev_ge_label,
                               "calcVRDGGOZW",
                               paste0("result", ps_prevgsrun_label, collapse = ""),
                               paste0(breed, "basis", collapse = ""),
@@ -92,11 +92,14 @@ create_ge_compare_plot_report_vrdggozw_prov <- function(ps_cur_ge_label,
                  ps_msg    = paste0(" ** Archive dir: ", s_arch_dir, collapse = ""))
 
       # Report text appears in all reports of this trait before the plots are drawn
-      s_report_text  <- replace_plh(ps_report_text = l_plot_opts$report_text,
-                                    pl_replacement = list(list(pattern = "[ZWTYPE]", replacement = zwt),
-                                                          list(pattern = "[BREED]",  replacement = breed),
-                                                          list(pattern = "[PREVGERUN]", replacement = ps_prev_ge_label),
-                                                          list(pattern = "[CURGERUN]", replacement = ps_cur_ge_label)))
+
+      # TODO: replace the following with glue::glue()
+      s_report_text <- l_plot_opts$report_text
+      # s_report_text  <- replace_plh(ps_report_text = l_plot_opts$report_text,
+      #                               pl_replacement = list(list(pattern = "[ZWTYPE]", replacement = zwt),
+      #                                                     list(pattern = "[BREED]",  replacement = breed),
+      #                                                     list(pattern = "[PREVGERUN]", replacement = pn_prev_ge_label),
+      #                                                     list(pattern = "[CURGERUN]", replacement = pn_cur_ge_label)))
 
       if (pb_debug)
         qgert_log_info(plogger = lgr, ps_caller = "create_ge_compare_plot_report_vrdggozw_prov",
@@ -104,7 +107,7 @@ create_ge_compare_plot_report_vrdggozw_prov <- function(ps_cur_ge_label,
 
       # target directory
       l_arch_dir_split <- fs::path_split(s_arch_dir)
-      s_trg_dir <- file.path(ps_prev_ge_label, l_arch_dir_split[[1]][length(l_arch_dir_split[[1]])])
+      s_trg_dir <- file.path(pn_prev_ge_label, l_arch_dir_split[[1]][length(l_arch_dir_split[[1]])])
       if (pb_debug)
         qgert_log_info(plogger = lgr, ps_caller = "create_ge_compare_plot_report_vrdggozw_prov",
                  ps_msg    = paste0(" ** Target directory for restored plots: ", s_trg_dir))

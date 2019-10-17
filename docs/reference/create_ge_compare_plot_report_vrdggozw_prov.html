@@ -37,8 +37,6 @@
 
 <meta property="og:title" content="Comparison Plot Report Creator Function For VRDGGOZW_PROV — create_ge_compare_plot_report_vrdggozw_prov" />
 <meta property="og:description" content="A comparison plot report containing all generated plots of a GE side-by-side
-with the plots from the previous GE are constructed for VRDGGOZW_PROV
-A comparison plot report containing all generated plots of a GE side-by-side
 with the plots from the previous GE are constructed for VRDGGOZW_PROV" />
 <meta name="twitter:card" content="summary" />
 
@@ -133,41 +131,35 @@ with the plots from the previous GE are constructed for VRDGGOZW_PROV" />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Comparison Plot Report Creator Function For VRDGGOZW_PROV</h1>
-    <small class="dont-index">Source: <a href='https://github.com/pvrqualitasag/qgert/blob/master/R/compare_plot_report_vrdggozw_prov.R'><code>R/compare_plot_report_vrdggozw_prov.R</code></a>, <a href='https://github.com/pvrqualitasag/qgert/blob/master/R/compose_compare_plot.R'><code>R/compose_compare_plot.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/pvrqualitasag/qgert/blob/master/R/compare_plot_report_vrdggozw_prov.R'><code>R/compare_plot_report_vrdggozw_prov.R</code></a></small>
     <div class="hidden name"><code>create_ge_compare_plot_report_vrdggozw_prov.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>A comparison plot report containing all generated plots of a GE side-by-side
 with the plots from the previous GE are constructed for VRDGGOZW_PROV</p>
-<p>A comparison plot report containing all generated plots of a GE side-by-side
-with the plots from the previous GE are constructed for VRDGGOZW_PROV</p>
     </div>
 
-    <pre class="usage"><span class='fu'>create_ge_compare_plot_report_vrdggozw_prov</span>(<span class='no'>ps_cur_ge_label</span>,
-  <span class='no'>ps_prev_ge_label</span>, <span class='no'>ps_prevgsrun_label</span>,
+    <pre class="usage"><span class='fu'>create_ge_compare_plot_report_vrdggozw_prov</span>(<span class='no'>pn_cur_ge_label</span>,
+  <span class='no'>pn_prev_ge_label</span>, <span class='no'>ps_prevgsrun_label</span>,
   <span class='kw'>ps_template</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"templates"</span>, <span class='st'>"compare_plots.Rmd.template"</span>,
-  <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"zwsroutinetools"</span>), <span class='kw'>pl_plot_opts</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>pb_debug</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-
-<span class='fu'>create_ge_compare_plot_report_vrdggozw_prov</span>(<span class='no'>ps_cur_ge_label</span>,
-  <span class='no'>ps_prev_ge_label</span>, <span class='no'>ps_prevgsrun_label</span>,
-  <span class='kw'>ps_template</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"templates"</span>, <span class='st'>"compare_plots.Rmd.template"</span>,
-  <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"zwsroutinetools"</span>), <span class='kw'>pl_plot_opts</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>pb_debug</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"qgert"</span>), <span class='kw'>pl_plot_opts</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>pb_debug</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>plogger</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>ps_cur_ge_label</th>
+      <th>pn_cur_ge_label</th>
       <td><p>label of current genetic evaluation (GE)</p></td>
     </tr>
     <tr>
-      <th>ps_prev_ge_label</th>
+      <th>pn_prev_ge_label</th>
       <td><p>label of previous GE</p></td>
     </tr>
     <tr>
       <th>ps_prevgsrun_label</th>
-      <td><p>label of bi-weekly gs-runs before publication date of ps_prev_ge_label</p></td>
+      <td><p>label of bi-weekly gs-runs before publication date of pn_prev_ge_label</p></td>
     </tr>
     <tr>
       <th>ps_template</th>
@@ -185,44 +177,13 @@ with the plots from the previous GE are constructed for VRDGGOZW_PROV</p>
       <th>plogger</th>
       <td><p>log4r logger object</p></td>
     </tr>
-    <tr>
-      <th>ps_cur_ge_label</th>
-      <td><p>label of current genetic evaluation (GE)</p></td>
-    </tr>
-    <tr>
-      <th>ps_prev_ge_label</th>
-      <td><p>label of previous GE</p></td>
-    </tr>
-    <tr>
-      <th>ps_prevgsrun_label</th>
-      <td><p>label of bi-weekly gs-runs before publication date of ps_prev_ge_label</p></td>
-    </tr>
-    <tr>
-      <th>ps_template</th>
-      <td><p>template document for report</p></td>
-    </tr>
-    <tr>
-      <th>pl_plot_opts</th>
-      <td><p>list of options specifying input for plot report creator</p></td>
-    </tr>
-    <tr>
-      <th>pb_debug</th>
-      <td><p>flag whether debug output should be shown</p></td>
-    </tr>
     </table>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>create_ge_compare_plot_report_vrdggozw_prov</span>(<span class='kw'>ps_cur_ge_label</span>    <span class='kw'>=</span> <span class='st'>'1908'</span>,
-                                       <span class='kw'>ps_prev_ge_label</span>   <span class='kw'>=</span> <span class='st'>'1904'</span>,
-                                       <span class='kw'>ps_prevgsrun_label</span> <span class='kw'>=</span> <span class='st'>'0719'</span>,
-                                       <span class='kw'>pb_debug</span>           <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-}
-
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>create_ge_compare_plot_report_vrdggozw_prov</span>(<span class='kw'>ps_cur_ge_label</span>    <span class='kw'>=</span> <span class='st'>'1908'</span>,
-                                       <span class='kw'>ps_prev_ge_label</span>   <span class='kw'>=</span> <span class='st'>'1904'</span>,
+<span class='fu'>create_ge_compare_plot_report_vrdggozw_prov</span>(<span class='kw'>pn_cur_ge_label</span>    <span class='kw'>=</span> <span class='st'>'1908'</span>,
+                                       <span class='kw'>pn_prev_ge_label</span>   <span class='kw'>=</span> <span class='st'>'1904'</span>,
                                        <span class='kw'>ps_prevgsrun_label</span> <span class='kw'>=</span> <span class='st'>'0719'</span>,
                                        <span class='kw'>pb_debug</span>           <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 }</div></pre>

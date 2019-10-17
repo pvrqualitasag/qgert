@@ -45,7 +45,4 @@ is listed below.
 
 ## Latest Change
 
-``` r
-Sys.time()
-#> [1] "2019-10-17 11:34:38 CEST"
-```
+    #> [1] "2019-10-17 13:44:54 CEST"

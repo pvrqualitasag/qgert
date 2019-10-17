@@ -116,7 +116,7 @@ get_default_plot_opts_lbe_rh <- function(){
               rmd_report_stem = "ge_plot_report_lbe_rh",
               vec_breed       = c("rh"),
               vec_sex         = c("Bull", "Cow"),
-              report_text     = paste0('## Comparison Of Plots\nPlots compare estimates of Lineare Beschreibung for RH (LBE_RH) for ', tolower(sex),
+              report_text     = paste0('## Comparison Of Plots\nPlots compare estimates of Lineare Beschreibung for RH (LBE_RH) for [SEX]',
                                        ' of breed [BREED]',
                                        ' between GE-run [PREVGERUN]',
                                        ' on the left and the current GE-run [CURGERUN]',

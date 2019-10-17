@@ -4,18 +4,18 @@
 \alias{create_ge_compare_plot_report_vrdggozw_prov}
 \title{Comparison Plot Report Creator Function For VRDGGOZW_PROV}
 \usage{
-create_ge_compare_plot_report_vrdggozw_prov(ps_cur_ge_label,
-  ps_prev_ge_label, ps_prevgsrun_label,
+create_ge_compare_plot_report_vrdggozw_prov(pn_cur_ge_label,
+  pn_prev_ge_label, ps_prevgsrun_label,
   ps_template = system.file("templates", "compare_plots.Rmd.template",
   package = "qgert"), pl_plot_opts = NULL, pb_debug = FALSE,
   plogger = NULL)
 }
 \arguments{
-\item{ps_cur_ge_label}{label of current genetic evaluation (GE)}
+\item{pn_cur_ge_label}{label of current genetic evaluation (GE)}
 
-\item{ps_prev_ge_label}{label of previous GE}
+\item{pn_prev_ge_label}{label of previous GE}
 
-\item{ps_prevgsrun_label}{label of bi-weekly gs-runs before publication date of ps_prev_ge_label}
+\item{ps_prevgsrun_label}{label of bi-weekly gs-runs before publication date of pn_prev_ge_label}
 
 \item{ps_template}{template document for report}
 
@@ -31,8 +31,8 @@ with the plots from the previous GE are constructed for VRDGGOZW_PROV
 }
 \examples{
 \dontrun{
-create_ge_compare_plot_report_vrdggozw_prov(ps_cur_ge_label    = '1908',
-                                       ps_prev_ge_label   = '1904',
+create_ge_compare_plot_report_vrdggozw_prov(pn_cur_ge_label    = '1908',
+                                       pn_prev_ge_label   = '1904',
                                        ps_prevgsrun_label = '0719',
                                        pb_debug           = TRUE)
 }

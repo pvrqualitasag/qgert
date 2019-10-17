@@ -9,6 +9,8 @@ qgert_log_warn(plogger, ps_caller, ps_msg)
 \arguments{
 \item{plogger}{log4r logger object}
 
+\item{ps_caller}{function from which we are called}
+
 \item{ps_msg}{logging message}
 }
 \description{

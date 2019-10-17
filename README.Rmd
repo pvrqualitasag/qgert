@@ -45,7 +45,7 @@ Examples of basic use cases are shown in the different articles that are availab
 
 
 ## Latest Change
-```{r}
+```{r, echo=FALSE}
 Sys.time()
 ```
 

@@ -4,12 +4,16 @@
 \alias{create_ge_compare_plot_report_cnvrh}
 \title{Comparison Plot Report Creator Function For Convert RH (CNVRH)}
 \usage{
-create_ge_compare_plot_report_cnvrh(ps_cur_ge_label, ps_prev_ge_label,
+create_ge_compare_plot_report_cnvrh(pn_cur_ge_label, pn_prev_ge_label,
   ps_template = system.file("templates", "compare_plots.Rmd.template",
   package = "qgert"), pl_plot_opts = NULL, pb_debug = FALSE,
   plogger = NULL)
 }
 \arguments{
+\item{pn_cur_ge_label}{label of current genetic evaluation (GE)}
+
+\item{pn_prev_ge_label}{label of previous GE}
+
 \item{ps_template}{template document for report}
 
 \item{pl_plot_opts}{list of options specifying input for plot report creator}
@@ -17,10 +21,6 @@ create_ge_compare_plot_report_cnvrh(ps_cur_ge_label, ps_prev_ge_label,
 \item{pb_debug}{flag whether debug output should be shown}
 
 \item{plogger}{log4r logger object}
-
-\item{pn_cur_ge_label}{label of current genetic evaluation (GE)}
-
-\item{pn_prev_ge_label}{label of previous GE}
 }
 \description{
 A comparison plot report containing all generated plots of a GE side-by-side

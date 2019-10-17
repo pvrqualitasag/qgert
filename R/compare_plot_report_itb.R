@@ -32,8 +32,8 @@
 #' }
 #'
 #' @export create_ge_compare_plot_report_itb
-create_ge_compare_plot_report_itb <- function(ps_cur_ge_label,
-                                              ps_prev_ge_label,
+create_ge_compare_plot_report_itb <- function(pn_cur_ge_label,
+                                              pn_prev_ge_label,
                                               ps_template  = system.file("templates", "compare_plots.Rmd.template", package = 'qgert'),
                                               pl_plot_opts = NULL,
                                               pb_debug     = FALSE,
@@ -74,7 +74,7 @@ create_ge_compare_plot_report_itb <- function(ps_cur_ge_label,
                ps_msg    = paste0(" ** GE workdir: ", s_ge_dir, collapse = ""))
     # archive directory
     s_arch_dir <- file.path(l_plot_opts$arch_dir_stem,
-                            ps_prev_ge_label,
+                            pn_prev_ge_label,
                             "itb/work",
                             breed,"compare")
     if (pb_debug)
@@ -82,17 +82,19 @@ create_ge_compare_plot_report_itb <- function(ps_cur_ge_label,
                ps_msg    = paste0(" ** Archive dir: ", s_arch_dir, collapse = ""))
 
     # Report text appears in all reports of this trait before the plots are drawn
-    s_report_text  <- replace_plh(ps_report_text = l_plot_opts$report_text,
-                                  pl_replacement = list(list(pattern = "[BREED]",  replacement = breed),
-                                                        list(pattern = "[PREVGERUN]", replacement = ps_prev_ge_label),
-                                                        list(pattern = "[CURGERUN]", replacement = ps_cur_ge_label)))
+    # TODO: replace the following with glue::glue()
+    s_report_text <- l_plot_opts$report_text
+    # s_report_text  <- replace_plh(ps_report_text = l_plot_opts$report_text,
+    #                               pl_replacement = list(list(pattern = "[BREED]",  replacement = breed),
+    #                                                     list(pattern = "[PREVGERUN]", replacement = pn_prev_ge_label),
+    #                                                     list(pattern = "[CURGERUN]", replacement = pn_cur_ge_label)))
     if (pb_debug)
       qgert_log_info(plogger = lgr, ps_caller = "create_ge_compare_plot_report_itb",
                ps_msg    = paste0(" ** Report text: ", s_report_text))
 
     # target directory
     l_arch_dir_split <- fs::path_split(s_arch_dir)
-    s_trg_dir <- file.path(ps_prev_ge_label, l_arch_dir_split[[1]][length(l_arch_dir_split[[1]])])
+    s_trg_dir <- file.path(pn_prev_ge_label, l_arch_dir_split[[1]][length(l_arch_dir_split[[1]])])
     if (pb_debug)
       qgert_log_info(plogger = lgr, ps_caller = "create_ge_compare_plot_report_itb",
                ps_msg    = paste0(" ** Target directory for restored plots: ", s_trg_dir))

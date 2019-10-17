@@ -27,6 +27,7 @@ get_qgert_logger <- function(ps_logfile = 'qgert.log', ps_level = 'FATAL'){
 #' @title Wrapper for log4r info
 #'
 #' @param plogger log4r logger object
+#' @param ps_caller function from which we are called
 #' @param ps_msg logging message
 #'
 #' @export qgert_log_info
@@ -46,6 +47,7 @@ qgert_log_info <- function(plogger, ps_caller, ps_msg){
 #' @title Wrapper for log4r debug
 #'
 #' @param plogger log4r logger object
+#' @param ps_caller function from which we are called
 #' @param ps_msg logging message
 #'
 #' @export qgert_log_debug
@@ -65,6 +67,7 @@ qgert_log_debug <- function(plogger, ps_caller, ps_msg){
 #' @title Wrapper for log4r warn
 #'
 #' @param plogger log4r logger object
+#' @param ps_caller function from which we are called
 #' @param ps_msg logging message
 #'
 #' @export qgert_log_warn
@@ -84,6 +87,7 @@ qgert_log_warn <- function(plogger, ps_caller, ps_msg){
 #' @title Wrapper for log4r error
 #'
 #' @param plogger log4r logger object
+#' @param ps_caller function from which we are called
 #' @param ps_msg logging message
 #'
 #' @export qgert_log_error
@@ -103,6 +107,7 @@ qgert_log_error <- function(plogger, ps_caller, ps_msg){
 #' @title Wrapper for log4r fatal
 #'
 #' @param plogger log4r logger object
+#' @param ps_caller function from which we are called
 #' @param ps_msg logging message
 #'
 #' @export qgert_log_fatal

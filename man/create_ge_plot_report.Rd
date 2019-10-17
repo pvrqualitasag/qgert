@@ -13,6 +13,8 @@ create_ge_plot_report(ps_gedir, ps_archdir, ps_trgdir, ps_templ,
 
 \item{ps_archdir}{archive directory with plots from previous GE}
 
+\item{ps_trgdir}{target directory where plot files from archive are extracted, relative to ps_gedir}
+
 \item{ps_templ}{path to Rmarkdown template file}
 
 \item{ps_report_text}{text that is included in the report before plotting}
@@ -22,8 +24,6 @@ create_ge_plot_report(ps_gedir, ps_archdir, ps_trgdir, ps_templ,
 \item{pb_debug}{flag indicating whether debug info is printed}
 
 \item{plogger}{log4r logger object}
-
-\item{pstrgdir}{target directory where plot files from archive are extracted, relative to ps_gedir}
 }
 \description{
 Based on a Rmarkdown Template (ps_templ) document all plots
@@ -35,11 +35,11 @@ shown side-by-side in the generated Rmarkdown report.
 }
 \examples{
 \dontrun{
-create_ge_plot_report(ps_gedir       = "/Volumes/data_zws/fbk/work/bv/YearMinus0/compareBull",
-                    ps_archdir     = "/Volumes/data_archiv/zws/1904/fbk/work/bv/YearMinus0/compareBull",
+create_ge_plot_report(ps_gedir     = "{path to comparison dir}",
+                    ps_archdir     = "{path to archive dir}",
                     ps_trgdir      = "1904/compareBull",
                     ps_templ       = "inst/templates/compare_plots.Rmd.template",
-                    ps_report_text = "## Comparison Of Plots\\nPlots compare estimates of fbk for bulls of breed BV between GE-1904 on the left and the current GE-1908 on the right.",
+                    ps_report_text = "## Comparison Of Plots\\nPlots compare estimates ...",
                     ps_rmd_report  = 'ge_plot_report_fbk_compareBulls_bv.Rmd',
                     pb_debug       = TRUE)
 

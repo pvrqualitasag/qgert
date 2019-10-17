@@ -41,12 +41,6 @@ in given GE directory (ps_gedir) are taken. For a given plot
 in directory ps_gedir, a corresponding plot with the same
 filename is searched in an archive directory (ps_archdir).
 If such a plot is found, the two corresponding plots are
-shown side-by-side in the generated Rmarkdown report.
-Based on a Rmarkdown Template (ps_templ) document all plots
-in given GE directory (ps_gedir) are taken. For a given plot
-in directory ps_gedir, a corresponding plot with the same
-filename is searched in an archive directory (ps_archdir).
-If such a plot is found, the two corresponding plots are
 shown side-by-side in the generated Rmarkdown report." />
 <meta name="twitter:card" content="summary" />
 
@@ -141,7 +135,7 @@ shown side-by-side in the generated Rmarkdown report." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Create Report With Plots From Two GE Periods</h1>
-    <small class="dont-index">Source: <a href='https://github.com/pvrqualitasag/qgert/blob/master/R/compare_plot_report_generic.R'><code>R/compare_plot_report_generic.R</code></a>, <a href='https://github.com/pvrqualitasag/qgert/blob/master/R/compose_compare_plot.R'><code>R/compose_compare_plot.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/pvrqualitasag/qgert/blob/master/R/compare_plot_report_generic.R'><code>R/compare_plot_report_generic.R</code></a></small>
     <div class="hidden name"><code>create_ge_plot_report.Rd</code></div>
     </div>
 
@@ -152,21 +146,11 @@ in directory ps_gedir, a corresponding plot with the same
 filename is searched in an archive directory (ps_archdir).
 If such a plot is found, the two corresponding plots are
 shown side-by-side in the generated Rmarkdown report.</p>
-<p>Based on a Rmarkdown Template (ps_templ) document all plots
-in given GE directory (ps_gedir) are taken. For a given plot
-in directory ps_gedir, a corresponding plot with the same
-filename is searched in an archive directory (ps_archdir).
-If such a plot is found, the two corresponding plots are
-shown side-by-side in the generated Rmarkdown report.</p>
     </div>
 
     <pre class="usage"><span class='fu'>create_ge_plot_report</span>(<span class='no'>ps_gedir</span>, <span class='no'>ps_archdir</span>, <span class='no'>ps_trgdir</span>, <span class='no'>ps_templ</span>,
   <span class='no'>ps_report_text</span>, <span class='kw'>ps_rmd_report</span> <span class='kw'>=</span> <span class='st'>"ge_plot_report.Rmd"</span>,
-  <span class='kw'>pb_debug</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-
-<span class='fu'>create_ge_plot_report</span>(<span class='no'>ps_gedir</span>, <span class='no'>ps_archdir</span>, <span class='no'>ps_trgdir</span>, <span class='no'>ps_templ</span>,
-  <span class='no'>ps_report_text</span>, <span class='kw'>ps_rmd_report</span> <span class='kw'>=</span> <span class='st'>"ge_plot_report.Rmd"</span>,
-  <span class='kw'>pb_debug</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='kw'>pb_debug</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>plogger</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -180,6 +164,10 @@ shown side-by-side in the generated Rmarkdown report.</p>
       <td><p>archive directory with plots from previous GE</p></td>
     </tr>
     <tr>
+      <th>ps_trgdir</th>
+      <td><p>target directory where plot files from archive are extracted, relative to ps_gedir</p></td>
+    </tr>
+    <tr>
       <th>ps_templ</th>
       <td><p>path to Rmarkdown template file</p></td>
     </tr>
@@ -194,63 +182,21 @@ shown side-by-side in the generated Rmarkdown report.</p>
     <tr>
       <th>pb_debug</th>
       <td><p>flag indicating whether debug info is printed</p></td>
-    </tr>
-    <tr>
-      <th>pstrgdir</th>
-      <td><p>target directory where plot files from archive are extracted, relative to ps_gedir</p></td>
     </tr>
     <tr>
       <th>plogger</th>
       <td><p>log4r logger object</p></td>
-    </tr>
-    <tr>
-      <th>ps_gedir</th>
-      <td><p>directory with plots of current GE round</p></td>
-    </tr>
-    <tr>
-      <th>ps_archdir</th>
-      <td><p>archive directory with plots from previous GE</p></td>
-    </tr>
-    <tr>
-      <th>pstrgdir</th>
-      <td><p>target directory where plot files from archive are extracted, relative to ps_gedir</p></td>
-    </tr>
-    <tr>
-      <th>ps_templ</th>
-      <td><p>path to Rmarkdown template file</p></td>
-    </tr>
-    <tr>
-      <th>ps_report_text</th>
-      <td><p>text that is included in the report before plotting</p></td>
-    </tr>
-    <tr>
-      <th>ps_rmd_report</th>
-      <td><p>name of report source file</p></td>
-    </tr>
-    <tr>
-      <th>pb_debug</th>
-      <td><p>flag indicating whether debug info is printed</p></td>
     </tr>
     </table>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>create_ge_plot_report</span>(<span class='kw'>ps_gedir</span>       <span class='kw'>=</span> <span class='st'>"/Volumes/data_zws/fbk/work/bv/YearMinus0/compareBull"</span>,
-                    <span class='kw'>ps_archdir</span>     <span class='kw'>=</span> <span class='st'>"/Volumes/data_archiv/zws/1904/fbk/work/bv/YearMinus0/compareBull"</span>,
+<span class='fu'>create_ge_plot_report</span>(<span class='kw'>ps_gedir</span>     <span class='kw'>=</span> <span class='st'>"{path to comparison dir}"</span>,
+                    <span class='kw'>ps_archdir</span>     <span class='kw'>=</span> <span class='st'>"{path to archive dir}"</span>,
                     <span class='kw'>ps_trgdir</span>      <span class='kw'>=</span> <span class='st'>"1904/compareBull"</span>,
                     <span class='kw'>ps_templ</span>       <span class='kw'>=</span> <span class='st'>"inst/templates/compare_plots.Rmd.template"</span>,
-                    <span class='kw'>ps_report_text</span> <span class='kw'>=</span> <span class='st'>"## Comparison Of Plots\nPlots compare estimates of fbk for bulls of breed BV between GE-1904 on the left and the current GE-1908 on the right."</span>,
-                    <span class='kw'>ps_rmd_report</span>  <span class='kw'>=</span> <span class='st'>'ge_plot_report_fbk_compareBulls_bv.Rmd'</span>,
-                    <span class='kw'>pb_debug</span>       <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-
-}
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>create_ge_plot_report</span>(<span class='kw'>ps_gedir</span>       <span class='kw'>=</span> <span class='st'>"/Volumes/data_zws/fbk/work/bv/YearMinus0/compareBull"</span>,
-                    <span class='kw'>ps_archdir</span>     <span class='kw'>=</span> <span class='st'>"/Volumes/data_archiv/zws/1904/fbk/work/bv/YearMinus0/compareBull"</span>,
-                    <span class='kw'>ps_trgdir</span>      <span class='kw'>=</span> <span class='st'>"1904/compareBull"</span>,
-                    <span class='kw'>ps_templ</span>       <span class='kw'>=</span> <span class='st'>"inst/templates/compare_plots.Rmd.template"</span>,
-                    <span class='kw'>ps_report_text</span> <span class='kw'>=</span> <span class='st'>"## Comparison Of Plots\nPlots compare estimates of fbk for bulls of breed BV between GE-1904 on the left and the current GE-1908 on the right."</span>,
+                    <span class='kw'>ps_report_text</span> <span class='kw'>=</span> <span class='st'>"## Comparison Of Plots\nPlots compare estimates ..."</span>,
                     <span class='kw'>ps_rmd_report</span>  <span class='kw'>=</span> <span class='st'>'ge_plot_report_fbk_compareBulls_bv.Rmd'</span>,
                     <span class='kw'>pb_debug</span>       <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
