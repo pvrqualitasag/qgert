@@ -14,6 +14,9 @@ of the post-processing is on quality assurance and on results checking.
 As a consequence of that, principles of reproducibility of all tasks are
 followed as closely as possible.
 
+The package website is available at:
+<https://pvrqualitasag.github.io/qgert/>
+
 ## Installation
 
 Because the package is only useful in the context of the genetic
@@ -38,4 +41,4 @@ is listed below.
   - Comparison Plot Report: Combination of comparison plots in a single
     report.
   - Spinning bash script: Conversion of specially annotated bash scripts
-    into an html page.
+    into an HTML page.

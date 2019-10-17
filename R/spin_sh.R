@@ -12,7 +12,8 @@
 #' @param ps_sh_hair path to the bash scirpt
 #' @param ps_out_rmd output Rmd file
 #' @param pb_knit flag whether generated Rmd should be rendered
-#' @param pb_keep_src should Rmd source file be kept
+#' @param pobi_output_format desired output format passed to rmarkdown::render()
+#' @param pb_keep_rmd should Rmd source file be kept
 #'
 #' @examples
 #' s_test_script <- system.file('extdata', 'test_script.sh', package = 'rmdhelp')
@@ -22,9 +23,10 @@
 #'
 #' @export spin_sh
 spin_sh <- function (ps_sh_hair,
-                     ps_out_rmd  = paste0(fs::path_ext_remove(ps_sh_hair), ".Rmd"),
-                     pb_knit     = TRUE,
-                     pb_keep_src = FALSE){
+                     ps_out_rmd         = paste0(basename(fs::path_ext_remove(ps_sh_hair)), ".Rmd"),
+                     pb_knit            = TRUE,
+                     pobi_output_format = NULL,
+                     pb_keep_rmd        = FALSE){
   if (!file.exists(ps_sh_hair))
     stop(" * ERROR cannot find input script: ", ps_sh_hair)
 
@@ -48,6 +50,8 @@ spin_sh <- function (ps_sh_hair,
 
   # Start with the beginning of a code chunk
   vec_code_chunk_start_pos <- grep(pattern = '^#\\+', vec_out_src)
+  vec_code_chunk_with_eval_start_pos <- grep(pattern = '^#\\+(.*)eval(.*)$', vec_out_src)
+  vec_code_chunk_wout_eval_start_pos <- setdiff(vec_code_chunk_start_pos, vec_code_chunk_with_eval_start_pos)
 
   # End of code chunks
   vec_txt_chunks <- c(vec_txt_chunks, length(vec_out_src))
@@ -59,8 +63,9 @@ spin_sh <- function (ps_sh_hair,
 
 
   # ## Replacements to get to a rmd document
-  # The code chunks are augmented with the tiks and engine specs
-  vec_out_src[vec_code_chunk_start_pos] <- gsub(pattern = '^#\\+(.*)$', replacement = '```{bash,\\1}', vec_out_src[vec_code_chunk_start_pos])
+  # The code chunks are augmented with the tiks and engine specs, for all chunks w/out eval option, it is added
+  vec_out_src[vec_code_chunk_with_eval_start_pos] <- gsub(pattern = '^#\\+(.*)$', replacement = '```{bash,\\1}', vec_out_src[vec_code_chunk_with_eval_start_pos])
+  vec_out_src[vec_code_chunk_wout_eval_start_pos] <- gsub(pattern = '^#\\+(.*)$', replacement = '```{bash,\\1, eval=FALSE}', vec_out_src[vec_code_chunk_wout_eval_start_pos])
 
   # The code chunk ends are symbolised with three tiks which are added at each beginning of the line
   for (i in seq_along(vec_code_chunk_end_pos)){
@@ -74,12 +79,13 @@ spin_sh <- function (ps_sh_hair,
   # Remove all doxygen comment signs from text
   vec_out_src <- gsub(pattern = "^#\\'[ ]*", replacement = "", vec_out_src )
 
+  # Write modified content to Rmd file
   cat(paste0(vec_out_src, collapse = "\n"), "\n", file = ps_out_rmd)
 
   # knit if parameter was specified
   if (pb_knit){
-    rmarkdown::render(input = ps_out_rmd)
-    if (!pb_keep_src)
+    rmarkdown::render(input = ps_out_rmd, output_format = pobi_output_format)
+    if (!pb_keep_rmd)
       unlink(ps_out_rmd)
   }
 

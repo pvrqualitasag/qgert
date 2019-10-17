@@ -4,6 +4,11 @@
 #' date:  __STARTDATE__
 #' author: __AUTHOR__
 #' ---
+#' ## Purpose
+#' {Write a paragraph about what problems are solved with this script.}
+#'
+#' ## Description
+#' {Write a paragraph about how the problems are solved.}
 #+ bash-env-setting, eval=FALSE
 set -o errexit    # exit immediately, if single command exits with non-zero status
 set -o nounset    # treat unset variables as errors
@@ -140,4 +145,9 @@ cd $EVAL_DIR
 #' ## End of Script
 #+ end-msg, eval=FALSE
 end_msg
+
+
+#' ## Latest Update
+#+ latest-update, eval=TRUE
+date
 

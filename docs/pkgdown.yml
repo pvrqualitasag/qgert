@@ -4,4 +4,5 @@ pkgdown_sha: ~
 articles:
   comparison_plot_report: comparison_plot_report.html
   qgert_getting_started: qgert_getting_started.html
+  spin_bash_script: spin_bash_script.html
 

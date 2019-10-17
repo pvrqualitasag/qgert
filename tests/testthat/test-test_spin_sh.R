@@ -8,7 +8,7 @@ test_that("Convert Bash Script", {
   vec_out_rmd <- readLines(con = file(system.file('extdata', 'test_script.Rmd', package = 'qgert')))
   # convert s_test_sh to rmd
   s_tmp_rmd <- file.path(tempdir(), 'test_script.Rmd')
-  qgert::spin_sh(ps_sh_hair = s_test_sh, ps_out_rmd = s_tmp_rmd)
+  qgert::spin_sh(ps_sh_hair = s_test_sh, ps_out_rmd = s_tmp_rmd, pb_knit = FALSE)
   vec_tmp_rmd <- readLines(con = file(s_tmp_rmd))
   # remove temp rmd file
   unlink(s_tmp_rmd)

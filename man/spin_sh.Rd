@@ -4,8 +4,9 @@
 \alias{spin_sh}
 \title{Spin a bash script into Rmd}
 \usage{
-spin_sh(ps_sh_hair, ps_out_rmd = paste0(fs::path_ext_remove(ps_sh_hair),
-  ".Rmd"), pb_knit = TRUE, pb_keep_src = FALSE)
+spin_sh(ps_sh_hair,
+  ps_out_rmd = paste0(basename(fs::path_ext_remove(ps_sh_hair)), ".Rmd"),
+  pb_knit = TRUE, pobi_output_format = NULL, pb_keep_rmd = FALSE)
 }
 \arguments{
 \item{ps_sh_hair}{path to the bash scirpt}
@@ -14,7 +15,9 @@ spin_sh(ps_sh_hair, ps_out_rmd = paste0(fs::path_ext_remove(ps_sh_hair),
 
 \item{pb_knit}{flag whether generated Rmd should be rendered}
 
-\item{pb_keep_src}{should Rmd source file be kept}
+\item{pobi_output_format}{desired output format passed to rmarkdown::render()}
+
+\item{pb_keep_rmd}{should Rmd source file be kept}
 }
 \description{
 This function is derived from \code{knitr::spin()} for R-scripts and
