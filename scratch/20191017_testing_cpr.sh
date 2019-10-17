@@ -25,28 +25,19 @@ R -e 'install.packages("devtools", repo="https://stat.ethz.ch/CRAN/", dependenci
 
 R -e 'devtools::install_github("pvrqualitasag/qgert", upgrade = "always", dependencies = TRUE)' --no-save
 
+#' ## TinyTex
+#' Installation of package according to: https://yihui.name/tinytex/
+
+
 
 #' ## Create Comparison Plot Report
 #' The following R-stmt is specially used to work with the data in the project
 #+ R-fun-call
-R -e 'qgert::create_ge_compare_plot_report_fbk(pn_cur_ge_label=1908, pn_prev_ge_label = 1904, pl_plot_opts = list(ge_dir_stem = "/qualstorzws01/data_projekte/projekte/singularity_data_zws_cpr/fbk/work",
+R -e 'qgert::create_ge_compare_plot_report_fbk(pn_cur_ge_label = 1908, pn_prev_ge_label = 1904, pl_plot_opts = list(ge_dir_stem = "/qualstorzws01/data_projekte/projekte/singularity_data_zws_cpr/fbk/work",
               arch_dir_stem   = "/qualstorzws01/data_archiv/zws",
               rmd_report_stem = "ge_plot_report_fbk",
               vec_breed       = c("bv"),
               vec_sex         = c("Bull", "Cow")))' --no-save
-
-
-In R:
-
-remove.packages('qgert') # must be followed by restarting R
-devtools::install_github("pvrqualitasag/qgert", upgrade = "always", dependencies = TRUE, force = TRUE)
-qgert::create_ge_compare_plot_report_fbk(pn_cur_ge_label=1908,
-                                         pn_prev_ge_label = 1904,
-                                         pl_plot_opts = list(ge_dir_stem = "/qualstorzws01/data_projekte/projekte/singularity_data_zws_cpr/fbk/work",
-                                                             arch_dir_stem   = "/qualstorzws01/data_archiv/zws",
-                                                             rmd_report_stem = "ge_plot_report_fbk",
-                                                             vec_breed       = c("bv"),
-                                                             vec_sex         = c("Bull", "Cow")))
 
 
 
