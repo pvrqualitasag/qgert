@@ -18,8 +18,7 @@ BugReports: https://github.com/pvrqualitasag/qgert/issues
 Suggests: 
     knitr,
     rmarkdown,
-    testthat (>= 2.1.0),
-    rmdhelp (>= 0.1.0)
+    testthat (>= 2.1.0)
 VignetteBuilder: knitr
 RoxygenNote: 6.1.1
 Imports: 

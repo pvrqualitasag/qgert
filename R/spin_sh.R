@@ -16,7 +16,7 @@
 #' @param pb_keep_rmd should Rmd source file be kept
 #'
 #' @examples
-#' s_test_script <- system.file('extdata', 'test_script.sh', package = 'rmdhelp')
+#' s_test_script <- system.file('extdata', 'test_script.sh', package = 'qgert')
 #' s_test_out <- file.path(tempdir(), 'test_script.Rmd')
 #' spin_sh(ps_sh_hair = s_test_script, ps_out_rmd = s_test_out)
 #' unlink(s_test_out)

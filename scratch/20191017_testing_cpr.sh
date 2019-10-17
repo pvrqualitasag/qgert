@@ -22,7 +22,8 @@ cp -r /qualstorzws01/data_zws/fbk/work/bv .
 #' Install the required packages
 #+ pkg-inst
 R -e 'install.packages("devtools", repo="https://stat.ethz.ch/CRAN/", dependencies=TRUE)' --no-save
-R -e 'devtools::install_github("pvrqualitasag/qgert", ref = "0.2.1", upgrade = "always")' --no-save
+
+R -e 'devtools::install_github("pvrqualitasag/qgert", upgrade = "always", dependencies = TRUE)' --no-save
 
 
 #' ## Create Comparison Plot Report

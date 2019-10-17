@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(qgert)
 ```
-```{r odg-convert-hook, include=FALSE}
+```{r odg-convert-hook, include=FALSE, eval=FALSE}
 knitr::knit_hooks$set(hook_convert_odg = rmdhelp::hook_convert_odg)
 ```
 
