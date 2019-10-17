@@ -22,7 +22,7 @@ cp -r /qualstorzws01/data_zws/fbk/work/bv .
 #' Install the required packages
 #+ pkg-inst
 R -e 'install.packages("devtools", repo="https://stat.ethz.ch/CRAN/", dependencies=TRUE)' --no-save
-R -e 'devtools::install_github("pvrqualitasag/qgert", upgrade = "always")' --no-save
+R -e 'devtools::install_github("pvrqualitasag/qgert", ref = "0.2.1", upgrade = "always")' --no-save
 
 
 #' ## Create Comparison Plot Report
@@ -33,3 +33,19 @@ R -e 'qgert::create_ge_compare_plot_report_fbk(pn_cur_ge_label=1908, pn_prev_ge_
               rmd_report_stem = "ge_plot_report_fbk",
               vec_breed       = c("bv"),
               vec_sex         = c("Bull", "Cow")))' --no-save
+
+
+In R:
+
+remove.packages('qgert')
+devtools::install_github("pvrqualitasag/qgert", ref = "0.2.1", upgrade = "always")
+qgert::create_ge_compare_plot_report_fbk(pn_cur_ge_label=1908,
+                                         pn_prev_ge_label = 1904,
+                                         pl_plot_opts = list(ge_dir_stem = "/qualstorzws01/data_projekte/projekte/singularity_data_zws_cpr/fbk/work",
+                                                             arch_dir_stem   = "/qualstorzws01/data_archiv/zws",
+                                                             rmd_report_stem = "ge_plot_report_fbk",
+                                                             vec_breed       = c("bv"),
+                                                             vec_sex         = c("Bull", "Cow")))
+
+
+
