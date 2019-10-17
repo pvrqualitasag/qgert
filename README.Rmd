@@ -44,3 +44,8 @@ Examples of basic use cases are shown in the different articles that are availab
 * Spinning bash script: Conversion of specially annotated bash scripts into an HTML page.
 
 
+## Latest Change
+```{r}
+Sys.time()
+```
+

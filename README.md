@@ -42,3 +42,10 @@ is listed below.
     report.
   - Spinning bash script: Conversion of specially annotated bash scripts
     into an HTML page.
+
+## Latest Change
+
+``` r
+Sys.time()
+#> [1] "2019-10-17 11:34:38 CEST"
+```
