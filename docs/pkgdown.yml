@@ -3,6 +3,7 @@ pkgdown: 1.4.1
 pkgdown_sha: ~
 articles:
   comparison_plot_report: comparison_plot_report.html
+  comparison_plots: comparison_plots.html
   qgert_getting_started: qgert_getting_started.html
   spin_bash_script: spin_bash_script.html
 
