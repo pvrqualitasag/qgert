@@ -42,6 +42,12 @@ The following features are available in package `qgert`
 Problems and Bugs should be reported at https://github.com/pvrqualitasag/qgert/issues.
 
 
+## Session Info
+```{r}
+sessioninfo::session_info()
+```
+
+
 ## Latest Update
 ```{r}
 Sys.time()
