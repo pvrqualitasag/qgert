@@ -28,9 +28,8 @@ R -e 'devtools::install_github("pvrqualitasag/qgert", upgrade = "always")' --no-
 #' ## Create Comparison Plot Report
 #' The following R-stmt is specially used to work with the data in the project
 #+ R-fun-call
-R -e 'qgert::create_ge_compare_plot_report_fbk(pn_cur_ge_label=1908, pn_prev_ge_label = 1904, pb_debug=TRUE, pl_plot_opts = list(ge_dir_stem = "/qualstorzws01/data_projekte/projekte/singularity_data_zws_cpr/fbk/work",
+R -e 'qgert::create_ge_compare_plot_report_fbk(pn_cur_ge_label=1908, pn_prev_ge_label = 1904, pl_plot_opts = list(ge_dir_stem = "/qualstorzws01/data_projekte/projekte/singularity_data_zws_cpr/fbk/work",
               arch_dir_stem   = "/qualstorzws01/data_archiv/zws",
-              rmd_templ       = system.file("templates/compare_plots.Rmd.template", package = 'qgert'),
               rmd_report_stem = "ge_plot_report_fbk",
               vec_breed       = c("bv"),
-              vec_sex         = c("Bull", "Cow")))'
+              vec_sex         = c("Bull", "Cow")))' --no-save
