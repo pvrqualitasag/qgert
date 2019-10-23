@@ -54,10 +54,11 @@ TRAIT=nd
 usage () {
   local l_MSG=$1
   $ECHO "Usage Error: $l_MSG"
-  $ECHO "Usage: $SCRIPT -a <a_example> -b <b_example> -c"
-  $ECHO "  where -a <a_example> ..."
-  $ECHO "        -b <b_example> (optional) ..."
-  $ECHO "        -c (optional) ..."
+  $ECHO "Usage: $SCRIPT -c <current_evaluation_label> -p <previous_evaluation_label>"
+  $ECHO "  where -c <current_evaluation_label>  --  label of current evaluation, given by %YY%mm of publication date"
+  $ECHO "        -p <previous_evaluation_label>  -- label of previous evaluation"
+  $ECHO "        -d                              -- optional argument to call R-function in debug-mode"
+  $ECHO "        -u                              -- optional argument to force update of R-package"
   $ECHO ""
   exit 1
 }
@@ -102,13 +103,17 @@ start_msg
 CURGE=""
 PREVGE=""
 PACKAGEUPDATE=""
-while getopts ":c:p:uh" FLAG; do
+DEBUG=""
+while getopts ":c:dp:uh" FLAG; do
   case $FLAG in
     h) # produce usage message
       usage "Help message for $SCRIPT"
       ;;
     c) # specify label of current GE
       CURGE=$OPTARG
+      ;;
+    d) # specify whether R-function is called with debug mode
+      DEBUG=TRUE
       ;;
     p) # specify label of previous GE
       PREVGE=$OPTARG
@@ -177,8 +182,12 @@ fi
 #' ## Report Creation
 #' The report for the specified trait is created.
 #+ create-report
-Rscript -e "qgert::create_ge_compare_plot_report_${TRAIT}(pn_cur_ge_label=${CURGE}, pn_prev_ge_label = ${PREVGE}, pb_debug=TRUE)"
-
+if [ "$DEBUG" == "TRUE" ]
+then
+  Rscript -e "qgert::create_ge_compare_plot_report_${TRAIT}(pn_cur_ge_label=${CURGE}, pn_prev_ge_label = ${PREVGE}, pb_debug=TRUE)"
+else
+  Rscript -e "qgert::create_ge_compare_plot_report_${TRAIT}(pn_cur_ge_label=${CURGE}, pn_prev_ge_label = ${PREVGE})"
+fi
 
 #' ## End of Script
 #+ end-msg, eval=FALSE
