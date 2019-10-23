@@ -112,7 +112,8 @@ create_ge_compare_plot_report_mar <- function(pn_cur_ge_label,
                           ps_templ       = ps_template,
                           ps_report_text = s_report_text,
                           ps_rmd_report  = s_rep_path,
-                          pb_debug       = TRUE)
+                          pb_debug       = pb_debug,
+                          plogger        = plogger)
     }
   }
 
