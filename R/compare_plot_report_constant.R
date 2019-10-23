@@ -69,7 +69,7 @@ get_default_plot_opts_mar <- function(){
               report_text     = paste0('## Comparison Of Plots\nPlots compare estimates of Mastitisresistance (MAR) for {tolower(sex)}',
                                        ' of breed {breed}',
                                        ' between GE-run {pn_prev_ge_label}',
-                                       ' on the left and the current GE-run {ps_cur_ge_label}',
+                                       ' on the left and the current GE-run {pn_prev_ge_label}',
                                        ' on the right.', collapse = "")))
 }
 
