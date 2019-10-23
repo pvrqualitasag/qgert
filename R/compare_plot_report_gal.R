@@ -82,7 +82,7 @@ create_ge_compare_plot_report_gal <- function(pn_cur_ge_label,
                               pn_prev_ge_label,
                               "gal/work",
                               breed,
-                              paste0("ym0/compare", comp))
+                              paste0("compare", comp))
       if (pb_debug)
         qgert_log_info(plogger = lgr, ps_caller = "create_ge_compare_plot_report_gal",
                  ps_msg    = paste0(" ** Archive dir: ", s_arch_dir, collapse = ""))
