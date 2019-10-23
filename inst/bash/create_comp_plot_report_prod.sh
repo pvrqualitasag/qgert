@@ -34,6 +34,7 @@ INSTALLDIR=`$DIRNAME ${BASH_SOURCE[0]}`    # installation dir of bashtools on ho
 
 #' ### Files
 #+ script-files, eval=FALSE
+SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 SCRIPT=`$BASENAME ${BASH_SOURCE[0]}`       # Set Script Name variable                #
 SERVER=`hostname`                          # put hostname of server in variable      #
 
