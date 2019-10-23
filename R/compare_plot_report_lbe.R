@@ -87,12 +87,7 @@ create_ge_compare_plot_report_lbe <- function(pn_cur_ge_label,
 
       # Report text appears in all reports of this trait before the plots are drawn
       # TODO: replace the following with glue::glue()
-      s_report_text <- l_plot_opts$report_text
-      # s_report_text  <- replace_plh(ps_report_text = l_plot_opts$report_text,
-      #                               pl_replacement = list(list(pattern = "[SEX]", replacement = tolower(sex)),
-      #                                                     list(pattern = "[BREED]",  replacement = breed),
-      #                                                     list(pattern = "[PREVGERUN]", replacement = ps_prev_ge_label),
-      #                                                     list(pattern = "[CURGERUN]", replacement = ps_cur_ge_label)))
+      s_report_text <- glue::glue(l_plot_opts$report_text)
 
       if (pb_debug)
         qgert_log_info(plogger = lgr, ps_caller = "create_ge_compare_plot_report_lbe",

@@ -94,11 +94,6 @@ create_ge_compare_plot_report_fbk <- function(pn_cur_ge_label,
                                    ' between GE-run {pn_prev_ge_label}',
                                    ' on the left and the current GE-run {pn_cur_ge_label}',
                                    ' on the right.')
-      # s_report_text  <- paste0('## Comparison Of Plots\nPlots compare estimates of Fruchtbarkeit (FBK) for ', tolower(sex),
-      #                          ' of breed ', breed,
-      #                          ' between GE-run ', pn_prev_ge_label,
-      #                          ' on the left and the current GE-run ', pn_cur_ge_label,
-      #                          ' on the right.', collapse = "")
 
       if (pb_debug)
         qgert_log_info(plogger = lgr, ps_caller = "create_ge_compare_plot_report_fbk",

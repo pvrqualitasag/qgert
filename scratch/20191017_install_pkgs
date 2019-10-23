@@ -1,0 +1,15 @@
+#' ---
+#' title: Install Package on all servers
+#' date:  2019-10-17
+#' ---
+
+#' find instance name
+szn singularity instance list
+
+#' run installation
+szn singularity exec instance://sizws R -e \'devtools::install_github("pvrqualitasag/qgert", upgrade = "always", dependencies = TRUE)\'
+
+
+singularity exec instance://sizws R -e 'install.packages("devtools", repos = "https://stat.ethz.ch/CRAN/", dependencies = TRUE)'
+singularity exec instance://sizws R -e 'devtools::install_github("pvrqualitasag/qgert", upgrade = "always", dependencies = TRUE)'
+

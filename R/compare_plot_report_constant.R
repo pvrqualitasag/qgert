@@ -42,9 +42,9 @@ get_default_plot_opts_nd <- function(){
               rmd_templ       = system.file("templates/compare_plots.Rmd.template", package = 'qgert'),
               rmd_report_stem = "ge_plot_report_nd",
               vec_breed       = c("bv", "rh"),
-              report_text     = paste0('## Comparison Of Plots\nPlots compare estimates of Nutzungsdauer (ND) for breed [BREED]',
-                                       ' between GE-run [PREVGERUN]',
-                                       ' on the left and the current GE-run [CURGERUN]',
+              report_text     = paste0('## Comparison Of Plots\nPlots compare estimates of Nutzungsdauer (ND) for breed {breed}',
+                                       ' between GE-run {pn_prev_ge_label}',
+                                       ' on the left and the current GE-run {pn_cur_ge_label}',
                                        ' on the right.', collapse = "")))
 }
 
@@ -66,10 +66,10 @@ get_default_plot_opts_mar <- function(){
               rmd_report_stem = "ge_plot_report_mar",
               vec_breed       = c("bv", "rh"),
               vec_sex         = c("Bull", "Cow"),
-              report_text     = paste0('## Comparison Of Plots\nPlots compare estimates of Mastitisresistance (MAR) for [SEX]',
-                                       ' of breed [BREED]',
-                                       ' between GE-run [PREVGERUN]',
-                                       ' on the left and the current GE-run [CURGERUN]',
+              report_text     = paste0('## Comparison Of Plots\nPlots compare estimates of Mastitisresistance (MAR) for {tolower(sex)}',
+                                       ' of breed {breed}',
+                                       ' between GE-run {pn_prev_ge_label}',
+                                       ' on the left and the current GE-run {ps_cur_ge_label}',
                                        ' on the right.', collapse = "")))
 }
 
@@ -91,10 +91,10 @@ get_default_plot_opts_lbe <- function(){
               rmd_report_stem = "ge_plot_report_lbe",
               vec_breed       = c("bv", "je"),
               vec_sex         = c("Bull", "Cow"),
-              report_text     = paste0('## Comparison Of Plots\nPlots compare estimates of Lineare Beschreibung (LBE) for [SEX]',
-                                       ' of breed [BREED]',
-                                       ' between GE-run [PREVGERUN]',
-                                       ' on the left and the current GE-run [CURGERUN]',
+              report_text     = paste0('## Comparison Of Plots\nPlots compare estimates of Lineare Beschreibung (LBE) for {tolower(sex)}',
+                                       ' of breed {breed}',
+                                       ' between GE-run {pn_prev_ge_label}',
+                                       ' on the left and the current GE-run {ps_cur_ge_label}',
                                        ' on the right.', collapse = "")))
 }
 
@@ -116,10 +116,10 @@ get_default_plot_opts_lbe_rh <- function(){
               rmd_report_stem = "ge_plot_report_lbe_rh",
               vec_breed       = c("rh"),
               vec_sex         = c("Bull", "Cow"),
-              report_text     = paste0('## Comparison Of Plots\nPlots compare estimates of Lineare Beschreibung for RH (LBE_RH) for [SEX]',
-                                       ' of breed [BREED]',
-                                       ' between GE-run [PREVGERUN]',
-                                       ' on the left and the current GE-run [CURGERUN]',
+              report_text     = paste0('## Comparison Of Plots\nPlots compare estimates of Lineare Beschreibung for RH (LBE_RH) for {tolower(sex)}',
+                                       ' of breed {breed}',
+                                       ' between GE-run {pn_prev_ge_label}',
+                                       ' on the left and the current GE-run {pn_cur_ge_label}',
                                        ' on the right.', collapse = '')))
 }
 
@@ -141,10 +141,10 @@ get_default_plot_opts_prod <- function(){
               rmd_report_stem = "ge_plot_report_prod",
               vec_breed       = c("bv", "je", "rh"),
               vec_sex         = c("Bull", "Cow"),
-              report_text     = paste0('## Comparison Of Plots\nPlots compare estimates of Production (PROD) for [SEX]',
-                                       ' of breed [BREED]',
-                                       ' between GE-run [PREVGERUN]',
-                                       ' on the left and the current GE-run [CURGERUN]',
+              report_text     = paste0('## Comparison Of Plots\nPlots compare estimates of Production (PROD) for {tolower(sex)}',
+                                       ' of breed {breed}',
+                                       ' between GE-run {pn_prev_ge_label}',
+                                       ' on the left and the current GE-run {ps_cur_ge_label}',
                                        ' on the right.', collapse = '')))
 }
 
@@ -166,7 +166,7 @@ get_default_plot_opts_vrdggozw <- function(){
               rmd_report_stem = 'ge_plot_report_vrdggozw',
               vec_breed       = c('bv', 'ob', 'rh', 'sf', 'si'),
               vec_zw_type     = c('VRZW', 'DGZW', 'GOZW'),
-              report_text     = '## Comparison Of Plots\nPlots compare estimates of ZW-type [ZWTYPE] for breed [BREED] between GE-run [PREVGERUN] on the left and the current GE-run [CURGERUN] on the right.'))
+              report_text     = '## Comparison Of Plots\nPlots compare estimates of ZW-type {zwt} for breed {breed} between GE-run {pn_prev_ge_label} on the left and the current GE-run {pn_cur_ge_label} on the right.'))
 }
 
 
@@ -187,7 +187,7 @@ get_default_plot_opts_vrdggozw_prov <- function(){
               rmd_report_stem = 'ge_plot_report_vrdggozw_prov',
               vec_breed       = c('bv', 'ob', 'rh', 'sf', 'si'),
               vec_zw_type     = c('VRZW', 'DGZW', 'GOZW'),
-              report_text     = '## Comparison Of Plots\nPlots compare estimates of ZW-type [ZWTYPE] for breed [BREED] between GE-run [PREVGERUN] on the left and the current GE-run [CURGERUN] on the right.'))
+              report_text     = '## Comparison Of Plots\nPlots compare estimates of ZW-type {zwt} for breed {breed} between GE-run {pn_prev_ge_label} on the left and the current GE-run {pn_cur_ge_label} on the right.'))
 }
 
 
@@ -207,9 +207,9 @@ get_default_plot_opts_itb <- function(){
               rmd_templ       = system.file("templates/compare_plots.Rmd.template", package = 'qgert'),
               rmd_report_stem = "ge_plot_report_itb",
               vec_breed       = c("bv", "je", "rh"),
-              report_text     = paste0('## Comparison Of Plots\nPlots compare estimates of Interbull (ITB) for breed [BREED]',
-                                       ' between GE-run [PREVGERUN]',
-                                       ' on the left and the current GE-run [CURGERUN]',
+              report_text     = paste0('## Comparison Of Plots\nPlots compare estimates of Interbull (ITB) for breed {breed}',
+                                       ' between GE-run {pn_prev_ge_label}',
+                                       ' on the left and the current GE-run {pn_cur_ge_label}',
                                        ' on the right.', collapse = '')))
 }
 
@@ -230,9 +230,9 @@ get_default_plot_opts_cnvrh <- function(){
               rmd_templ       = system.file("templates/compare_plots.Rmd.template", package = 'qgert'),
               rmd_report_stem = "ge_plot_report_cnvrh",
               vec_breed       = c("rh"),
-              report_text     = paste0('## Comparison Of Plots\nPlots compare estimates of converted cow proofs (CNVRH) for breed [BREED]',
-                                       ' between GE-run [PREVGERUN]',
-                                       ' on the left and the current GE-run [CURGERUN]',
+              report_text     = paste0('## Comparison Of Plots\nPlots compare estimates of converted cow proofs (CNVRH) for breed {breed}',
+                                       ' between GE-run {pn_prev_ge_label}',
+                                       ' on the left and the current GE-run {pn_cur_ge_label}',
                                        ' on the right.', collapse = '')))
 }
 
