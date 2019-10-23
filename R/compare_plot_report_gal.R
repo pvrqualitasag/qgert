@@ -66,7 +66,7 @@ create_ge_compare_plot_report_gal <- function(pn_cur_ge_label,
       qgert_log_info(plogger = lgr, ps_caller = "create_ge_compare_plot_report_gal",
                ps_msg    = paste0(" ** Loop for breed: ", breed, collapse = ""))
 
-    # loop over both sexes
+    # loop over both effects
     for (comp in l_plot_opts$vec_comparisons){
       if (pb_debug)
         qgert_log_info(plogger = lgr, ps_caller = "create_ge_compare_plot_report_gal",
@@ -102,7 +102,7 @@ create_ge_compare_plot_report_gal <- function(pn_cur_ge_label,
                  ps_msg    = paste0(" ** Target directory for restored plots: ", s_trg_dir))
 
       # specify the name of the report file
-      s_rep_path <- file.path(s_ge_dir, paste0('ge_plot_report_gal_compare', sex, '_', breed, '.Rmd', collapse = ''))
+      s_rep_path <- file.path(s_ge_dir, paste0('ge_plot_report_gal_compare', comp, '_', breed, '.Rmd', collapse = ''))
       if (pb_debug)
         qgert_log_info(plogger = lgr, ps_caller = "create_ge_compare_plot_report_gal",
                  ps_msg    = paste0(" ** Path to report created: ", s_rep_path))
