@@ -39,10 +39,11 @@ is listed below.
     provided by `qgert`.
   - Comparison Plots: Explanation of what a comparison plot is.
   - Comparison Plot Report: Combination of comparison plots in a single
-    report.
+    report. Reports can be generated from within R or with a wrapper
+    bash-script.
   - Spinning bash script: Conversion of specially annotated bash scripts
     into an HTML page.
 
 ## Latest Change
 
-    #> [1] "2019-10-24 08:15:21 CEST"
+    #> [1] "2019-10-24 08:17:35 CEST"
