@@ -1,7 +1,13 @@
+## qgert 0.2.2 (Minor release)
+
+* Added creation of comparison for trait group GAL
+
+
 ## qgert 0.2.1 (Bug fix)
 
 * Bug fix for [issue #13](https://github.com/pvrqualitasag/qgert/issues/13)
 * Updated bash scripts to use `qgert` for creation of comparisonplotreports
+
 
 ## qgert 0.2.0
 

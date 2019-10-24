@@ -24,6 +24,8 @@
 #' @param ps_templ  path to Rmarkdown template file
 #' @param ps_report_text text that is included in the report before plotting
 #' @param ps_rmd_report name of report source file
+#' @param pb_keep_src should Rmd source be kept
+#' @param pb_session_info should session_info be included
 #' @param pb_debug flag indicating whether debug info is printed
 #' @param plogger log4r logger object
 #'
@@ -44,9 +46,11 @@ create_ge_plot_report <- function(ps_gedir,
                                   ps_trgdir,
                                   ps_templ,
                                   ps_report_text,
-                                  ps_rmd_report = 'ge_plot_report.Rmd',
-                                  pb_debug      = FALSE,
-                                  plogger       = NULL){
+                                  ps_rmd_report   = 'ge_plot_report.Rmd',
+                                  pb_keep_src     = FALSE,
+                                  pb_session_info = TRUE,
+                                  pb_debug        = FALSE,
+                                  plogger         = NULL){
 
   if (pb_debug) {
     if (is.null(plogger)){
@@ -193,20 +197,24 @@ create_ge_plot_report <- function(ps_gedir,
     # write junk end into report
     cat("```\n\n", file = ps_rmd_report, append = TRUE)
   }
-  # finally include session info into the report
-  cat("\n```{r}\n sessioninfo::session_info()\n```\n\n", file = ps_rmd_report, append = TRUE)
+  if (pb_session_info){
+    # finally include session info into the report
+    cat("\n```{r}\n sessioninfo::session_info()\n```\n\n", file = ps_rmd_report, append = TRUE)
+  }
   # render the generated Rmd file
   rmarkdown::render(input = ps_rmd_report)
 
   # remove report sources
-  if (pb_debug)
-    qgert_log_info(plogger = lgr, ps_caller = 'create_ge_plot_report',
-                   ps_msg = paste0(" * Removing report rmd source ", ps_rmd_report))
-  fs::file_delete(ps_rmd_report)
-  if (pb_debug)
-    qgert_log_info(plogger = lgr, ps_caller = 'create_ge_plot_report',
-                   ps_msg = paste0(" * Removing report tex source ", s_tex_report))
-  fs::file_delete(s_tex_report)
+  if (!pb_keep_src){
+    if (pb_debug)
+      qgert_log_info(plogger = lgr, ps_caller = 'create_ge_plot_report',
+                     ps_msg = paste0(" * Removing report rmd source ", ps_rmd_report))
+    fs::file_delete(ps_rmd_report)
+    if (pb_debug)
+      qgert_log_info(plogger = lgr, ps_caller = 'create_ge_plot_report',
+                     ps_msg = paste0(" * Removing report tex source ", s_tex_report))
+    fs::file_delete(s_tex_report)
+  }
 
   # remove target root dir
   if (pb_debug)

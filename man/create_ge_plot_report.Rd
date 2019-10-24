@@ -6,7 +6,8 @@
 \usage{
 create_ge_plot_report(ps_gedir, ps_archdir, ps_trgdir, ps_templ,
   ps_report_text, ps_rmd_report = "ge_plot_report.Rmd",
-  pb_debug = FALSE, plogger = NULL)
+  pb_keep_src = FALSE, pb_session_info = TRUE, pb_debug = FALSE,
+  plogger = NULL)
 }
 \arguments{
 \item{ps_gedir}{directory with plots of current GE round}
@@ -20,6 +21,10 @@ create_ge_plot_report(ps_gedir, ps_archdir, ps_trgdir, ps_templ,
 \item{ps_report_text}{text that is included in the report before plotting}
 
 \item{ps_rmd_report}{name of report source file}
+
+\item{pb_keep_src}{should Rmd source be kept}
+
+\item{pb_session_info}{should session_info be included}
 
 \item{pb_debug}{flag indicating whether debug info is printed}
 
