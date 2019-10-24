@@ -40,7 +40,7 @@ Examples of basic use cases are shown in the different articles that are availab
 
 * Getting Started: Description of basic usage of the functionality provided by `qgert`.
 * Comparison Plots: Explanation of what a comparison plot is.
-* Comparison Plot Report: Combination of comparison plots in a single report.
+* Comparison Plot Report: Combination of comparison plots in a single report. Reports can be generated from within R or with a wrapper bash-script.
 * Spinning bash script: Conversion of specially annotated bash scripts into an HTML page.
 
 

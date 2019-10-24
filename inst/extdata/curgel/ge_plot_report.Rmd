@@ -20,25 +20,25 @@ Plots on the left are from previous evaluation and on the right from current eva
 
 
 ```{r, echo=FALSE, fig.show='hold', out.width='50%'}
-knitr::include_graphics(path = '/var/folders/2v/jfsqj8zj2f122jcgy15nzfn00000gn/T//RtmphkeYJU/curgel/prev_comp/diff_estimate_ggd_P_P.pdf')
-knitr::include_graphics(path = '/var/folders/2v/jfsqj8zj2f122jcgy15nzfn00000gn/T//RtmphkeYJU/curgel/diff_estimate_ggd_P_P.pdf')
+knitr::include_graphics(path = './curgel/prev_comp/diff_estimate_ggd_P_P.pdf')
+knitr::include_graphics(path = './curgel/diff_estimate_ggd_P_P.pdf')
 ```
 
 
 ```{r, echo=FALSE, fig.show='hold', out.width='50%'}
-knitr::include_graphics(path = '/var/folders/2v/jfsqj8zj2f122jcgy15nzfn00000gn/T//RtmphkeYJU/curgel/prev_comp/diff_estimate_lgd_P_P.pdf')
-knitr::include_graphics(path = '/var/folders/2v/jfsqj8zj2f122jcgy15nzfn00000gn/T//RtmphkeYJU/curgel/diff_estimate_lgd_P_P.pdf')
+knitr::include_graphics(path = './curgel/prev_comp/diff_estimate_lgd_P_P.pdf')
+knitr::include_graphics(path = './curgel/diff_estimate_lgd_P_P.pdf')
 ```
 
 
 ```{r, echo=FALSE, fig.show='hold', out.width='50%'}
-knitr::include_graphics(path = '/var/folders/2v/jfsqj8zj2f122jcgy15nzfn00000gn/T//RtmphkeYJU/curgel/prev_comp/diff_estimate_ngd_P_P.pdf')
-knitr::include_graphics(path = '/var/folders/2v/jfsqj8zj2f122jcgy15nzfn00000gn/T//RtmphkeYJU/curgel/diff_estimate_ngd_P_P.pdf')
+knitr::include_graphics(path = './curgel/prev_comp/diff_estimate_ngd_P_P.pdf')
+knitr::include_graphics(path = './curgel/diff_estimate_ngd_P_P.pdf')
 ```
 
 
 ```{r, echo=FALSE, fig.show='hold', out.width='50%'}
-knitr::include_graphics(path = '/var/folders/2v/jfsqj8zj2f122jcgy15nzfn00000gn/T//RtmphkeYJU/curgel/prev_comp/diff_estimate_tdd_P_P.pdf')
-knitr::include_graphics(path = '/var/folders/2v/jfsqj8zj2f122jcgy15nzfn00000gn/T//RtmphkeYJU/curgel/diff_estimate_tdd_P_P.pdf')
+knitr::include_graphics(path = './curgel/prev_comp/diff_estimate_tdd_P_P.pdf')
+knitr::include_graphics(path = './curgel/diff_estimate_tdd_P_P.pdf')
 ```
 

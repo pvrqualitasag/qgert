@@ -45,4 +45,4 @@ is listed below.
 
 ## Latest Change
 
-    #> [1] "2019-10-17 13:44:54 CEST"
+    #> [1] "2019-10-24 08:15:21 CEST"
