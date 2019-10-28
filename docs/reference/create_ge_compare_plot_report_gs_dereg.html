@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Comparison Plot Report Creator Function For Geburtsablauf (GAL) — create_ge_compare_plot_report_gal • qgert</title>
+<title>Comparison Plot Report Creator Function For De-regressed Values in GS — create_ge_compare_plot_report_gs_dereg • qgert</title>
 
 
 <!-- jquery -->
@@ -35,10 +35,10 @@
 
 
 
-<meta property="og:title" content="Comparison Plot Report Creator Function For Geburtsablauf (GAL) — create_ge_compare_plot_report_gal" />
+<meta property="og:title" content="Comparison Plot Report Creator Function For De-regressed Values in GS — create_ge_compare_plot_report_gs_dereg" />
 <meta property="og:description" content="A comparison plot report containing all generated plots of a GE side-by-side
-with the plots from the previous GE are constructed for the trait
-group GAL." />
+with the plots from the previous GE are constructed for de-regressed values
+in GS." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -131,18 +131,18 @@ group GAL." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Comparison Plot Report Creator Function For Geburtsablauf (GAL)</h1>
-    <small class="dont-index">Source: <a href='https://github.com/pvrqualitasag/qgert/blob/master/R/compare_plot_report_gal.R'><code>R/compare_plot_report_gal.R</code></a></small>
-    <div class="hidden name"><code>create_ge_compare_plot_report_gal.Rd</code></div>
+    <h1>Comparison Plot Report Creator Function For De-regressed Values in GS</h1>
+    <small class="dont-index">Source: <a href='https://github.com/pvrqualitasag/qgert/blob/master/R/compare_plot_report_gs_dereg.R'><code>R/compare_plot_report_gs_dereg.R</code></a></small>
+    <div class="hidden name"><code>create_ge_compare_plot_report_gs_dereg.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>A comparison plot report containing all generated plots of a GE side-by-side
-with the plots from the previous GE are constructed for the trait
-group GAL.</p>
+with the plots from the previous GE are constructed for de-regressed values
+in GS.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>create_ge_compare_plot_report_gal</span>(<span class='no'>pn_cur_ge_label</span>, <span class='no'>pn_prev_ge_label</span>,
+    <pre class="usage"><span class='fu'>create_ge_compare_plot_report_gs_dereg</span>(<span class='no'>pn_cur_ge_label</span>, <span class='no'>pn_prev_ge_label</span>,
   <span class='kw'>ps_template</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"templates"</span>, <span class='st'>"compare_plots.Rmd.template"</span>,
   <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"qgert"</span>), <span class='kw'>pl_plot_opts</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>pb_debug</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>plogger</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
@@ -179,7 +179,7 @@ group GAL.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>create_ge_compare_plot_report_gal</span>(<span class='kw'>pn_cur_ge_label</span>  <span class='kw'>=</span> <span class='fl'>1908</span>,
+<span class='fu'>create_ge_compare_plot_report_gs_dereg</span>(<span class='kw'>pn_cur_ge_label</span>  <span class='kw'>=</span> <span class='fl'>1908</span>,
                                   <span class='kw'>pn_prev_ge_label</span> <span class='kw'>=</span> <span class='fl'>1904</span>,
                                   <span class='kw'>pb_debug</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 }</div></pre>
