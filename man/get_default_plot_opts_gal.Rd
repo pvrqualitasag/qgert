@@ -9,5 +9,5 @@ get_default_plot_opts_gal()
 \description{
 Return a list with specific defaults and constants that are used
 to produce the plot comparison report for the trait group
-Fruchtbarkeit (GAL).
+Geburtsablauf (GAL).
 }
