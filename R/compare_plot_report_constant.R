@@ -236,12 +236,13 @@ get_default_plot_opts_cnvrh <- function(){
                                        ' on the right.', collapse = '')))
 }
 
+
 #' @title Default Plot Options For GAL
 #'
 #' @description
 #' Return a list with specific defaults and constants that are used
 #' to produce the plot comparison report for the trait group
-#' Fruchtbarkeit (GAL).
+#' Geburtsablauf (GAL).
 #'
 get_default_plot_opts_gal <- function(){
   # return list of default options
@@ -253,6 +254,29 @@ get_default_plot_opts_gal <- function(){
               vec_comparisons = c("Direkt", "Maternal"),
               report_text     = paste0('## Comparison Of Plots\n',
                                        'Plots compare estimates of Geburtsablauf (gal) for effect {comp}',
+                                       ' of breed {breed}',
+                                       ' between GE-run {pn_prev_ge_label}',
+                                       ' on the left and the current GE-run {pn_cur_ge_label}',
+                                       ' on the right.', collapse = '')))
+}
+
+
+#' @title Default Plot Options For GS DEREG
+#'
+#' @description
+#' Return a list with specific defaults and constants that are used
+#' to produce the plot comparison report for the de/regression (GS DEREG).
+#'
+get_default_plot_opts_gs_dereg <- function(){
+  # return list of default options
+  return(list(ge_dir_stem     = "/qualstorzws01/data_zws/gs/work",
+              arch_dir_stem   = "/qualstorzws01/data_archiv/zws",
+              rmd_templ       = system.file("templates/compare_plots.Rmd.template", package = 'qgert'),
+              rmd_report_stem = "ge_plot_report_gs_dereg",
+              vec_breed       = c("bv", "ob", "rh", "sf", "si"),
+              vec_comparisons = c("full", "reduced"),
+              report_text     = paste0('## Comparison Of Plots\n',
+                                       'Plots compare de-regressed values for effect {comp}',
                                        ' of breed {breed}',
                                        ' between GE-run {pn_prev_ge_label}',
                                        ' on the left and the current GE-run {pn_cur_ge_label}',

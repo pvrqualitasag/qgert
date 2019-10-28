@@ -1,3 +1,8 @@
+## qgert 0.2.3 (Minor release)
+
+* Add comparison plots for deregression plots in GS
+
+
 ## qgert 0.2.2 (Minor release)
 
 * Added creation of comparison for trait group GAL
