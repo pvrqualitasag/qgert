@@ -106,9 +106,3 @@ fi
 #+ end-msg, eval=FALSE
 end_msg $SCRIPT
 
-
-#' ## Latest Update
-#+ latest-update, eval=TRUE
-date
-
-

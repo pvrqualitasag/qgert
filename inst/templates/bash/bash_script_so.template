@@ -150,8 +150,3 @@ fi
 #+ end-msg, eval=FALSE
 end_msg
 
-
-#' ## Latest Update
-#+ latest-update, eval=TRUE
-date
-
