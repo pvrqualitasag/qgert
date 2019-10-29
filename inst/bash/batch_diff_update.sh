@@ -142,12 +142,17 @@ fi
 #' With this we can avoid the double read-statments, one that reads
 #' the files names from the ls-output and one that reads the user-input.
 #+ file-list
-src_files=()
-ls -1 $SRCPATH | while read f
+srcfiles=()
+# ls -1 $SRCPATH | while read f
+# do
+  # log_msg $SCRIPT "Add source file $f to list ..."
+  # srcfiles+=( ${f} )
+# done
+while read fle
 do
-  log_msg $SCRIPT "Add source file $f to list ..."
-  src_files+=( ${f} )
-done
+  log_msg $SCRIPT "Add source file $fle to list ..."
+  srcfiles+=( ${fle} )
+done < <(ls -1 $SRCPATH)
 
 
 #' ### Loop Over Source Files
@@ -159,7 +164,7 @@ done
 #' of the file.
 #+ check-src
 INPUTANSWER=""
-for f in ${!src_files[@]}
+for f in ${!srcfiles[@]}
 do
   log_msg $SCRIPT "Checking source path file: $f"
   if [ ! -f "$TRGPATH/$f" ]
