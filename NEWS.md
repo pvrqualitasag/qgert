@@ -1,3 +1,7 @@
+## qgert 0.2.5
+
+* Added breed rh to ordinary lbe comparison plot report.
+
 ## qgert 0.2.4
 
 * Adding new functionality of batch difference between directories
