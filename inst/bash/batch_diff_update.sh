@@ -159,7 +159,7 @@ done
 #' of the file.
 #+ check-src
 INPUTANSWER=""
-for f in ${src_files[@]}
+for f in ${!src_files[@]}
 do
   log_msg $SCRIPT "Checking source path file: $f"
   if [ ! -f "$TRGPATH/$f" ]
