@@ -89,7 +89,7 @@ get_default_plot_opts_lbe <- function(){
               arch_dir_stem   = "/qualstorzws01/data_archiv/zws",
               rmd_templ       = system.file("templates/compare_plots.Rmd.template", package = 'qgert'),
               rmd_report_stem = "ge_plot_report_lbe",
-              vec_breed       = c("bv", "je"),
+              vec_breed       = c("bv", "je", "rh"),
               vec_sex         = c("Bull", "Cow"),
               report_text     = paste0('## Comparison Of Plots\nPlots compare estimates of Lineare Beschreibung (LBE) for {tolower(sex)}',
                                        ' of breed {breed}',

@@ -53,8 +53,9 @@ SERVER=`hostname`                          # put hostname of server in variable 
 usage () {
   local l_MSG=$1
   $ECHO "Usage Error: $l_MSG"
-  $ECHO "Usage: $SCRIPT -s <server_name>"
-  $ECHO "  where -s <server_name>  --  optional, run package update on single server"
+  $ECHO "Usage: $SCRIPT -r <repo_referecen> -s <server_name>"
+  $ECHO "  where -s <server_name>     --  optional, run package update on single server"
+  $ECHO "        -r <repo_referecen>  --  optional, update to a branch reference"
   $ECHO ""
   exit 1
 }
@@ -99,7 +100,12 @@ log_msg () {
 update_pkg () {
   local l_SERVER=$1
   log_msg 'update_pkg' "Running update on $l_SERVER"
-  $ECHO "singularity exec instance://sizws R -e 'devtools::install_github(\"pvrqualitasag/qgert\")'" | ssh zws@$l_SERVER
+  if [ "$REFERENCE" != "" ]
+  then
+    $ECHO "singularity exec instance://sizws R -e 'devtools::install_github(\"pvrqualitasag/qgert\", ref = \"${REFERENCE}\")'" | ssh zws@$l_SERVER
+  else
+    $ECHO "singularity exec instance://sizws R -e 'devtools::install_github(\"pvrqualitasag/qgert\")'" | ssh zws@$l_SERVER
+  fi
 }
 
 #' ## Main Body of Script
@@ -114,11 +120,14 @@ start_msg
 #+ getopts-parsing, eval=FALSE
 SERVERS=(beverin castor niesen)
 SERVERNAME=""
-while getopts ":s:h" FLAG; do
+REFERENCE=""
+while getopts ":r:s:h" FLAG; do
   case $FLAG in
     h)
       usage "Help message for $SCRIPT"
       ;;
+    r)
+      REFERENCE=$OPTARG
     s)
       SERVERNAME=$OPTARG
       ;;
