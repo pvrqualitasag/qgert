@@ -164,8 +164,9 @@ done < <(ls -1 $SRCPATH)
 #' of the file.
 #+ check-src
 INPUTANSWER=""
-for f in ${!srcfiles[@]}
+for i in ${!srcfiles[@]}
 do
+  f=${srcfiles[i]}
   log_msg $SCRIPT "Checking source path file: $f"
   if [ ! -f "$TRGPATH/$f" ]
   then
