@@ -18,9 +18,9 @@
 #'
 #' ## Bash Settings
 #+ bash-env-setting, eval=FALSE
-#set -o errexit   # with diff, this option cannot be used.
-set -o nounset    # treat unset variables as errors
-set -o pipefail   # return value of pipeline is value of last command to exit with non-zero status
+# set -o errexit   # with diff, this option cannot be used.
+# set -o nounset    # treat unset variables as errors
+# set -o pipefail   # return value of pipeline is value of last command to exit with non-zero status
                   # hence pipe fails if one command in pipe fails
 
 #' ## Global Constants
