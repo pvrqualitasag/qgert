@@ -128,6 +128,7 @@ while getopts ":r:s:h" FLAG; do
       ;;
     r)
       REFERENCE=$OPTARG
+      ;;
     s)
       SERVERNAME=$OPTARG
       ;;
