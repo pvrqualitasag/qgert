@@ -1,3 +1,8 @@
+## qgert 0.2.7
+
+* Add script to construct sorted gsRuns list. The jobs are sorted according to their predicted running times in the log file of the previous evaluation.
+
+
 ## qgert 0.2.6
 
 * Fix problem with batch_diff_update.sh
