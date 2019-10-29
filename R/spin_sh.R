@@ -79,6 +79,9 @@ spin_sh <- function (ps_sh_hair,
   # Remove all doxygen comment signs from text
   vec_out_src <- gsub(pattern = "^#\\'[ ]*", replacement = "", vec_out_src )
 
+  # Add section with Latest Change date
+  vec_out_src <- c(vec_out_src, rep("\n", 2), "## Latest Update \n```{bash, latest-update, eval=TRUE} \ndate \n``` \n")
+
   # Write modified content to Rmd file
   cat(paste0(vec_out_src, collapse = "\n"), "\n", file = ps_out_rmd)
 

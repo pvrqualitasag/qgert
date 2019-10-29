@@ -212,6 +212,3 @@ $CHMOD $DEFAULTSCRIPTRIGHT $OUTPUTPATH
 end_msg
 
 
-#' ## Latest Update
-#+ latest-update, eval=TRUE
-date

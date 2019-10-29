@@ -148,4 +148,13 @@ Script ends here
 end_msg
 ```
 
+
+
+
+
+
+## Latest Update 
+```{bash, latest-update, eval=TRUE} 
+date 
+``` 
  

@@ -177,9 +177,5 @@ fi
 end_msg
 
 
-#' ## Latest Update
-#+ latest-update, eval=TRUE
-date
-
 
 
