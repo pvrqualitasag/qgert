@@ -94,7 +94,7 @@ get_default_plot_opts_lbe <- function(){
               report_text     = paste0('## Comparison Of Plots\nPlots compare estimates of Lineare Beschreibung (LBE) for {tolower(sex)}',
                                        ' of breed {breed}',
                                        ' between GE-run {pn_prev_ge_label}',
-                                       ' on the left and the current GE-run {ps_cur_ge_label}',
+                                       ' on the left and the current GE-run {pn_cur_ge_label}',
                                        ' on the right.', collapse = "")))
 }
 
@@ -144,7 +144,7 @@ get_default_plot_opts_prod <- function(){
               report_text     = paste0('## Comparison Of Plots\nPlots compare estimates of Production (PROD) for {tolower(sex)}',
                                        ' of breed {breed}',
                                        ' between GE-run {pn_prev_ge_label}',
-                                       ' on the left and the current GE-run {ps_cur_ge_label}',
+                                       ' on the left and the current GE-run {pn_cur_ge_label}',
                                        ' on the right.', collapse = '')))
 }
 
