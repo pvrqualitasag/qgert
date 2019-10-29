@@ -157,7 +157,7 @@ do
   fi
   if [ "$RUNUPDATE" == "TRUE" ]
   then
-    log_msg $SCRIPT "Ask for user input ...
+    log_msg $SCRIPT "Ask for user input ..."
     read -p " * Update $f from $SRCPATH to $TRGPATH [y/n]: " INPUTANSWER
     if [ "$INPUTANSWER" == "y" ]
     then

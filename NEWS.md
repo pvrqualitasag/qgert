@@ -1,13 +1,20 @@
+## qgert 0.2.6
+
+* Fix problem with batch_diff_update.sh
+
+
 ## qgert 0.2.5
 
 * Added breed rh to ordinary lbe comparison plot report.
+
 
 ## qgert 0.2.4
 
 * Adding new functionality of batch difference between directories
 * Improved spin_sh.R to include date of latest change.
 
-## qgert 0.2.3 (Minor release)
+
+## qgert 0.2.3
 
 * Add comparison plots for deregression plots in GS
 
