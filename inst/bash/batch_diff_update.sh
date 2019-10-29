@@ -18,7 +18,7 @@
 #'
 #' ## Bash Settings
 #+ bash-env-setting, eval=FALSE
-set -o errexit    # exit immediately, if single command exits with non-zero status
+#set -o errexit   # with diff, this option cannot be used.
 set -o nounset    # treat unset variables as errors
 set -o pipefail   # return value of pipeline is value of last command to exit with non-zero status
                   # hence pipe fails if one command in pipe fails
@@ -156,8 +156,8 @@ do
   fi
   if [ "$RUNUPDATE" == "TRUE" ]
   then
-    read -p " * Update $f from $SRCPATH to $TRGPATH [y/n]: " inputanswer
-    if [ "$inputanswer" == "y" ]
+    read -p " * Update $f from $SRCPATH to $TRGPATH [y/n]: " INPUTANSWER
+    if [ "$INPUTANSWER" == "y" ]
     then
       log_msg $SCRIPT "Updating $f from $SRCPATH to $TRGPATH ..."
       cp -p $SRCPATH/$f $TRGPATH
