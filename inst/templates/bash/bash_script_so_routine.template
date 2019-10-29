@@ -18,6 +18,9 @@ set -o pipefail   # return value of pipeline is value of last command to exit wi
                   # hence pipe fails if one command in pipe fails
 
 #' ## Global Constants
+#' This section stores the directory of this script, the name of this script and the
+#' hostname in a variable. Both variables are important for logfiles to be able to
+#' trace back which output was produced by which script and on which server.
 #+ script-files, eval=FALSE
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 SCRIPT=$(basename ${BASH_SOURCE[0]})
@@ -25,9 +28,11 @@ SERVER=`hostname`
 
 
 #' ## Functions
-#' The following function definitions are local to this script.
+#' The following definitions of general purpose functions are local to this script.
 #'
-#' produce a start message
+#' ### Start Message
+#' The following function produces a start message showing the time
+#' when the script started and on which server it was started.
 #+ start-msg-fun, eval=FALSE
 start_msg () {
     echo "********************************************************************************"
@@ -36,7 +41,10 @@ start_msg () {
     echo ""
 }
 
-#' produce an end message
+#' ### End Message
+#' This function produces a message denoting the end of the script including
+#' the time when the script ended. This is important to check whether a script
+#' did run successfully to its end.
 #+ end-msg-fun, eval=FALSE
 end_msg () {
     echo ""
@@ -44,7 +52,8 @@ end_msg () {
     echo "********************************************************************************"
 }
 
-#' Functions related to logging
+#' ### Log Message
+#' Log messages formatted similarly to log4r are produced.
 #+ log-msg-fun, eval=FALSE
 log_msg () {
   local l_CALLER=$1
@@ -53,7 +62,8 @@ log_msg () {
   echo "[${l_RIGHTNOW} -- ${l_CALLER}] $l_MSG"
 }
 
-#' Usage message
+#' ### Usage Message
+#' Usage message giving help on how to use the script.
 #+ usage-msg-fun, eval=FALSE
 usage () {
     local l_MSG=$1
@@ -147,6 +157,4 @@ cd $EVAL_DIR
 #' ## End of Script
 #+ end-msg, eval=FALSE
 end_msg
-
-
 
