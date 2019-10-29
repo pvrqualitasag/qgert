@@ -168,14 +168,14 @@ for i in ${!srcfiles[@]}
 do
   f=${srcfiles[i]}
   log_msg $SCRIPT "Checking source path file: $f"
-  if [ ! -f "$TRGPATH/$f" ]
+  if [ -f "$TRGPATH/$f" ]
   then
-    log_msg $SCRIPT "CANNOT find $f in $TRGPATH"
-  else
     log_msg $SCRIPT "Difference between $f in $SRCPATH and $TRGPATH ..."
     diff $SRCPATH/$f $TRGPATH/$f
+  else
+    log_msg $SCRIPT "CANNOT find $f in $TRGPATH"
   fi
-  if [ "$RUNUPDATE" == "TRUE" ]
+  if [ "$RUNUPDATE" == "TRUE" ] && [ `diff $SRCPATH/$f $TRGPATH/$f | wc -l` != "0" ]
   then
     log_msg $SCRIPT "Ask for user input ..."
     read -p " * Update $f from $SRCPATH to $TRGPATH [y/n]: " INPUTANSWER
