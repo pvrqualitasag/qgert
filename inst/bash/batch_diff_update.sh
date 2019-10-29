@@ -144,6 +144,7 @@ fi
 #' whether the target file should be updated with the source version
 #' of the file.
 #+ check-src
+INPUTANSWER=""
 ls -1 $SRCPATH | while read f
 do
   log_msg $SCRIPT "Checking source path file: $f"
@@ -156,6 +157,7 @@ do
   fi
   if [ "$RUNUPDATE" == "TRUE" ]
   then
+    log_msg $SCRIPT "Ask for user input ...
     read -p " * Update $f from $SRCPATH to $TRGPATH [y/n]: " INPUTANSWER
     if [ "$INPUTANSWER" == "y" ]
     then
