@@ -137,6 +137,20 @@ fi
 
 
 #' ## Source Path File Check
+#' ### Build List of Source Files
+#' We start by collecting all files in the source path into a list.
+#' With this we can avoid the double read-statments, one that reads
+#' the files names from the ls-output and one that reads the user-input.
+#+ file-list
+src_files=()
+ls -1 $SRCPATH | while read f
+do
+  log_msg $SCRIPT "Add source file $f to list ..."
+  src_files+=( ${f} )
+done
+
+
+#' ### Loop Over Source Files
 #' Loop over all files in source path directory and compare them to
 #' the files with the same name in the target directory, if such a
 #' file exists in the target directory, otherwise it is noted with
@@ -145,7 +159,7 @@ fi
 #' of the file.
 #+ check-src
 INPUTANSWER=""
-ls -1 $SRCPATH | while read f
+for f in ${src_files[@]}
 do
   log_msg $SCRIPT "Checking source path file: $f"
   if [ ! -f "$TRGPATH/$f" ]
