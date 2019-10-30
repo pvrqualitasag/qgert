@@ -140,7 +140,7 @@ LOGFILE='BayesC.log'
 MISSING='last'
 NRSPLIT=""
 VERBOSE='FALSE'
-while getopts ":d:g:k:l:m:vh" FLAG; do
+while getopts ":d:g:k:l:m:n:vh" FLAG; do
     case $FLAG in
         h)
             usage "Help message for $SCRIPT"
