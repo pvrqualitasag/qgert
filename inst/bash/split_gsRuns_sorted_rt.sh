@@ -175,7 +175,7 @@ cd $EVAL_DIR
 #' it is a gs-run label and from that we construct a logdir in the
 #' archive.
 #+ log-dir
-if [ ! -d "$LOGDIR"]
+if [ ! -d "$LOGDIR" ]
 then
   LOGDIR=/qualstorzws01/data_archiv/zws/$LOGDIR/gs
 fi
