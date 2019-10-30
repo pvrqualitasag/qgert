@@ -110,7 +110,7 @@ check_runtime () {
     fi
   fi
   # check resultstring
-  if [ "$VERBOSE" == 'TRUE' ] log_msg 'check_runtime' "Result-string: $RESULTSTRING";fi
+  if [ "$VERBOSE" == 'TRUE' ];then log_msg 'check_runtime' "Result-string: $RESULTSTRING";fi
   # in case runtime is less then an hour, add 0 hours to output
   if [ `echo $RESULTSTRING | grep hour | wc -l` == "0" ]
   then
@@ -198,7 +198,7 @@ cd $EVAL_DIR
 if [ ! -d "$LOGDIR" ]
 then
   LOGDIR=/qualstorzws01/data_archiv/zws/$LOGDIR/gs
-  if [ "$VERBOSE" == 'TRUE' ] log_msg $SCRIPT "Re-setting log_dir to: $LOGDIR";fi
+  if [ "$VERBOSE" == 'TRUE' ];then log_msg $SCRIPT "Re-setting log_dir to: $LOGDIR";fi
 fi
 
 
@@ -221,11 +221,11 @@ if [ -f "$GSRUNSLIST" ]
 then
   cat $GSRUNSLIST | while read run
   do
-    if [ "$VERBOSE" == 'TRUE' ] log_msg $SCRIPT "Checking runtime for: $run";fi
+    if [ "$VERBOSE" == 'TRUE' ];then log_msg $SCRIPT "Checking runtime for: $run";fi
     check_runtime $run
   done
 else
-  if [ "$VERBOSE" == 'TRUE' ] log_msg $SCRIPT "Checking runtime for: $GSRUNSLIST";fi
+  if [ "$VERBOSE" == 'TRUE' ];then log_msg $SCRIPT "Checking runtime for: $GSRUNSLIST";fi
   check_runtime $GSRUNSLIST
 fi
 
