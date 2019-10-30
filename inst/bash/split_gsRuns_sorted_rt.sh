@@ -98,13 +98,12 @@ check_runtime () {
   fi
   ### # grep for initial estimate of runtime
   RESULTSTRING=`$GREP "$GREPSTRING" $l_logpath  | cut -d ' ' -f8-13`
-    # in case runtime is less then an hour, add 0 hours to output
-    if [ `echo $RESULTSTRING | grep hour | wc -l` == "0" ]
-    then
-      echo "$l_run 0 hours $RESULTSTRING" >> $SORTOUTFILE
-    else
-      echo "$l_run $RESULTSTRING" >> $SORTOUTFILE
-    fi
+  # in case runtime is less then an hour, add 0 hours to output
+  if [ `echo $RESULTSTRING | grep hour | wc -l` == "0" ]
+  then
+    echo "$l_run 0 hours $RESULTSTRING" >> $SORTOUTFILE
+  else
+    echo "$l_run $RESULTSTRING" >> $SORTOUTFILE
   fi
 }
 
