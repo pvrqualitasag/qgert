@@ -253,6 +253,7 @@ R -e "qgert::split_gsruns_sorted_rt(ps_rt_in_file = '$SORTOUTFILE', ps_out_dir =
 #' ## Create SNP.bin file
 #' For each breed one gs-run job must be specified to get the binary version of the input
 #+ create-snp-bin
+rm ${GSRUNSLIST}.snpBin
 breeds=$(cut -d "#" -f 3 $GSRUNSLIST | sort -u)
 for breed in $breeds; do
   grep "#$breed#" $GSRUNSLIST | grep eff | head -1 >> ${GSRUNSLIST}.snpBin
