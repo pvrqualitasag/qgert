@@ -106,7 +106,7 @@ check_runtime () {
     log_msg 'check_runtime' "CANNOT FIND PATH to logfile: $LOGDIR/$l_rundir/$LOGFILE"
     if [ "$MISSING" == "first" ]
     then
-      RESULTSTRING='999 hours 00 minutes 00 seconds'
+      RESULTSTRING='9999 hours 00 minutes 00 seconds'
     else
       RESULTSTRING='0 hours 00 minutes 00 seconds'
     fi
@@ -140,7 +140,7 @@ LOGFILE='BayesC.log'
 MISSING='last'
 NRSPLIT=""
 VERBOSE='FALSE'
-while getopts ":d:g:k:l:m:n:vh" FLAG; do
+while getopts ":d:g:kl:m:n:vh" FLAG; do
     case $FLAG in
         h)
             usage "Help message for $SCRIPT"
