@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Generate Comparison Plot Reports • qgert</title>
+<title>Split gsRuns According To Predicted Runtimes • qgert</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Generate Comparison Plot Reports">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Split gsRuns According To Predicted Runtimes">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -94,55 +94,45 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Generate Comparison Plot Reports</h1>
+      <h1>Split gsRuns According To Predicted Runtimes</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/pvrqualitasag/qgert/blob/master/vignettes/comparison_plot_report.Rmd"><code>vignettes/comparison_plot_report.Rmd</code></a></small>
-      <div class="hidden name"><code>comparison_plot_report.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/pvrqualitasag/qgert/blob/master/vignettes/split_gsruns_sorted_rt.Rmd"><code>vignettes/split_gsruns_sorted_rt.Rmd</code></a></small>
+      <div class="hidden name"><code>split_gsruns_sorted_rt.Rmd</code></div>
 
     </div>
 
     
     
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(qgert)</a></code></pre></div>
-<div id="disclaimer" class="section level2">
+<div id="usage" class="section level2">
 <h2 class="hasAnchor">
-<a href="#disclaimer" class="anchor"></a>Disclaimer</h2>
-<p>The definition of a <code>comparison plot report</code> and how such reports are generated is described in this vignette.</p>
+<a href="#usage" class="anchor"></a>Usage</h2>
+<p>The split of the gsRuns can be done using the following shell script</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="bu">cd</span> /qualstorzws01/data_zws/gs</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="ex">./prog/split_gsRuns_sorted_rt.sh</span> -g work/gsRuns.txt -d 1908 -m first -n 100</a></code></pre></div>
+<p>This uses the gsRuns-list stored under <code>work/gsRuns.txt</code>, it takes the runtime information from the logfiles of the archive of the 1908 evaluation and it produces 100 small job files.</p>
 </div>
-<div id="terminology" class="section level2">
+<div id="update-and-installation" class="section level2">
 <h2 class="hasAnchor">
-<a href="#terminology" class="anchor"></a>Terminology</h2>
-<p>A comparison plot report is a document that shows a series of comparison plots arranged in two columns from two subsequent routine evaluations. Please have a look at the separate article on <a href="https://pvrqualitasag.github.io/qgert/articles/comparison_plots.html">comparison plots</a> to find how these plots are defined an how they are produced.</p>
+<a href="#update-and-installation" class="anchor"></a>Update and Installation</h2>
+<p>This script can only be used if the R-package <code>qgert</code> is installed. On the ZWS-servers this is the case. An update of the package can be done with</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"pvrqualitasag/qgert"</span>)</a></code></pre></div>
+<p>Then the bash script <code>split_gsRuns_sorted_rt.sh</code> must be installed into the subdirectory <code>prog</code> of the GS-evaluation directory</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="ex">/home/zws/lib/R/library/qgert/bash/install_script.sh</span> -s ~/lib/R/library/qgert/bash/split_gsRuns_sorted_rt.sh -t /qualstorzws01/data_zws/gs/prog</a></code></pre></div>
 </div>
-<div id="comparison-plot-report" class="section level2">
+<div id="purpose---why-this-is-done" class="section level2">
 <h2 class="hasAnchor">
-<a href="#comparison-plot-report" class="anchor"></a>Comparison Plot Report</h2>
-<p>Comparison plots are done during each routine evaluation for every block of traits. These plots by themselves are only meaningful with a lot of expertise and experience. But when comparing the same plot to the version that was produced during the previous evaluation, then the quality of the plot can be assessed qualitatively in the sense that it is possible to say, whether the characteristics of the current evaluation represented by a specific comparison plot are better compared to the same characteristics from the previous evaluation.</p>
-<p>As a consequence of that the comparison of two plots of the same characteristics from two subsequent routine evaluations provides important information. Therefore the arrangement of two plots of the same characteristics from two subsequent routine evaluations next to each other in two columns makes the comparison seamless and efficient.</p>
+<a href="#purpose---why-this-is-done" class="anchor"></a>Purpose - Why This Is Done</h2>
+<p>Estimation of marker effects and reliability prediction is a resource intensive step during the routine genetic evaluation. Hence all these estimation tasks must be parallelized. Given a list (gsRuns-list) of computation jobs that are combinations of breeds, evaluation type, trait and parameter type, this list is to be split into a number of smaller lists.</p>
+<p>As an additional requirement, the produced number of lists should contain the jobs sorted according to their predicted running time from a previous evaluation.</p>
 </div>
-<div id="example" class="section level2">
+<div id="description---how-this-is-done" class="section level2">
 <h2 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h2>
-<p>Comparison plot reports can either be generated by calling the R-wrapper function for each trait group. Using the fertility trait group as an example, the abbreviation is <code>fbk</code> and the corresponding R wrapper function is</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">qgert<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/qgert/man/create_ge_compare_plot_report_fbk.html">create_ge_compare_plot_report_fbk</a></span>(<span class="dt">pn_cur_ge_label =</span> <span class="dv">1912</span>, <span class="dt">pn_prev_ge_label =</span> <span class="dv">1908</span>)</a></code></pre></div>
-<p>The above function call creates the comparison plot reports for trait group <code>fbk</code>.</p>
-<p>The same comparison plot report can be genrated using the shell script called <code>create_comp_plot_report_fbk.sh</code>. After changing to the evaluation directory, the call to the shell script shown below produces the comparison plot report.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="bu">cd</span> /qualstorzws01/data_zws/fbk</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="ex">./prog/create_comp_plot_report_fbk.sh</span> -c 1912 -p 1908</a></code></pre></div>
-<p>For trait groups other than <code>fbk</code> there are analogous R wrapper functions and corresponding bash scripts.</p>
-</div>
-<div id="updates" class="section level2">
-<h2 class="hasAnchor">
-<a href="#updates" class="anchor"></a>Updates</h2>
-<p>Whenever a new version of the comparison plot report creation pipeline is released, two steps must be performed.</p>
-<ol style="list-style-type: decimal">
-<li>Update the R-package <code>qgert</code> using <code><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">devtools::install_github("pvrqualitasag/qgert")</a></code> and</li>
-<li>Updating the bash scripts using the following statement</li>
-</ol>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="bu">cd</span> /qualstorzws01/data_zws/fbk</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="ex">/home/zws/lib/R/library/qgert/bash/install_script.sh</span> -s /home/zws/lib/R/library/qgert/bash/create_comp_plot_report_fbk.sh -t prog</a></code></pre></div>
-<p>The above statement updates the bash script <code>create_comp_plot_report_fbk.sh</code> in subdirectory <code>prog</code> for the trait group <code>fbk</code>.</p>
+<a href="#description---how-this-is-done" class="anchor"></a>Description - How This Is Done</h2>
+<p>Given a directory where the logfiles of the previous evaluation is archived (or just a simple run-label such as 1908), the logfiles are searched for the predicted running time of the respective estimation job. This information is written to an outputfile. The outputfile is read into R where the records are sorted according to their running times. After the sort, a specified number of job-files is written. These files have the name-prefix <code>gsSortedRuns.txt</code> followed by a number.</p>
+<p>To prepare the binary version of the SNP-Data one gsRun-job per breed is written to the file <code>gsRuns.txt.snpBin</code>. All jobs that are contained in <code>gsRuns.txt.snpBin</code> are also in the <code>gsSortedRuns.txt</code>-files.</p>
 </div>
   </div>
 
@@ -152,11 +142,10 @@
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#disclaimer">Disclaimer</a></li>
-      <li><a href="#terminology">Terminology</a></li>
-      <li><a href="#comparison-plot-report">Comparison Plot Report</a></li>
-      <li><a href="#example">Example</a></li>
-      <li><a href="#updates">Updates</a></li>
+<li><a href="#usage">Usage</a></li>
+      <li><a href="#update-and-installation">Update and Installation</a></li>
+      <li><a href="#purpose---why-this-is-done">Purpose - Why This Is Done</a></li>
+      <li><a href="#description---how-this-is-done">Description - How This Is Done</a></li>
       </ul>
 </div>
       </div>
