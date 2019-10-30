@@ -155,6 +155,7 @@ while getopts ":d:g:l:m:vh" FLAG; do
         ;;
         v)
             VERBOSE='TRUE'
+        ;;
         :)
             usage "-$OPTARG requires an argument"
         ;;
