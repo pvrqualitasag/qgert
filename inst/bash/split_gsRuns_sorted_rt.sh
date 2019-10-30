@@ -249,6 +249,16 @@ fi
 #+ split-jobs-with-r
 R -e "qgert::split_gsruns_sorted_rt(ps_rt_in_file = '$SORTOUTFILE', ps_out_dir = '$WORK_DIR', pn_nr_split = $NRSPLIT)"
 
+
+#' ## Create SNP.bin file
+#' For each breed one gs-run job must be specified to get the binary version of the input
+#+ create-snp-bin
+breeds=$(cut -d "#" -f 3 $GSRUNSLIST | sort -u)
+for breed in $breeds; do
+  grep "#$breed#" $GSRUNSLIST | grep eff | head -1 >> ${GSRUNSLIST}.snpBin
+done
+
+
 #' ## Cleaning Up Outputfile
 #' In case the -k option was not specified, the output is removed
 #+ clean-up-output
