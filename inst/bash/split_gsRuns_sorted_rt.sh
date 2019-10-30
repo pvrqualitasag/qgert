@@ -75,7 +75,9 @@ usage () {
     >&2 echo "Usage: $SCRIPT -g <gs_runs_list> "
     >&2 echo "  where -g <gs_runs_list>   --  specifies the gsRuns-list to be split"
     >&2 echo "        -d <log_dir>        --  either log directory or run label, e.g. 1904"
+    >&2 echo "        -n <nr_split>       --  number of splits"
     >&2 echo "  optional arguments are"
+    >&2 echo "        -k                  --  keep sorted outputfile of runtimes"
     >&2 echo "        -l <log_file>       --  alternative name for logfile"
     >&2 echo "        -m <missing_place>  --  runs with no logfile placed first instead of last"
     >&2 echo "        -v                  --  run in verbose mode"
@@ -132,11 +134,13 @@ start_msg
 #' getopts. This is required to get my unrecognized option code to work.
 #+ getopts-parsing, eval=FALSE
 GSRUNSLIST=''
+KEEPOUT='FALSE'
 LOGDIR=''
 LOGFILE='BayesC.log'
 MISSING='last'
+NRSPLIT=""
 VERBOSE='FALSE'
-while getopts ":d:g:l:m:vh" FLAG; do
+while getopts ":d:g:k:l:m:vh" FLAG; do
     case $FLAG in
         h)
             usage "Help message for $SCRIPT"
@@ -147,11 +151,17 @@ while getopts ":d:g:l:m:vh" FLAG; do
         g)
             GSRUNSLIST=$OPTARG
         ;;
+        k)
+            KEEPOUT='TRUE'
+        ;;
         l)
             LOGFILE=$OPTARG
         ;;
         m)
             MISSING=$OPTARG
+        ;;
+        n)
+            NRSPLIT=$OPTARG
         ;;
         v)
             VERBOSE='TRUE'
@@ -175,6 +185,9 @@ fi
 if test "$LOGDIR" == ""; then
     usage "-d <log_dir> not defined"
 fi
+if test "$NRSPLIT" == ""; then
+    usage "-n <nr_split> not defined"
+fi
 
 
 #' ## Check evaluation directory
@@ -189,6 +202,7 @@ fi
 #+ assign-eval-dir, eval=FALSE
 EVAL_DIR=$(dirname $SCRIPT_DIR)
 cd $EVAL_DIR
+WORK_DIR=$EVAL_DIR/work
 
 
 #' ## Check Log-directory
@@ -230,6 +244,18 @@ else
   check_runtime $GSRUNSLIST
 fi
 
+#' ## Calling R-function to Produce Splits
+#' The R-function split_gsruns_sorted_rt() is called to produce the splits of the gs-jobs
+#+ split-jobs-with-r
+R -e "qgert::split_gsruns_sorted_rt(ps_rt_in_file = '$SORTOUTFILE', ps_out_dir = '$WORK_DIR', pn_nr_split = $NRSPLIT)"
+
+#' ## Cleaning Up Outputfile
+#' In case the -k option was not specified, the output is removed
+#+ clean-up-output
+if [ "$KEEPOUT" == "FALSE" ]
+then
+  rm -rf $SORTOUTFILE
+fi
 
 
 #' ## End of Script
