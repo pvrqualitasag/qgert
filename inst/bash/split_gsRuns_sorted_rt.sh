@@ -73,7 +73,12 @@ usage () {
     local l_MSG=$1
     >&2 echo "Usage Error: $l_MSG"
     >&2 echo "Usage: $SCRIPT -g <gs_runs_list> "
-    >&2 echo "  where -g <gs_runs_list>  --  specifies the gsRuns-list to be split"
+    >&2 echo "  where -g <gs_runs_list>   --  specifies the gsRuns-list to be split"
+    >&2 echo "        -d <log_dir>        --  either log directory or run label, e.g. 1904"
+    >&2 echo "  optional arguments are"
+    >&2 echo "        -l <log_file>       --  alternative name for logfile"
+    >&2 echo "        -m <missing_place>  --  runs with no logfile placed first instead of last"
+    >&2 echo "        -v                  --  run in verbose mode"
     >&2 echo ""
     exit 1
 }
@@ -84,20 +89,28 @@ check_runtime () {
   local l_run=$1
   local l_rundir=`echo $l_run | sed -e "s/*//g" | sed -e "s/ //g" | tr '#' '/'`
   local l_logpath=''
-  local GREP=grep
   ### # set the path to the log file
   if [ -f "$LOGDIR/$l_rundir/$LOGFILE" ]
   then
     l_logpath=$LOGDIR/$l_rundir/$LOGFILE
+    ### # grep for initial estimate of runtime
+    RESULTSTRING=`grep "$GREPSTRING" $l_logpath  | cut -d ' ' -f8-13`
   elif [ -f "$LOGDIR/$l_rundir/${LOGFILE}.gz" ]
   then
     l_logpath=$LOGDIR/$l_rundir/${LOGFILE}.gz
-    GREP=zgrep
+    ### # grep for initial estimate of runtime
+    RESULTSTRING=`zgrep "$GREPSTRING" $l_logpath  | cut -d ' ' -f8-13`
   else
-    usage "CANNOT FIND PATH to logfile: $LOGDIR/$l_rundir/$LOGFILE"
+    log_msg 'check_runtime' "CANNOT FIND PATH to logfile: $LOGDIR/$l_rundir/$LOGFILE"
+    if [ "$MISSING" == "first" ]
+    then
+      RESULTSTRING='999 hours 00 minutes 00 seconds'
+    else
+      RESULTSTRING='0 hours 00 minutes 00 seconds'
+    fi
   fi
-  ### # grep for initial estimate of runtime
-  RESULTSTRING=`$GREP "$GREPSTRING" $l_logpath  | cut -d ' ' -f8-13`
+  # check resultstring
+  if [ "$VERBOSE" == 'TRUE' ] log_msg 'check_runtime' "Result-string: $RESULTSTRING";fi
   # in case runtime is less then an hour, add 0 hours to output
   if [ `echo $RESULTSTRING | grep hour | wc -l` == "0" ]
   then
@@ -118,10 +131,12 @@ start_msg
 #' Notice there is no ":" after "h". The leading ":" suppresses error messages from
 #' getopts. This is required to get my unrecognized option code to work.
 #+ getopts-parsing, eval=FALSE
-GSRUNSLIST=""
-LOGDIR=""
-LOGFILE="BayesC.log"
-while getopts ":d:g:l:h" FLAG; do
+GSRUNSLIST=''
+LOGDIR=''
+LOGFILE='BayesC.log'
+MISSING='last'
+VERBOSE='FALSE'
+while getopts ":d:g:l:m:vh" FLAG; do
     case $FLAG in
         h)
             usage "Help message for $SCRIPT"
@@ -133,8 +148,13 @@ while getopts ":d:g:l:h" FLAG; do
             GSRUNSLIST=$OPTARG
         ;;
         l)
-           LOGFILE=$OPTARG
+            LOGFILE=$OPTARG
         ;;
+        m)
+            MISSING=$OPTARG
+        ;;
+        v)
+            VERBOSE='TRUE'
         :)
             usage "-$OPTARG requires an argument"
         ;;
@@ -178,6 +198,7 @@ cd $EVAL_DIR
 if [ ! -d "$LOGDIR" ]
 then
   LOGDIR=/qualstorzws01/data_archiv/zws/$LOGDIR/gs
+  if [ "$VERBOSE" == 'TRUE' ] log_msg $SCRIPT "Re-setting log_dir to: $LOGDIR";fi
 fi
 
 
@@ -200,9 +221,11 @@ if [ -f "$GSRUNSLIST" ]
 then
   cat $GSRUNSLIST | while read run
   do
+    if [ "$VERBOSE" == 'TRUE' ] log_msg $SCRIPT "Checking runtime for: $run";fi
     check_runtime $run
   done
 else
+  if [ "$VERBOSE" == 'TRUE' ] log_msg $SCRIPT "Checking runtime for: $GSRUNSLIST";fi
   check_runtime $GSRUNSLIST
 fi
 
