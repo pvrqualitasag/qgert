@@ -22,7 +22,25 @@ library(qgert)
 The split of the gsRuns can be done using the following shell script
 
 ```{bash, eval=FALSE}
+cd /qualstorzws01/data_zws/gs
+./prog/split_gsRuns_sorted_rt.sh -g work/gsRuns.txt -d 1908 -m first -n 100
+```
 
+This uses the gsRuns-list stored under `work/gsRuns.txt`, it takes the runtime information from the logfiles of the archive of the 1908 evaluation and it produces 100 small job files.
+
+
+## Update and Installation
+This script can only be used if the R-package `qgert` is installed. On the ZWS-servers this is the case. An update of the package can be done with
+
+```{r, eval=FALSE}
+# install.packages("devtools")
+devtools::install_github("pvrqualitasag/qgert")
+```
+
+Then the bash script `split_gsRuns_sorted_rt.sh` must be installed into the subdirectory `prog` of the GS-evaluation directory
+
+```{bash, eval=FALSE}
+/home/zws/lib/R/library/qgert/bash/install_script.sh -s ~/lib/R/library/qgert/bash/split_gsRuns_sorted_rt.sh -t /qualstorzws01/data_zws/gs/prog
 ```
 
 
