@@ -53,9 +53,9 @@ SERVER=`hostname`                          # put hostname of server in variable 
 usage () {
   local l_MSG=$1
   $ECHO "Usage Error: $l_MSG"
-  $ECHO "Usage: $SCRIPT -r <repo_referecen> -s <server_name>"
+  $ECHO "Usage: $SCRIPT -r <repo_reference> -s <server_name>"
   $ECHO "  where -s <server_name>     --  optional, run package update on single server"
-  $ECHO "        -r <repo_referecen>  --  optional, update to a branch reference"
+  $ECHO "        -r <repo_reference>  --  optional, update to a branch reference"
   $ECHO ""
   exit 1
 }
@@ -156,8 +156,6 @@ else
     sleep 2
   done
 fi
-
-
 
 
 #' ## End of Script
