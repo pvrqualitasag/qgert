@@ -229,9 +229,9 @@ then
 fi
 breeds=$(cut -d "#" -f 3 $GSRUNSLIST | sort -u)
 for breed in $breeds; do
-  grep "#$breed#" $GSRUNSLIST | grep eff | head -1 >> ${GSSORTEDSTEM}.snpBin
+  grep "#$breed#" $GSRUNSLIST | grep eff | head -1 >> $WORK_DIR/${GSSORTEDSTEM}.snpBin
 done
-grep -v -f ${GSSORTEDSTEM}.snpBin $GSRUNSLIST > ${GSRUNSLIST}.no_snpBin
+grep -v -f $WORK_DIR/${GSSORTEDSTEM}.snpBin $GSRUNSLIST > ${GSRUNSLIST}.no_snpBin
 
 #' ## Extraction of Runtimes
 #' The name of the output file for all runtimes is defined and the
