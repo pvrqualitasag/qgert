@@ -1,3 +1,8 @@
+## qgert 0.2.8
+
+* Fixed problems described in issues #18 and #19 with splitting gsRuns-lists.
+
+
 ## qgert 0.2.7
 
 * Add script to construct sorted gsRuns list. The jobs are sorted according to their predicted running times in the log file of the previous evaluation.
