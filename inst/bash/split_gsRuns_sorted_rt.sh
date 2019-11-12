@@ -263,7 +263,7 @@ fi
 #' ## Calling R-function to Produce Splits
 #' The R-function split_gsruns_sorted_rt() is called to produce the splits of the gs-jobs
 #+ split-jobs-with-r
-R -e "qgert::split_gsruns_sorted_rt(ps_rt_in_file = '$SORTOUTFILE', ps_out_dir = '$WORK_DIR', pn_nr_split = $NRSPLIT, ps_out_file_stem = $GSSORTEDSTEM)"
+R -e "qgert::split_gsruns_sorted_rt(ps_rt_in_file = '$SORTOUTFILE', ps_out_dir = '$WORK_DIR', pn_nr_split = $NRSPLIT, ps_out_file_stem = '$GSSORTEDSTEM')"
 
 
 #' ## Cleaning Up Outputfile
