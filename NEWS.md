@@ -1,3 +1,8 @@
+## qgert 0.2.9
+
+* Fixing issues #20 and #21
+
+
 ## qgert 0.2.8
 
 * Fixed problems described in issues #18 and #19 with splitting gsRuns-lists.
