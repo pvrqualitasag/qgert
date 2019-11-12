@@ -46,7 +46,7 @@ Then the bash script `split_gsRuns_sorted_rt.sh` must be installed into the subd
 
 
 ## Purpose - Why This Is Done
-Estimation of marker effects and reliability prediction is a resource intensive step during the routine genetic evaluation. Hence all these estimation tasks must be parallelized. Given a list (gsRuns-list) of computation jobs that are combinations of breeds, evaluation type, trait and parameter type, this list is to be split into a number of smaller lists. 
+Estimation of marker effects and reliability prediction is a resource intensive step during the routine genetic evaluation. Hence all these estimation tasks must be parallelized. Given a list (gsRuns-list) of computation jobs which consist of combinations of breeds, evaluation type, trait and parameter type, this list is to be split into a number of smaller lists. 
 
 As an additional requirement, the produced number of lists should contain the jobs sorted according to their predicted running time from a previous evaluation.
 

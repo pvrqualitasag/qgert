@@ -216,6 +216,18 @@ then
   if [ "$VERBOSE" == 'TRUE' ];then log_msg $SCRIPT "Re-setting log_dir to: $LOGDIR";fi
 fi
 
+#' ## Create SNP.bin file
+#' For each breed one gs-run job must be specified to get the binary version of the input
+#+ create-snp-bin
+if [ -f "${GSRUNSLIST}.snpBin" ]
+then
+  rm ${GSRUNSLIST}.snpBin
+fi
+breeds=$(cut -d "#" -f 3 $GSRUNSLIST | sort -u)
+for breed in $breeds; do
+  grep "#$breed#" $GSRUNSLIST | grep eff | head -1 >> ${GSRUNSLIST}.snpBin
+done
+grep -v -f ${GSRUNSLIST}.snpBin $GSRUNSLIST > ${GSRUNSLIST}.no_snpBin
 
 #' ## Extraction of Runtimes
 #' The name of the output file for all runtimes is defined and the
@@ -232,16 +244,16 @@ fi
 
 #' The following chunk allows to run the runtime extraction for a single
 #' job or for a list of jobs given in $GSRUNSLIST
-if [ -f "$GSRUNSLIST" ]
+if [ -f "${GSRUNSLIST}.no_snpBin" ]
 then
-  cat $GSRUNSLIST | while read run
+  cat ${GSRUNSLIST}.no_snpBin | while read run
   do
     if [ "$VERBOSE" == 'TRUE' ];then log_msg $SCRIPT "Checking runtime for: $run";fi
     check_runtime $run
   done
 else
-  if [ "$VERBOSE" == 'TRUE' ];then log_msg $SCRIPT "Checking runtime for: $GSRUNSLIST";fi
-  check_runtime $GSRUNSLIST
+  log_msg $SCRIPT "CANNOT find runlist file: ${GSRUNSLIST}.no_snpBin ==> Stop here"
+  exit 1
 fi
 
 #' ## Calling R-function to Produce Splits
@@ -250,24 +262,14 @@ fi
 R -e "qgert::split_gsruns_sorted_rt(ps_rt_in_file = '$SORTOUTFILE', ps_out_dir = '$WORK_DIR', pn_nr_split = $NRSPLIT)"
 
 
-#' ## Create SNP.bin file
-#' For each breed one gs-run job must be specified to get the binary version of the input
-#+ create-snp-bin
-if [ -f "${GSRUNSLIST}.snpBin" ]
-then
-  rm ${GSRUNSLIST}.snpBin
-fi
-breeds=$(cut -d "#" -f 3 $GSRUNSLIST | sort -u)
-for breed in $breeds; do
-  grep "#$breed#" $GSRUNSLIST | grep eff | head -1 >> ${GSRUNSLIST}.snpBin
-done
-
-
 #' ## Cleaning Up Outputfile
 #' In case the -k option was not specified, the output is removed
 #+ clean-up-output
 if [ "$KEEPOUT" == "FALSE" ]
 then
+  if [ "$VERBOSE" == 'TRUE' ];then log_msg $SCRIPT "Removing: ${GSRUNSLIST}.no_snpBin ...";fi
+  rm -rf ${GSRUNSLIST}.no_snpBin
+  if [ "$VERBOSE" == 'TRUE' ];then log_msg $SCRIPT "Removing: $SORTOUTFILE ...";fi
   rm -rf $SORTOUTFILE
 fi
 
