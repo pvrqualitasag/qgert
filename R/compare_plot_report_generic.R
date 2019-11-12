@@ -209,18 +209,18 @@ create_ge_plot_report <- function(ps_gedir,
     if (pb_debug)
       qgert_log_info(plogger = lgr, ps_caller = 'create_ge_plot_report',
                      ps_msg = paste0(" * Removing report rmd source ", ps_rmd_report))
-    fs::file_delete(ps_rmd_report)
+    if (file.exists(ps_rmd_report)) fs::file_delete(ps_rmd_report)
     if (pb_debug)
       qgert_log_info(plogger = lgr, ps_caller = 'create_ge_plot_report',
                      ps_msg = paste0(" * Removing report tex source ", s_tex_report))
-    fs::file_delete(s_tex_report)
+    if (file.exists(s_tex_report)) fs::file_delete(s_tex_report)
   }
 
   # remove target root dir
   if (pb_debug)
     qgert_log_info(plogger = lgr, ps_caller = 'create_ge_plot_report',
                    ps_msg = paste0(" * Delete target root directory: ", s_trgroot))
-  fs::dir_delete(path = s_trgroot)
+  if (dir.exists(s_trgroot)) fs::dir_delete(path = s_trgroot)
 
   if (pb_debug)
     qgert_log_info(plogger = lgr, ps_caller = 'create_ge_plot_report',
