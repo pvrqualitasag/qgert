@@ -35,11 +35,11 @@ split_gsruns_sorted_rt <- function(ps_rt_in_file, ps_out_dir, pn_nr_split){
   # loop and produce split files
   for (i in 1:n_nr_full_loops){
     cat(paste0(tbl_sorted_rt[((i-1) * n_nr_jobs_per_split + 1):(i*n_nr_jobs_per_split),]$X1, collapse = "\n"),
-        file = file.path(ps_out_dir, paste0("gsSortedRuns.txt.", i)))
+        file = file.path(ps_out_dir, paste0("gsSortedRuns.txt.", i)), sep = '')
   }
   # put remaining in last file, if needed
   if ((n_nr_full_loops*n_nr_jobs_per_split) < n_nr_jobs){
     cat(paste0(tbl_sorted_rt[(n_nr_full_loops*n_nr_jobs_per_split + 1):n_nr_jobs,]$X1, collapse = "\n"),
-        file = file.path(ps_out_dir, paste0("gsSortedRuns.txt.", (n_nr_full_loops+1))))
+        file = file.path(ps_out_dir, paste0("gsSortedRuns.txt.", (n_nr_full_loops+1))), sep = '')
   }
 }
