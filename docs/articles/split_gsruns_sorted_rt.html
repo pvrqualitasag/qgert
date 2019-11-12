@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">qgert</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.8</span>
       </span>
     </div>
 
@@ -125,14 +125,14 @@
 <div id="purpose---why-this-is-done" class="section level2">
 <h2 class="hasAnchor">
 <a href="#purpose---why-this-is-done" class="anchor"></a>Purpose - Why This Is Done</h2>
-<p>Estimation of marker effects and reliability prediction is a resource intensive step during the routine genetic evaluation. Hence all these estimation tasks must be parallelized. Given a list (gsRuns-list) of computation jobs that are combinations of breeds, evaluation type, trait and parameter type, this list is to be split into a number of smaller lists.</p>
+<p>Estimation of marker effects and reliability prediction is a resource intensive step during the routine genetic evaluation. Hence all these estimation tasks must be parallelized. Given a list (gsRuns-list) of computation jobs which consist of combinations of breeds, evaluation type, trait and parameter type, this list is to be split into a number of smaller lists.</p>
 <p>As an additional requirement, the produced number of lists should contain the jobs sorted according to their predicted running time from a previous evaluation.</p>
 </div>
 <div id="description---how-this-is-done" class="section level2">
 <h2 class="hasAnchor">
 <a href="#description---how-this-is-done" class="anchor"></a>Description - How This Is Done</h2>
 <p>Given a directory where the logfiles of the previous evaluation is archived (or just a simple run-label such as 1908), the logfiles are searched for the predicted running time of the respective estimation job. This information is written to an outputfile. The outputfile is read into R where the records are sorted according to their running times. After the sort, a specified number of job-files is written. These files have the name-prefix <code>gsSortedRuns.txt</code> followed by a number.</p>
-<p>To prepare the binary version of the SNP-Data one gsRun-job per breed is written to the file <code>gsRuns.txt.snpBin</code>. All jobs that are contained in <code>gsRuns.txt.snpBin</code> are also in the <code>gsSortedRuns.txt</code>-files.</p>
+<p>To prepare the binary version of the SNP-Data one gsRun-job per breed is written to the file <code>gsRuns.txt.snpBin</code>. The jobs that are contained in <code>gsRuns.txt.snpBin</code> are not contained in the <code>gsSortedRuns.txt</code>-files. Hence all the programs with partitioned gs-Runs-lists, <code>gsRuns.txt.snpBin</code> must also be used as an argument.</p>
 </div>
   </div>
 
