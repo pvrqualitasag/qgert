@@ -133,6 +133,7 @@ start_msg
 #' Notice there is no ":" after "h". The leading ":" suppresses error messages from
 #' getopts. This is required to get my unrecognized option code to work.
 #+ getopts-parsing, eval=FALSE
+GSSORTEDSTEM='gsSortedRuns.txt'
 GSRUNSLIST=''
 KEEPOUT='FALSE'
 LOGDIR=''
@@ -140,7 +141,7 @@ LOGFILE='BayesC.log'
 MISSING='last'
 NRSPLIT=""
 VERBOSE='FALSE'
-while getopts ":d:g:kl:m:n:vh" FLAG; do
+while getopts ":d:g:kl:m:n:o:vh" FLAG; do
     case $FLAG in
         h)
             usage "Help message for $SCRIPT"
@@ -162,6 +163,9 @@ while getopts ":d:g:kl:m:n:vh" FLAG; do
         ;;
         n)
             NRSPLIT=$OPTARG
+        ;;
+        o)
+            GSSORTEDSTEM=$OPTARG
         ;;
         v)
             VERBOSE='TRUE'
@@ -225,9 +229,9 @@ then
 fi
 breeds=$(cut -d "#" -f 3 $GSRUNSLIST | sort -u)
 for breed in $breeds; do
-  grep "#$breed#" $GSRUNSLIST | grep eff | head -1 >> ${GSRUNSLIST}.snpBin
+  grep "#$breed#" $GSRUNSLIST | grep eff | head -1 >> ${GSSORTEDSTEM}.snpBin
 done
-grep -v -f ${GSRUNSLIST}.snpBin $GSRUNSLIST > ${GSRUNSLIST}.no_snpBin
+grep -v -f ${GSSORTEDSTEM}.snpBin $GSRUNSLIST > ${GSRUNSLIST}.no_snpBin
 
 #' ## Extraction of Runtimes
 #' The name of the output file for all runtimes is defined and the
@@ -259,7 +263,7 @@ fi
 #' ## Calling R-function to Produce Splits
 #' The R-function split_gsruns_sorted_rt() is called to produce the splits of the gs-jobs
 #+ split-jobs-with-r
-R -e "qgert::split_gsruns_sorted_rt(ps_rt_in_file = '$SORTOUTFILE', ps_out_dir = '$WORK_DIR', pn_nr_split = $NRSPLIT)"
+R -e "qgert::split_gsruns_sorted_rt(ps_rt_in_file = '$SORTOUTFILE', ps_out_dir = '$WORK_DIR', pn_nr_split = $NRSPLIT, ps_out_file_stem = $GSSORTEDSTEM)"
 
 
 #' ## Cleaning Up Outputfile
