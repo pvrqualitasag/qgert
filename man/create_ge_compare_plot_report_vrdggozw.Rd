@@ -6,8 +6,8 @@
 \usage{
 create_ge_compare_plot_report_vrdggozw(pn_cur_ge_label, pn_prev_ge_label,
   ps_prevgsrun_label, ps_template = system.file("templates",
-  "compare_plots.Rmd.template", package = "qgert"), pl_plot_opts = NULL,
-  pb_debug = FALSE, plogger = NULL)
+  "compare_plots.Rmd.template", package = "qgert"), ps_breed = NULL,
+  pl_plot_opts = NULL, pb_debug = FALSE, plogger = NULL)
 }
 \arguments{
 \item{pn_cur_ge_label}{label of current genetic evaluation (GE)}
@@ -17,6 +17,8 @@ create_ge_compare_plot_report_vrdggozw(pn_cur_ge_label, pn_prev_ge_label,
 \item{ps_prevgsrun_label}{label of bi-weekly gs-runs before publication date of pn_prev_ge_label}
 
 \item{ps_template}{template document for report}
+
+\item{ps_breed}{create comparison plot report for just one breed}
 
 \item{pl_plot_opts}{list of options specifying input for plot report creator}
 

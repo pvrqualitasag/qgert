@@ -147,8 +147,8 @@ group FBK.</p>
 
     <pre class="usage"><span class='fu'>create_ge_compare_plot_report_fbk</span>(<span class='no'>pn_cur_ge_label</span>, <span class='no'>pn_prev_ge_label</span>,
   <span class='kw'>ps_template</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"templates"</span>, <span class='st'>"compare_plots.Rmd.template"</span>,
-  <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"qgert"</span>), <span class='kw'>pl_plot_opts</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>pb_debug</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>plogger</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+  <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"qgert"</span>), <span class='kw'>ps_breed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>pl_plot_opts</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>pb_debug</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>plogger</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -164,6 +164,10 @@ group FBK.</p>
     <tr>
       <th>ps_template</th>
       <td><p>template document for report</p></td>
+    </tr>
+    <tr>
+      <th>ps_breed</th>
+      <td><p>create comparison plot report for just one breed</p></td>
     </tr>
     <tr>
       <th>pl_plot_opts</th>
