@@ -17,18 +17,19 @@
 #'
 #' @param pn_cur_ge_label label of current genetic evaluation (GE)
 #' @param pn_prev_ge_label label of previous GE
-#' @param ps_prevgsrun_label label of bi-weekly gs-runs before publication date of pn_prev_ge_label
+#' @param ps_prevgsrun_label run label of first bi-weekly prediction after previous publication
 #' @param ps_template template document for report
+#' @param ps_breed create comparison plot report for just one breed
 #' @param pl_plot_opts list of options specifying input for plot report creator
 #' @param pb_debug flag whether debug output should be shown
 #' @param plogger log4r logger object
 #'
 #' @examples
 #' \dontrun{
-#' create_ge_compare_plot_report_vrdggozw_prov(pn_cur_ge_label    = '1908',
-#'                                        pn_prev_ge_label   = '1904',
-#'                                        ps_prevgsrun_label = '0719',
-#'                                        pb_debug           = TRUE)
+#' create_ge_compare_plot_report_vrdggozw_prov(pn_cur_ge_label    = 1908,
+#'                                        pn_prev_ge_label        = 1904,
+#'                                        ps_prevgsrun_label      = '0719',
+#'                                        pb_debug                = TRUE)
 #' }
 #'
 #' @export create_ge_compare_plot_report_vrdggozw_prov
@@ -36,6 +37,7 @@ create_ge_compare_plot_report_vrdggozw_prov <- function(pn_cur_ge_label,
                                                pn_prev_ge_label,
                                                ps_prevgsrun_label,
                                                ps_template  = system.file("templates", "compare_plots.Rmd.template", package = 'qgert'),
+                                               ps_breed     = NULL,
                                                pl_plot_opts = NULL,
                                                pb_debug     = FALSE,
                                                plogger       = NULL){
@@ -60,9 +62,15 @@ create_ge_compare_plot_report_vrdggozw_prov <- function(pn_cur_ge_label,
     l_plot_opts <- get_default_plot_opts_vrdggozw_prov()
   }
 
+  # check whether specific breed was specified
+  vec_breed <- l_plot_opts$vec_breed
+  if (!is.null(ps_breed)){
+    vec_breed <- c(ps_breed)
+  }
+
 
   # loop over breeds
-  for (breed in l_plot_opts$vec_breed){
+  for (breed in vec_breed){
     # loop over breeds
     if (pb_debug)
       qgert_log_info(plogger = lgr, ps_caller = "create_ge_compare_plot_report_vrdggozw_prov",

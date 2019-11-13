@@ -4,7 +4,8 @@
 \alias{split_gsruns_sorted_rt}
 \title{Split GsRuns According to Sorted Runtimes}
 \usage{
-split_gsruns_sorted_rt(ps_rt_in_file, ps_out_dir, pn_nr_split)
+split_gsruns_sorted_rt(ps_rt_in_file, ps_out_dir, pn_nr_split,
+  ps_out_file_stem = "gsSortedRuns.txt")
 }
 \arguments{
 \item{ps_rt_in_file}{gs-job runtime input file}
@@ -12,6 +13,8 @@ split_gsruns_sorted_rt(ps_rt_in_file, ps_out_dir, pn_nr_split)
 \item{ps_out_dir}{output directory where the splitted jobs should be written to}
 
 \item{pn_nr_split}{number of splitted job files.}
+
+\item{ps_out_file_stem}{stem of output filename}
 }
 \description{
 Given an input file of runtimes per gs-jobs, the list of gs-jobs

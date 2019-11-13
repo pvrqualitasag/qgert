@@ -13,6 +13,10 @@
 #' The wrapper sets a number of variables that define the input parameters for report
 #' creator function inside of the R-package `qgert`. The R-function call is done via
 #' Rscript -e which takes a string that contains the function call.
+#'
+#' ## Details
+#' Commandline argument -d for running the R-function in debug mode was removed. For
+#' debugging the R-function should called directly outside of this script.
 #+ bash-env-setting, eval=FALSE
 set -o errexit    # exit immediately, if single command exits with non-zero status
 set -o nounset    # treat unset variables as errors
@@ -56,9 +60,9 @@ usage () {
   local l_MSG=$1
   $ECHO "Usage Error: $l_MSG"
   $ECHO "Usage: $SCRIPT -c <current_evaluation_label> -p <previous_evaluation_label>"
-  $ECHO "  where -c <current_evaluation_label>  --  label of current evaluation, given by %YY%mm of publication date"
+  $ECHO "  where -c <current_evaluation_label>   -- label of current evaluation, given by %YY%mm of publication date"
   $ECHO "        -p <previous_evaluation_label>  -- label of previous evaluation"
-  $ECHO "        -d                              -- optional argument to call R-function in debug-mode"
+  $ECHO "        -g <previous_gs_run>            -- run label of first bi-weekly prediction after previous publication"
   $ECHO "        -u                              -- optional argument to force update of R-package"
   $ECHO ""
   exit 1
@@ -103,18 +107,22 @@ start_msg
 #+ getopts-parsing, eval=FALSE
 CURGE=""
 PREVGE=""
+PREVGS=""
 PACKAGEUPDATE=""
-DEBUG=""
-while getopts ":c:dp:uh" FLAG; do
+BREED=""
+while getopts ":b:c:g:p:uh" FLAG; do
   case $FLAG in
     h) # produce usage message
       usage "Help message for $SCRIPT"
       ;;
+    b)
+      BREED=$OPTARG
+      ;;
     c) # specify label of current GE
       CURGE=$OPTARG
       ;;
-    d) # specify whether R-function is called with debug mode
-      DEBUG=TRUE
+    g)
+      PREVGS=$OPTARG
       ;;
     p) # specify label of previous GE
       PREVGE=$OPTARG
@@ -142,6 +150,10 @@ fi
 
 if test "$PREVGE" == ""; then
   usage "-p <previous_ge_label> not defined"
+fi
+
+if test "$PREVGS" == ""; then
+  usage "-g <previous_gs_label> not defined"
 fi
 
 
@@ -182,12 +194,13 @@ fi
 #' ## Report Creation
 #' The report for the specified trait is created. Debug mode can be used with -d commandline argument
 #+ create-report
-if [ "$DEBUG" == "TRUE" ]
+if [ "$BREED" == "" ]
 then
-  Rscript -e "qgert::create_ge_compare_plot_report_${TRAIT}(pn_cur_ge_label=${CURGE}, pn_prev_ge_label = ${PREVGE}, pb_debug=TRUE)"
+  Rscript -e "qgert::create_ge_compare_plot_report_${TRAIT}(pn_cur_ge_label=${CURGE}, pn_prev_ge_label=${PREVGE}, ps_prevgsrun_label='${PREVGS}')"
 else
-  Rscript -e "qgert::create_ge_compare_plot_report_${TRAIT}(pn_cur_ge_label=${CURGE}, pn_prev_ge_label = ${PREVGE})"
+  Rscript -e "qgert::create_ge_compare_plot_report_${TRAIT}(pn_cur_ge_label=${CURGE}, pn_prev_ge_label = ${PREVGE}, ps_prevgsrun_label='${PREVGS}', ps_breed='${BREED}')"
 fi
+
 
 #' ## End of Script
 #+ end-msg, eval=FALSE

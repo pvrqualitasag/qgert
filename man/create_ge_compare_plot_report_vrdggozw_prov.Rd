@@ -7,17 +7,19 @@
 create_ge_compare_plot_report_vrdggozw_prov(pn_cur_ge_label,
   pn_prev_ge_label, ps_prevgsrun_label,
   ps_template = system.file("templates", "compare_plots.Rmd.template",
-  package = "qgert"), pl_plot_opts = NULL, pb_debug = FALSE,
-  plogger = NULL)
+  package = "qgert"), ps_breed = NULL, pl_plot_opts = NULL,
+  pb_debug = FALSE, plogger = NULL)
 }
 \arguments{
 \item{pn_cur_ge_label}{label of current genetic evaluation (GE)}
 
 \item{pn_prev_ge_label}{label of previous GE}
 
-\item{ps_prevgsrun_label}{label of bi-weekly gs-runs before publication date of pn_prev_ge_label}
+\item{ps_prevgsrun_label}{run label of first bi-weekly prediction after previous publication}
 
 \item{ps_template}{template document for report}
+
+\item{ps_breed}{create comparison plot report for just one breed}
 
 \item{pl_plot_opts}{list of options specifying input for plot report creator}
 
@@ -31,10 +33,10 @@ with the plots from the previous GE are constructed for VRDGGOZW_PROV
 }
 \examples{
 \dontrun{
-create_ge_compare_plot_report_vrdggozw_prov(pn_cur_ge_label    = '1908',
-                                       pn_prev_ge_label   = '1904',
-                                       ps_prevgsrun_label = '0719',
-                                       pb_debug           = TRUE)
+create_ge_compare_plot_report_vrdggozw_prov(pn_cur_ge_label    = 1908,
+                                       pn_prev_ge_label        = 1904,
+                                       ps_prevgsrun_label      = '0719',
+                                       pb_debug                = TRUE)
 }
 
 }
