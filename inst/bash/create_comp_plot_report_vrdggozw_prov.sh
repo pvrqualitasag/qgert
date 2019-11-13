@@ -59,11 +59,12 @@ TRAIT=vrdggozw_prov
 usage () {
   local l_MSG=$1
   $ECHO "Usage Error: $l_MSG"
-  $ECHO "Usage: $SCRIPT -c <current_evaluation_label> -p <previous_evaluation_label>"
+  $ECHO "Usage: $SCRIPT -c <current_evaluation_label> -p <previous_evaluation_label> -g <previous_gs_run>"
   $ECHO "  where -c <current_evaluation_label>   -- label of current evaluation, given by %YY%mm of publication date"
   $ECHO "        -p <previous_evaluation_label>  -- label of previous evaluation"
   $ECHO "        -g <previous_gs_run>            -- run label of first bi-weekly prediction after previous publication"
   $ECHO "        -u                              -- optional argument to force update of R-package"
+  $ECHO "        -b <specific_breed>             -- specify a single breed, can eiter be {bv, ob, rh, sf, si}"
   $ECHO ""
   exit 1
 }

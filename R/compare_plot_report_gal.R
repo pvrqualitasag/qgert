@@ -19,6 +19,7 @@
 #' @param pn_cur_ge_label label of current genetic evaluation (GE)
 #' @param pn_prev_ge_label label of previous GE
 #' @param ps_template template document for report
+#' @param ps_breed create comparison plot report for just one breed
 #' @param pl_plot_opts list of options specifying input for plot report creator
 #' @param pb_debug flag whether debug output should be shown
 #' @param plogger log4r logger object
@@ -34,6 +35,7 @@
 create_ge_compare_plot_report_gal <- function(pn_cur_ge_label,
                                               pn_prev_ge_label,
                                               ps_template  = system.file("templates", "compare_plots.Rmd.template", package = 'qgert'),
+                                              ps_breed     = NULL,
                                               pl_plot_opts = NULL,
                                               pb_debug     = FALSE,
                                               plogger      = NULL){
@@ -58,9 +60,15 @@ create_ge_compare_plot_report_gal <- function(pn_cur_ge_label,
     l_plot_opts <- get_default_plot_opts_gal()
   }
 
+  # check whether specific breed was specified
+  vec_breed <- l_plot_opts$vec_breed
+  if (!is.null(ps_breed)){
+    vec_breed <- c(ps_breed)
+  }
+
 
   # loop over breeds
-  for (breed in l_plot_opts$vec_breed){
+  for (breed in vec_breed){
     # loop over breeds
     if (pb_debug)
       qgert_log_info(plogger = lgr, ps_caller = "create_ge_compare_plot_report_gal",

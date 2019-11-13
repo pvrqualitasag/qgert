@@ -58,8 +58,8 @@ usage () {
   $ECHO "Usage: $SCRIPT -c <current_evaluation_label> -p <previous_evaluation_label>"
   $ECHO "  where -c <current_evaluation_label>  --  label of current evaluation, given by %YY%mm of publication date"
   $ECHO "        -p <previous_evaluation_label>  -- label of previous evaluation"
-  $ECHO "        -d                              -- optional argument to call R-function in debug-mode"
   $ECHO "        -u                              -- optional argument to force update of R-package"
+  $ECHO "        -b <specific_breed>             -- specify a single breed, can eiter be {bv, je, rh}"
   $ECHO ""
   exit 1
 }
@@ -104,17 +104,17 @@ start_msg
 CURGE=""
 PREVGE=""
 PACKAGEUPDATE=""
-DEBUG=""
-while getopts ":c:dp:uh" FLAG; do
+BREED=""
+while getopts ":b:c:p:uh" FLAG; do
   case $FLAG in
     h) # produce usage message
       usage "Help message for $SCRIPT"
       ;;
+    b)
+      BREED=$OPTARG
+      ;;
     c) # specify label of current GE
       CURGE=$OPTARG
-      ;;
-    d) # specify whether R-function is called with debug mode
-      DEBUG=TRUE
       ;;
     p) # specify label of previous GE
       PREVGE=$OPTARG
@@ -183,11 +183,11 @@ fi
 #' ## Report Creation
 #' The report for the specified trait is created.
 #+ create-report
-if [ "$DEBUG" == "TRUE" ]
+if [ "$BREED" == "" ]
 then
-  Rscript -e "qgert::create_ge_compare_plot_report_${TRAIT}(pn_cur_ge_label=${CURGE}, pn_prev_ge_label = ${PREVGE}, pb_debug=TRUE)"
-else
   Rscript -e "qgert::create_ge_compare_plot_report_${TRAIT}(pn_cur_ge_label=${CURGE}, pn_prev_ge_label = ${PREVGE})"
+else
+  Rscript -e "qgert::create_ge_compare_plot_report_${TRAIT}(pn_cur_ge_label=${CURGE}, pn_prev_ge_label = ${PREVGE}, ps_breed='${BREED}')"
 fi
 
 #' ## End of Script
