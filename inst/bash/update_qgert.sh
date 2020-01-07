@@ -146,6 +146,7 @@ shift $((OPTIND-1))  #This tells getopts to move on to the next argument.
 
 #' ## Run Updates
 #' Decide whether to run the update on one server or on all servers on the list
+#+ server-update
 if [ "$SERVERNAME" != "" ]
 then
   update_pkg $SERVERNAME
