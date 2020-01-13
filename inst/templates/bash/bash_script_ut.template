@@ -10,7 +10,14 @@
 #' ## Description
 #' {Write a paragraph about how the problems are solved.}
 #'
-#' ## Bash Settings
+#' ## Details
+#' {Give some more details here.}
+#'
+#' ## Example
+#' {Specify an example call of the script.}
+#'
+#' ## Set Directives
+#' General behavior of the script is driven by the following settings
 #+ bash-env-setting, eval=FALSE
 set -o errexit    # exit immediately, if single command exits with non-zero status
 set -o nounset    # treat unset variables as errors
@@ -105,6 +112,7 @@ fi
 
 #' ## Your Code
 #' Continue to put your code here
+#+ your-code-here
 
 
 #' ## End of Script
