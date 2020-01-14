@@ -1,3 +1,8 @@
+## qgert 0.3.0
+
+* Prepare creation of comparison plots for using them in a shiny app
+
+
 ## qgert 0.2.9
 
 * Fixing issues #20 and #21

@@ -106,3 +106,9 @@ These comparison plots are done for all traits that are in a result file. In gen
 * two datasets, one from the previous routine run and one from the current run. 
 * the join variables for the two data sets that define how the two datasets are to be joined and 
 * the filter criterion which defines what goes into one plot. 
+
+
+## Drill Down Functionality
+The points that are away from the `y=x` line are interesting in the sense that they can point to a potential problem in the evaluation. Hence it would be very interesting to have a drill-down functionality to select the points on the plot and to get more information about the data that is behind the given point. 
+
+One possible implementation of such a drill-down functionality is via the linked-brushing feature in a shiny app. 
