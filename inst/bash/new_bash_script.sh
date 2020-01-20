@@ -40,7 +40,7 @@ CHMOD=/bin/chmod                           # PATH to chmod                      
 #+ script-directories, eval=FALSE
 INSTALLDIR=`$DIRNAME ${BASH_SOURCE[0]}`    # installation dir of this script         #
 BASHTOOLDIR=`$DIRNAME $INSTALLDIR`         # directory of bashtools on host          #
-UTILDIR=$BASHTOOLDIR/util                  # directory containing utilities          #
+UTILDIR=$INSTALLDIR                 # directory containing utilities          #
 TEMPLATEDIR=$BASHTOOLDIR/template          # directory containing templates          #
 
 #' ### Files
@@ -51,12 +51,12 @@ SCRIPT=`$BASENAME ${BASH_SOURCE[0]}`       # Set Script Name variable           
 #' ###  Utilities
 #' A set of functions that can be used in different scripts are sourced from a
 #' utilities script.
-UTIL=$INSTALLDIR/bash_utils.sh
+UTIL=$UTILDIR/bash_utils.sh
 source $UTIL
 
 #' ### Other Constants
 TEMPLATEPATH=$TEMPLATEDIR/bash/bash_script_so.template
-GETTAGSCRIPT=$INSTALLDIR/get_template_tags.sh
+GETTAGSCRIPT=$UTILDIR/get_template_tags.sh
 OUTPUTPATH=`$DATE +"%Y%m%d%H%M%S"`_new_script.sh
 DEFAULTSCRIPTRIGHT=755
 
