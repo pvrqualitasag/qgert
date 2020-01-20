@@ -1,21 +1,21 @@
 #!/bin/bash
 #' ---
-#' title: {TESTTITLE}
-#' date:  {TESTDATE}
-#' author: {AUTHOR}
+#' title: __TITLE__
+#' date:  __STARTDATE__
+#' author: __AUTHOR__
 #' ---
 #'
 #' ## Purpose
-#' {ADD_PURPOSE_HERE}
+#' __PURPOSE__ {Write a paragraph about what problems are solved with this script.}
 #'
 #' ## Description
-#' {ADD_DESCRIPTION_HERE}
+#' __DESCRIPTION__ {Write a paragraph about how the problems are solved.}
 #'
 #' ## Details
-#' {Give some more details here.}
+#' __DETAILS__ {Give some more details here.}
 #'
 #' ## Example
-#' {Specify an example call of the script.}
+#' __EXAMPLE__ {Specify an example call of the script.}
 #'
 #' ## Set Directives
 #' General behavior of the script is driven by the following settings

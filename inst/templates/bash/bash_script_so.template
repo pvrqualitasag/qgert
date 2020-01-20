@@ -5,16 +5,16 @@
 #' author: __AUTHOR__
 #' ---
 #' ## Purpose
-#' {Write a paragraph about what problems are solved with this script.}
+#' __PURPOSE__ {Write a paragraph about what problems are solved with this script.}
 #'
 #' ## Description
-#' {Write a paragraph about how the problems are solved.}
+#' __DESCRIPTION__ {Write a paragraph about how the problems are solved.}
 #'
 #' ## Details
-#' {Give some more details here.}
+#' __DETAILS__ {Give some more details here.}
 #'
 #' ## Example
-#' {Specify an example call of the script.}
+#' __EXAMPLE__ {Specify an example call of the script.}
 #'
 #' ## Set Directives
 #' General behavior of the script is driven by the following settings
