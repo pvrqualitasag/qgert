@@ -36,7 +36,7 @@
 #'                     ps_trgdir      = "1904/compareBull",
 #'                     ps_templ       = "inst/templates/compare_plots.Rmd.template",
 #'                     ps_report_text = "## Comparison Of Plots\nPlots compare estimates ...",
-#'                     ps_rmd_report  = 'ge_plot_report_fbk_compareBulls_bv.Rmd',
+#'                     ps_rmd_report  = 'ge_plot_report.Rmd',
 #'                     pb_debug       = TRUE)
 #'
 #' }
