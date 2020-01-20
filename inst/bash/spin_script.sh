@@ -24,6 +24,20 @@
 #'
 #' For more information about the functionality of this script, please have a
 #' look at the corresponding vignette.
+#'
+#' ## Example
+#' The following example shows how to generate an html-page (spin) based on a
+#' specially formatted bash script.
+#' `bash_script_so.template`.
+#' ```
+#' ./bash/spin_script.sh -s my_new_bash_script.sh
+#' ```
+#'
+#' The easiest way how to get to a bash script that can be converted into an
+#' html-document is to use `new_bash_script.sh` to created the new bash-script.
+#'
+#' ## Set Directives
+#' General behavior of the script is driven by the following settings
 #+ bash-env-setting, eval=FALSE
 set -o errexit    # exit immediately, if single command exits with non-zero status
 set -o nounset    # treat unset variables as errors

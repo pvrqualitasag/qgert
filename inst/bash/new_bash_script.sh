@@ -15,6 +15,13 @@
 #' placeholders should be replaced. The result after the replacement is written to
 #' an output file that can either be specified or that is generated based on the current
 #' date and time.
+#'
+#' ## Example
+#' The following example shows how to create a new bash script using the template
+#' `bash_script_so.template`.
+#' ```
+#' ./bash/new_bash_script.sh -t templates/bash/bash_script_so.template -o my_new_bash_script.sh
+#' ```
 
 #' ## Global Constants
 #' ### Paths to shell tools
