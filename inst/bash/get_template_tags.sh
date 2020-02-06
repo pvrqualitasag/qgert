@@ -19,7 +19,7 @@ SORT=/usr/bin/sort                         # PATH to sort                       
 # ---------------------------------------- # --------------------------------------- #
 # directories                              #                                         #
 INSTALLDIR=`$DIRNAME ${BASH_SOURCE[0]}`    # installation dir of bashtools on host   #
-UTILDIR=$INSTALLDIR/../util                # directory containing utilities          #
+UTILDIR=$INSTALLDIR                        # directory containing utilities          #
 # ---------------------------------------- # --------------------------------------- #
 # files                                    #                                         #
 SCRIPT=`$BASENAME ${BASH_SOURCE[0]}`       # Set Script Name variable                #
@@ -50,7 +50,7 @@ while getopts :uvt:h FLAG; do
     v) # set option -v for verbose mode
       VERBOSE=TRUE
       ;;
-    t) # set option "t" to get template file  
+    t) # set option "t" to get template file
       TEMPLATE=$OPTARG
 	    ;;
 	  h) # option -h shows usage
@@ -60,13 +60,13 @@ while getopts :uvt:h FLAG; do
 	    usage $SCRIPT "Invalid command line argument $OPTARG" "$SCRIPT -t <template_file>"
 	    ;;
   esac
-done  
+done
 
 shift $((OPTIND-1))  #This tells getopts to move on to the next argument.
 
 ### # -------------------------------------------- ##
 ### # Main part of the script starts here ...
-if [ "$VERBOSE" == "TRUE" ] 
+if [ "$VERBOSE" == "TRUE" ]
 then
   start_msg $SCRIPT
 fi
@@ -76,7 +76,7 @@ if [ ! -f "$TEMPLATE" ]
 then
   usage $SCRIPT "ERROR: Cannot find template_file: $TEMPLATE" "$SCRIPT -t <template_file>"
 fi
- 
+
 ### # search for template tags using grep
 if [ "$ONLYUNITAG" == "TRUE" ]
 then
@@ -87,7 +87,7 @@ fi
 
 ### # -------------------------------------------- ##
 ### # Script ends here
-if [ "$VERBOSE" == "TRUE" ] 
+if [ "$VERBOSE" == "TRUE" ]
 then
   end_msg $SCRIPT
 fi
@@ -105,24 +105,24 @@ fi
 =head1 SYNOPSIS
 
   get_template_tags.sh -t <template_file> [-u] [-v]
-  
+
   where: <template_file> specifies the input template file from which tags are to be extracted
 
 
 =head1 DESCRIPTION
 
-Many files that contain scripts or programs share a common structure. This 
-common structure is saved in a template file. The pieces that vary between 
-the different instances of a collection of files is represented by tags. 
-These tags have a special format that does not occur in the constant 
-part of the template file. 
+Many files that contain scripts or programs share a common structure. This
+common structure is saved in a template file. The pieces that vary between
+the different instances of a collection of files is represented by tags.
+These tags have a special format that does not occur in the constant
+part of the template file.
 
-The format of the template is chosen here, rather arbitrarily to match the 
+The format of the template is chosen here, rather arbitrarily to match the
 following regular expression
 
   \[[A-Z_]*\]
-  
-All this script does is a grep for the above shown regular expression on 
+
+All this script does is a grep for the above shown regular expression on
 the given templated file that is specified as input.
 
 With option -u a sorted list of unique tags from the template file is output.
