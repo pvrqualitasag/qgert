@@ -251,6 +251,7 @@ get_default_plot_opts_gal <- function(){
               rmd_templ       = system.file("templates/compare_plots.Rmd.template", package = 'qgert'),
               rmd_report_stem = "ge_plot_report_gal",
               vec_breed       = c("bv", "rh"),
+              gebv_subdir     = c("YearMinus0"),
               vec_comparisons = c("Direkt", "Maternal"),
               report_text     = paste0('## Comparison Of Plots\n',
                                        'Plots compare estimates of Geburtsablauf (gal) for effect {comp}',
