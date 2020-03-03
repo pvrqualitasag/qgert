@@ -284,7 +284,12 @@ get_default_plot_opts_gs_dereg <- function(){
                                        ' on the right.', collapse = '')))
 }
 
-
+#' @title Default Plot Options For CAS
+#'
+#' @description
+#' Return a list with specific defaults and constants that are used
+#' to produce the plot comparison report for the de/regression (CAS).
+#'
 get_default_plot_opts_cas <- function(){
   # return list of default options
   return(list(ge_dir_stem     = "/qualstorzws01/data_zws/cas/work",
