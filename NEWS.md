@@ -1,8 +1,3 @@
-## qgert 0.3.0
-
-* Prepare creation of comparison plots for using them in a shiny app
-
-
 ## qgert 0.2.10
 
 * Added shell script create_comp_plot_report_cas.sh and R functions to create comparison plot reports for cas.
