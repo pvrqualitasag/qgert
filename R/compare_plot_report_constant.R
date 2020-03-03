@@ -283,3 +283,14 @@ get_default_plot_opts_gs_dereg <- function(){
                                        ' on the left and the current GE-run {pn_cur_ge_label}',
                                        ' on the right.', collapse = '')))
 }
+
+
+get_default_plot_opts_cas <- function(){
+  # return list of default options
+  return(list(ge_dir_stem     = "/qualstorzws01/data_zws/cas/work",
+              arch_dir_stem   = "/qualstorzws01/data_archiv/zws",
+              rmd_templ       = system.file("templates/compare_plots.Rmd.template", package = 'qgert'),
+              rmd_report_stem = "ge_plot_report_cas",
+              vec_breed       = c("bv", "rh"),
+              vec_sex         = c("Bull", "Cow")))
+}
