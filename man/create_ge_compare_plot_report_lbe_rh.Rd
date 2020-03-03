@@ -4,10 +4,15 @@
 \alias{create_ge_compare_plot_report_lbe_rh}
 \title{Comparison Plot Report Creator Function For Lineare Beschreibung For RH (LBE_RH)}
 \usage{
-create_ge_compare_plot_report_lbe_rh(pn_cur_ge_label, pn_prev_ge_label,
-  ps_template = system.file("templates", "compare_plots.Rmd.template",
-  package = "qgert"), pl_plot_opts = NULL, pb_debug = FALSE,
-  plogger = NULL)
+create_ge_compare_plot_report_lbe_rh(
+  pn_cur_ge_label,
+  pn_prev_ge_label,
+  ps_template = system.file("templates", "compare_plots.Rmd.template", package =
+    "qgert"),
+  pl_plot_opts = NULL,
+  pb_debug = FALSE,
+  plogger = NULL
+)
 }
 \arguments{
 \item{pn_cur_ge_label}{label of current genetic evaluation (GE)}

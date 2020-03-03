@@ -4,9 +4,13 @@
 \alias{spin_sh}
 \title{Spin a bash script into Rmd}
 \usage{
-spin_sh(ps_sh_hair,
+spin_sh(
+  ps_sh_hair,
   ps_out_rmd = paste0(basename(fs::path_ext_remove(ps_sh_hair)), ".Rmd"),
-  pb_knit = TRUE, pobi_output_format = NULL, pb_keep_rmd = FALSE)
+  pb_knit = TRUE,
+  pobi_output_format = NULL,
+  pb_keep_rmd = FALSE
+)
 }
 \arguments{
 \item{ps_sh_hair}{path to the bash scirpt}

@@ -4,8 +4,10 @@
 \alias{qgert_log_level}
 \title{Wrapper to set the level of a logger}
 \usage{
-qgert_log_level(plogger, ps_level = c("DEBUG", "INFO", "WARN", "ERROR",
-  "FATAL"))
+qgert_log_level(
+  plogger,
+  ps_level = c("DEBUG", "INFO", "WARN", "ERROR", "FATAL")
+)
 }
 \arguments{
 \item{plogger}{log4r logger object}

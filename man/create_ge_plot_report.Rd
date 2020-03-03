@@ -4,10 +4,18 @@
 \alias{create_ge_plot_report}
 \title{Create Report With Plots From Two GE Periods}
 \usage{
-create_ge_plot_report(ps_gedir, ps_archdir, ps_trgdir, ps_templ,
-  ps_report_text, ps_rmd_report = "ge_plot_report.Rmd",
-  pb_keep_src = FALSE, pb_session_info = TRUE, pb_debug = FALSE,
-  plogger = NULL)
+create_ge_plot_report(
+  ps_gedir,
+  ps_archdir,
+  ps_trgdir,
+  ps_templ,
+  ps_report_text,
+  ps_rmd_report = "ge_plot_report.Rmd",
+  pb_keep_src = FALSE,
+  pb_session_info = TRUE,
+  pb_debug = FALSE,
+  plogger = NULL
+)
 }
 \arguments{
 \item{ps_gedir}{directory with plots of current GE round}
@@ -44,8 +52,8 @@ create_ge_plot_report(ps_gedir     = "{path to comparison dir}",
                     ps_archdir     = "{path to archive dir}",
                     ps_trgdir      = "1904/compareBull",
                     ps_templ       = "inst/templates/compare_plots.Rmd.template",
-                    ps_report_text = "## Comparison Of Plots\\nPlots compare estimates ...",
-                    ps_rmd_report  = 'ge_plot_report_fbk_compareBulls_bv.Rmd',
+                    ps_report_text = "## Comparison Of Plots\nPlots compare estimates ...",
+                    ps_rmd_report  = 'ge_plot_report.Rmd',
                     pb_debug       = TRUE)
 
 }

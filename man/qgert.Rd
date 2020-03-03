@@ -3,7 +3,6 @@
 \docType{package}
 \name{qgert}
 \alias{qgert}
-\alias{qgert-package}
 \title{qgert: Qualitas Genetic Evaluation Routine Tools (QGERT)}
 \description{
 The package `qgert` provides R-functions and shell-scripts that are
