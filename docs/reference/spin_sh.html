@@ -75,7 +75,7 @@ rmarkdown::render()." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">qgert</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.10</span>
       </span>
     </div>
 
@@ -153,9 +153,13 @@ When specified, the generated Rmd is rendered to html using
 <code><a href='https://rdrr.io/pkg/rmarkdown/man/render.html'>rmarkdown::render()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>spin_sh</span>(<span class='no'>ps_sh_hair</span>,
+    <pre class="usage"><span class='fu'>spin_sh</span>(
+  <span class='no'>ps_sh_hair</span>,
   <span class='kw'>ps_out_rmd</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/basename.html'>basename</a></span>(<span class='kw pkg'>fs</span><span class='kw ns'>::</span><span class='fu'><a href='http://fs.r-lib.org/reference/path_file.html'>path_ext_remove</a></span>(<span class='no'>ps_sh_hair</span>)), <span class='st'>".Rmd"</span>),
-  <span class='kw'>pb_knit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>pobi_output_format</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>pb_keep_rmd</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='kw'>pb_knit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>pobi_output_format</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>pb_keep_rmd</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -188,135 +192,135 @@ When specified, the generated Rmd is rendered to html using
 <span class='no'>s_test_out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span>(), <span class='st'>'test_script.Rmd'</span>)
 <span class='fu'>spin_sh</span>(<span class='kw'>ps_sh_hair</span> <span class='kw'>=</span> <span class='no'>s_test_script</span>, <span class='kw'>ps_out_rmd</span> <span class='kw'>=</span> <span class='no'>s_test_out</span>)</div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'></span>
-#&gt; <span class='message'>processing file: test_script.Rmd</span></div><div class='output co'>#&gt;   |                                                                         |                                                                 |   0%  |                                                                         |..                                                               |   3%
+#&gt; <span class='message'>processing file: test_script.Rmd</span></div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |..                                                                    |   3%
 #&gt;   ordinary text without R code
 #&gt; 
-#&gt;   |                                                                         |....                                                             |   7%
+#&gt;   |                                                                              |.....                                                                 |   7%
 #&gt; label: unnamed-chunk-1 (with options) 
 #&gt; List of 2
 #&gt;  $ eval  : logi FALSE
 #&gt;  $ engine: chr "bash"
 #&gt; 
-#&gt;   |                                                                         |.......                                                          |  10%
+#&gt;   |                                                                              |.......                                                               |  10%
 #&gt;   ordinary text without R code
 #&gt; 
-#&gt;   |                                                                         |.........                                                        |  14%
+#&gt;   |                                                                              |..........                                                            |  14%
 #&gt; label: unnamed-chunk-2 (with options) 
 #&gt; List of 2
 #&gt;  $ eval  : logi FALSE
 #&gt;  $ engine: chr "bash"
 #&gt; 
-#&gt;   |                                                                         |...........                                                      |  17%
+#&gt;   |                                                                              |............                                                          |  17%
 #&gt;   ordinary text without R code
 #&gt; 
-#&gt;   |                                                                         |.............                                                    |  21%
+#&gt;   |                                                                              |..............                                                        |  21%
 #&gt; label: unnamed-chunk-3 (with options) 
 #&gt; List of 2
 #&gt;  $ eval  : logi FALSE
 #&gt;  $ engine: chr "bash"
 #&gt; 
-#&gt;   |                                                                         |................                                                 |  24%
+#&gt;   |                                                                              |.................                                                     |  24%
 #&gt;   ordinary text without R code
 #&gt; 
-#&gt;   |                                                                         |..................                                               |  28%
+#&gt;   |                                                                              |...................                                                   |  28%
 #&gt; label: unnamed-chunk-4 (with options) 
 #&gt; List of 2
 #&gt;  $ eval  : logi FALSE
 #&gt;  $ engine: chr "bash"
 #&gt; 
-#&gt;   |                                                                         |....................                                             |  31%
+#&gt;   |                                                                              |......................                                                |  31%
 #&gt;   ordinary text without R code
 #&gt; 
-#&gt;   |                                                                         |......................                                           |  34%
+#&gt;   |                                                                              |........................                                              |  34%
 #&gt; label: unnamed-chunk-5 (with options) 
 #&gt; List of 2
 #&gt;  $ eval  : logi FALSE
 #&gt;  $ engine: chr "bash"
 #&gt; 
-#&gt;   |                                                                         |.........................                                        |  38%
+#&gt;   |                                                                              |...........................                                           |  38%
 #&gt;   ordinary text without R code
 #&gt; 
-#&gt;   |                                                                         |...........................                                      |  41%
+#&gt;   |                                                                              |.............................                                         |  41%
 #&gt; label: unnamed-chunk-6 (with options) 
 #&gt; List of 2
 #&gt;  $ eval  : logi FALSE
 #&gt;  $ engine: chr "bash"
 #&gt; 
-#&gt;   |                                                                         |.............................                                    |  45%
+#&gt;   |                                                                              |...............................                                       |  45%
 #&gt;   ordinary text without R code
 #&gt; 
-#&gt;   |                                                                         |...............................                                  |  48%
+#&gt;   |                                                                              |..................................                                    |  48%
 #&gt; label: unnamed-chunk-7 (with options) 
 #&gt; List of 2
 #&gt;  $ eval  : logi FALSE
 #&gt;  $ engine: chr "bash"
 #&gt; 
-#&gt;   |                                                                         |..................................                               |  52%
+#&gt;   |                                                                              |....................................                                  |  52%
 #&gt;   ordinary text without R code
 #&gt; 
-#&gt;   |                                                                         |....................................                             |  55%
+#&gt;   |                                                                              |.......................................                               |  55%
 #&gt; label: unnamed-chunk-8 (with options) 
 #&gt; List of 2
 #&gt;  $ eval  : logi FALSE
 #&gt;  $ engine: chr "bash"
 #&gt; 
-#&gt;   |                                                                         |......................................                           |  59%
+#&gt;   |                                                                              |.........................................                             |  59%
 #&gt;   ordinary text without R code
 #&gt; 
-#&gt;   |                                                                         |........................................                         |  62%
+#&gt;   |                                                                              |...........................................                           |  62%
 #&gt; label: unnamed-chunk-9 (with options) 
 #&gt; List of 2
 #&gt;  $ eval  : logi FALSE
 #&gt;  $ engine: chr "bash"
 #&gt; 
-#&gt;   |                                                                         |...........................................                      |  66%
+#&gt;   |                                                                              |..............................................                        |  66%
 #&gt;   ordinary text without R code
 #&gt; 
-#&gt;   |                                                                         |.............................................                    |  69%
+#&gt;   |                                                                              |................................................                      |  69%
 #&gt; label: unnamed-chunk-10 (with options) 
 #&gt; List of 2
 #&gt;  $ eval  : logi FALSE
 #&gt;  $ engine: chr "bash"
 #&gt; 
-#&gt;   |                                                                         |...............................................                  |  72%
+#&gt;   |                                                                              |...................................................                   |  72%
 #&gt;   ordinary text without R code
 #&gt; 
-#&gt;   |                                                                         |.................................................                |  76%
+#&gt;   |                                                                              |.....................................................                 |  76%
 #&gt; label: unnamed-chunk-11 (with options) 
 #&gt; List of 2
 #&gt;  $ eval  : logi FALSE
 #&gt;  $ engine: chr "bash"
 #&gt; 
-#&gt;   |                                                                         |....................................................             |  79%
+#&gt;   |                                                                              |........................................................              |  79%
 #&gt;   ordinary text without R code
 #&gt; 
-#&gt;   |                                                                         |......................................................           |  83%
+#&gt;   |                                                                              |..........................................................            |  83%
 #&gt; label: unnamed-chunk-12 (with options) 
 #&gt; List of 2
 #&gt;  $ eval  : logi FALSE
 #&gt;  $ engine: chr "bash"
 #&gt; 
-#&gt;   |                                                                         |........................................................         |  86%
+#&gt;   |                                                                              |............................................................          |  86%
 #&gt;   ordinary text without R code
 #&gt; 
-#&gt;   |                                                                         |..........................................................       |  90%
+#&gt;   |                                                                              |...............................................................       |  90%
 #&gt; label: unnamed-chunk-13 (with options) 
 #&gt; List of 2
 #&gt;  $ eval  : logi FALSE
 #&gt;  $ engine: chr "bash"
 #&gt; 
-#&gt;   |                                                                         |.............................................................    |  93%
+#&gt;   |                                                                              |.................................................................     |  93%
 #&gt;   ordinary text without R code
 #&gt; 
-#&gt;   |                                                                         |...............................................................  |  97%
+#&gt;   |                                                                              |....................................................................  |  97%
 #&gt; label: latest-update (with options) 
 #&gt; List of 2
 #&gt;  $ eval  : logi TRUE
 #&gt;  $ engine: chr "bash"
-#&gt; </div><div class='output co'>#&gt; <span class='message'>running: bash  -c 'date '</span></div><div class='output co'>#&gt;   |                                                                         |.................................................................| 100%
+#&gt; </div><div class='output co'>#&gt; <span class='message'>running: bash  -c 'date '</span></div><div class='output co'>#&gt;   |                                                                              |......................................................................| 100%
 #&gt;   ordinary text without R code
 #&gt; 
-#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: test_script.knit.md</span></div><div class='output co'>#&gt; /Applications/RStudio.app/Contents/MacOS/pandoc/pandoc +RTS -K512m -RTS test_script.utf8.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash+smart --output test_script.html --email-obfuscation none --self-contained --standalone --section-divs --template /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rmarkdown/rmd/h/default.html --no-highlight --variable highlightjs=1 --variable 'theme:bootstrap' --include-in-header /var/folders/2v/jfsqj8zj2f122jcgy15nzfn00000gn/T//Rtmp2RNm6i/rmarkdown-str508a2b75b80b.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --lua-filter /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rmarkdown/rmd/lua/pagebreak.lua --lua-filter /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rmarkdown/rmd/lua/latex-div.lua </div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: test_script.knit.md</span></div><div class='output co'>#&gt; /Applications/RStudio.app/Contents/MacOS/pandoc/pandoc +RTS -K512m -RTS test_script.utf8.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash+smart --output test_script.html --email-obfuscation none --self-contained --standalone --section-divs --template /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rmarkdown/rmd/h/default.html --no-highlight --variable highlightjs=1 --variable 'theme:bootstrap' --include-in-header /var/folders/2v/jfsqj8zj2f122jcgy15nzfn00000gn/T//Rtmpv35ijS/rmarkdown-str124643c362e98.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --lua-filter /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rmarkdown/rmd/lua/pagebreak.lua --lua-filter /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rmarkdown/rmd/lua/latex-div.lua </div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Output created: test_script.html</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span>(<span class='no'>s_test_out</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

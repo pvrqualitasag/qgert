@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Comparison Plot Report Creator Function For VRDGGOZW_PROV — create_ge_compare_plot_report_vrdggozw_prov • qgert</title>
+<title>Compute Age in Days — age_in_days • qgert</title>
 
 
 <!-- jquery -->
@@ -35,9 +35,10 @@
 
 
 
-<meta property="og:title" content="Comparison Plot Report Creator Function For VRDGGOZW_PROV — create_ge_compare_plot_report_vrdggozw_prov" />
-<meta property="og:description" content="A comparison plot report containing all generated plots of a GE side-by-side
-with the plots from the previous GE are constructed for VRDGGOZW_PROV" />
+<meta property="og:title" content="Compute Age in Days — age_in_days" />
+<meta property="og:description" content="By default the age in days is computed. If age on different date should be
+computed use pdate_today with a different values. In case you want to get
+a real number as the age, then use pb_floor = FALSE." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -133,79 +134,60 @@ with the plots from the previous GE are constructed for VRDGGOZW_PROV" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Comparison Plot Report Creator Function For VRDGGOZW_PROV</h1>
-    <small class="dont-index">Source: <a href='https://github.com/pvrqualitasag/qgert/blob/master/R/compare_plot_report_vrdggozw_prov.R'><code>R/compare_plot_report_vrdggozw_prov.R</code></a></small>
-    <div class="hidden name"><code>create_ge_compare_plot_report_vrdggozw_prov.Rd</code></div>
+    <h1>Compute Age in Days</h1>
+    <small class="dont-index">Source: <a href='https://github.com/pvrqualitasag/qgert/blob/master/R/time_utils.R'><code>R/time_utils.R</code></a></small>
+    <div class="hidden name"><code>age_in_days.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>A comparison plot report containing all generated plots of a GE side-by-side
-with the plots from the previous GE are constructed for VRDGGOZW_PROV</p>
+    <p>By default the age in days is computed. If age on different date should be
+computed use pdate_today with a different values. In case you want to get
+a real number as the age, then use pb_floor = FALSE.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>create_ge_compare_plot_report_vrdggozw_prov</span>(
-  <span class='no'>pn_cur_ge_label</span>,
-  <span class='no'>pn_prev_ge_label</span>,
-  <span class='no'>ps_prevgsrun_label</span>,
-  <span class='kw'>ps_template</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"templates"</span>, <span class='st'>"compare_plots.Rmd.template"</span>, <span class='kw'>package</span> <span class='kw'>=</span>
-    <span class='st'>"qgert"</span>),
-  <span class='kw'>ps_breed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>pl_plot_opts</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>pb_debug</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>plogger</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)</pre>
+    <pre class="usage"><span class='fu'>age_in_days</span>(<span class='no'>pdate_birth</span>, <span class='kw'>pdate_today</span> <span class='kw'>=</span> <span class='kw pkg'>lubridate</span><span class='kw ns'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/today.html'>today</a></span>(), <span class='kw'>pb_floor</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>pn_cur_ge_label</th>
-      <td><p>label of current genetic evaluation (GE)</p></td>
+      <th>pdate_birth</th>
+      <td><p>date of birth</p></td>
     </tr>
     <tr>
-      <th>pn_prev_ge_label</th>
-      <td><p>label of previous GE</p></td>
+      <th>pdate_today</th>
+      <td><p>todays date</p></td>
     </tr>
     <tr>
-      <th>ps_prevgsrun_label</th>
-      <td><p>run label of first bi-weekly prediction after previous publication</p></td>
-    </tr>
-    <tr>
-      <th>ps_template</th>
-      <td><p>template document for report</p></td>
-    </tr>
-    <tr>
-      <th>ps_breed</th>
-      <td><p>create comparison plot report for just one breed</p></td>
-    </tr>
-    <tr>
-      <th>pl_plot_opts</th>
-      <td><p>list of options specifying input for plot report creator</p></td>
-    </tr>
-    <tr>
-      <th>pb_debug</th>
-      <td><p>flag whether debug output should be shown</p></td>
-    </tr>
-    <tr>
-      <th>plogger</th>
-      <td><p>log4r logger object</p></td>
+      <th>pb_floor</th>
+      <td><p>should age in days be rounded down</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>create_ge_compare_plot_report_vrdggozw_prov</span>(<span class='kw'>pn_cur_ge_label</span>    <span class='kw'>=</span> <span class='fl'>1908</span>,
-                                       <span class='kw'>pn_prev_ge_label</span>        <span class='kw'>=</span> <span class='fl'>1904</span>,
-                                       <span class='kw'>ps_prevgsrun_label</span>      <span class='kw'>=</span> <span class='st'>'0719'</span>,
-                                       <span class='kw'>pb_debug</span>                <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-}</div></pre>
+    <p>age in days</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>---
+title: "Computing Utilities With Date-Times"
+date: "2020-02-06"
+author: "Peter von Rohr"
+---</p>
+<p>## Disclaimer
+This file was added because the function is considered useful and it was
+nowhere else to put it. Hence with this, we believe it could be carried
+along and used in other places.</p>
+
+<p>The function is based on https://stackoverflow.com/questions/14454476/get-the-difference-between-dates-in-terms-of-weeks-months-quarters-and-years</p>
+
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#examples">Examples</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
     </ul>
 
   </div>

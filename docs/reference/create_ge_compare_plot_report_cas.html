@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Comparison Plot Report Creator Function For VRDGGOZW_PROV — create_ge_compare_plot_report_vrdggozw_prov • qgert</title>
+<title>Comparison Plot Report Creator Function For Aufzuchtverlust (CAS) — create_ge_compare_plot_report_cas • qgert</title>
 
 
 <!-- jquery -->
@@ -35,9 +35,10 @@
 
 
 
-<meta property="og:title" content="Comparison Plot Report Creator Function For VRDGGOZW_PROV — create_ge_compare_plot_report_vrdggozw_prov" />
+<meta property="og:title" content="Comparison Plot Report Creator Function For Aufzuchtverlust (CAS) — create_ge_compare_plot_report_cas" />
 <meta property="og:description" content="A comparison plot report containing all generated plots of a GE side-by-side
-with the plots from the previous GE are constructed for VRDGGOZW_PROV" />
+with the plots from the previous GE are constructed for the trait
+group CAS." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -133,20 +134,20 @@ with the plots from the previous GE are constructed for VRDGGOZW_PROV" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Comparison Plot Report Creator Function For VRDGGOZW_PROV</h1>
-    <small class="dont-index">Source: <a href='https://github.com/pvrqualitasag/qgert/blob/master/R/compare_plot_report_vrdggozw_prov.R'><code>R/compare_plot_report_vrdggozw_prov.R</code></a></small>
-    <div class="hidden name"><code>create_ge_compare_plot_report_vrdggozw_prov.Rd</code></div>
+    <h1>Comparison Plot Report Creator Function For Aufzuchtverlust (CAS)</h1>
+    <small class="dont-index">Source: <a href='https://github.com/pvrqualitasag/qgert/blob/master/R/compare_plot_report_cas.R'><code>R/compare_plot_report_cas.R</code></a></small>
+    <div class="hidden name"><code>create_ge_compare_plot_report_cas.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>A comparison plot report containing all generated plots of a GE side-by-side
-with the plots from the previous GE are constructed for VRDGGOZW_PROV</p>
+with the plots from the previous GE are constructed for the trait
+group CAS.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>create_ge_compare_plot_report_vrdggozw_prov</span>(
+    <pre class="usage"><span class='fu'>create_ge_compare_plot_report_cas</span>(
   <span class='no'>pn_cur_ge_label</span>,
   <span class='no'>pn_prev_ge_label</span>,
-  <span class='no'>ps_prevgsrun_label</span>,
   <span class='kw'>ps_template</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"templates"</span>, <span class='st'>"compare_plots.Rmd.template"</span>, <span class='kw'>package</span> <span class='kw'>=</span>
     <span class='st'>"qgert"</span>),
   <span class='kw'>ps_breed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
@@ -165,10 +166,6 @@ with the plots from the previous GE are constructed for VRDGGOZW_PROV</p>
     <tr>
       <th>pn_prev_ge_label</th>
       <td><p>label of previous GE</p></td>
-    </tr>
-    <tr>
-      <th>ps_prevgsrun_label</th>
-      <td><p>run label of first bi-weekly prediction after previous publication</p></td>
     </tr>
     <tr>
       <th>ps_template</th>
@@ -195,10 +192,9 @@ with the plots from the previous GE are constructed for VRDGGOZW_PROV</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>create_ge_compare_plot_report_vrdggozw_prov</span>(<span class='kw'>pn_cur_ge_label</span>    <span class='kw'>=</span> <span class='fl'>1908</span>,
-                                       <span class='kw'>pn_prev_ge_label</span>        <span class='kw'>=</span> <span class='fl'>1904</span>,
-                                       <span class='kw'>ps_prevgsrun_label</span>      <span class='kw'>=</span> <span class='st'>'0719'</span>,
-                                       <span class='kw'>pb_debug</span>                <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>create_ge_compare_plot_report_cas</span>(<span class='kw'>pn_cur_ge_label</span>  <span class='kw'>=</span> <span class='fl'>1908</span>,
+                                  <span class='kw'>pn_prev_ge_label</span> <span class='kw'>=</span> <span class='fl'>1904</span>,
+                                  <span class='kw'>pb_debug</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

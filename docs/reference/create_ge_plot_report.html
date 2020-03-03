@@ -74,7 +74,7 @@ shown side-by-side in the generated Rmarkdown report." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">qgert</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.10</span>
       </span>
     </div>
 
@@ -151,10 +151,18 @@ If such a plot is found, the two corresponding plots are
 shown side-by-side in the generated Rmarkdown report.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>create_ge_plot_report</span>(<span class='no'>ps_gedir</span>, <span class='no'>ps_archdir</span>, <span class='no'>ps_trgdir</span>, <span class='no'>ps_templ</span>,
-  <span class='no'>ps_report_text</span>, <span class='kw'>ps_rmd_report</span> <span class='kw'>=</span> <span class='st'>"ge_plot_report.Rmd"</span>,
-  <span class='kw'>pb_keep_src</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>pb_session_info</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>pb_debug</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>plogger</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>create_ge_plot_report</span>(
+  <span class='no'>ps_gedir</span>,
+  <span class='no'>ps_archdir</span>,
+  <span class='no'>ps_trgdir</span>,
+  <span class='no'>ps_templ</span>,
+  <span class='no'>ps_report_text</span>,
+  <span class='kw'>ps_rmd_report</span> <span class='kw'>=</span> <span class='st'>"ge_plot_report.Rmd"</span>,
+  <span class='kw'>pb_keep_src</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>pb_session_info</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>pb_debug</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>plogger</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -209,7 +217,7 @@ shown side-by-side in the generated Rmarkdown report.</p>
                     <span class='kw'>ps_trgdir</span>      <span class='kw'>=</span> <span class='st'>"1904/compareBull"</span>,
                     <span class='kw'>ps_templ</span>       <span class='kw'>=</span> <span class='st'>"inst/templates/compare_plots.Rmd.template"</span>,
                     <span class='kw'>ps_report_text</span> <span class='kw'>=</span> <span class='st'>"## Comparison Of Plots\nPlots compare estimates ..."</span>,
-                    <span class='kw'>ps_rmd_report</span>  <span class='kw'>=</span> <span class='st'>'ge_plot_report_fbk_compareBulls_bv.Rmd'</span>,
+                    <span class='kw'>ps_rmd_report</span>  <span class='kw'>=</span> <span class='st'>'ge_plot_report.Rmd'</span>,
                     <span class='kw'>pb_debug</span>       <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 }</div></pre>
