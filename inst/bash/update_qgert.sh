@@ -53,8 +53,8 @@ SERVER=`hostname`                          # put hostname of server in variable 
 usage () {
   local l_MSG=$1
   $ECHO "Usage Error: $l_MSG"
-  $ECHO "Usage: $SCRIPT -r <repo_reference> -s <server_name>"
-  $ECHO "  where -s <server_name>     --  optional, run package update on single server"
+  $ECHO "Usage: $SCRIPT  -m <server_name> -r <repo_reference>"
+  $ECHO "  where -m <server_name>     --  optional, run package update on single server"
   $ECHO "        -r <repo_reference>  --  optional, update to a branch reference"
   $ECHO ""
   exit 1
@@ -131,16 +131,16 @@ start_msg
 SERVERS=(beverin castor niesen)
 SERVERNAME=""
 REFERENCE=""
-while getopts ":r:s:h" FLAG; do
+while getopts ":m:r:h" FLAG; do
   case $FLAG in
     h)
       usage "Help message for $SCRIPT"
       ;;
+    m)
+      SERVERNAME=$OPTARG
+      ;;
     r)
       REFERENCE=$OPTARG
-      ;;
-    s)
-      SERVERNAME=$OPTARG
       ;;
     :)
       usage "-$OPTARG requires an argument"
