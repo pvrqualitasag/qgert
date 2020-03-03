@@ -100,11 +100,21 @@ log_msg () {
 update_pkg () {
   local l_SERVER=$1
   log_msg 'update_pkg' "Running update on $l_SERVER"
-  if [ "$REFERENCE" != "" ]
+  if [ "$l_SERVER" == "$SERVER" ]
   then
-    $ECHO "singularity exec instance://sizws R -e 'devtools::install_github(\"pvrqualitasag/qgert\", ref = \"${REFERENCE}\")'" | ssh zws@$l_SERVER
+   if [ "$REFERENCE" != "" ]
+    then
+      singularity exec instance://sizws R -e 'devtools::install_github(\"pvrqualitasag/qgert\", ref = \"${REFERENCE}\")'
+    else
+      singularity exec instance://sizws R -e 'devtools::install_github(\"pvrqualitasag/qgert\")'
+    fi
   else
-    $ECHO "singularity exec instance://sizws R -e 'devtools::install_github(\"pvrqualitasag/qgert\")'" | ssh zws@$l_SERVER
+    if [ "$REFERENCE" != "" ]
+    then
+      ssh zws@$l_SERVER "singularity exec instance://sizws R -e 'devtools::install_github(\"pvrqualitasag/qgert\", ref = \"${REFERENCE}\")'"
+    else
+      ssh zws@$l_SERVER "singularity exec instance://sizws R -e 'devtools::install_github(\"pvrqualitasag/qgert\")'"
+    fi
   fi
 }
 
