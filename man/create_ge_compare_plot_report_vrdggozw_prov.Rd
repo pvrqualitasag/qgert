@@ -8,6 +8,8 @@ create_ge_compare_plot_report_vrdggozw_prov(
   pn_cur_ge_label,
   pn_prev_ge_label,
   ps_prevgsrun_label,
+  ps_cur_plot_root = NULL,
+  ps_prev_plot_root = NULL,
   ps_template = system.file("templates", "compare_plots.Rmd.template", package =
     "qgert"),
   ps_breed = NULL,
@@ -32,10 +34,19 @@ create_ge_compare_plot_report_vrdggozw_prov(
 \item{pb_debug}{flag whether debug output should be shown}
 
 \item{plogger}{log4r logger object}
+
+\item{ps_cur_plot_dir}{directory with plots of current evaluation}
+
+\item{ps_prev_plot_dir}{directory with plots from previous evaluation}
 }
 \description{
 A comparison plot report containing all generated plots of a GE side-by-side
 with the plots from the previous GE are constructed for VRDGGOZW_PROV
+}
+\details{
+Comparisons can be specified by either giving the labels of the current and
+the previous evaluation or by directly specifying the directory roots where
+the plots to be compared are located.
 }
 \examples{
 \dontrun{

@@ -47,6 +47,6 @@ Examples of basic use cases are shown in the different articles that are availab
 
 ## Latest Change
 ```{r, echo=FALSE}
-Sys.time()
+cat(format(Sys.time(), "%a %b %d %X %Y %Z"), ' -- ', Sys.getenv("USER"), '\n')
 ```
 

@@ -1,3 +1,8 @@
+## qgert 0.2.11
+
+* Changed interface of wrapper functions such that directories with current and previous plots can be specified as additional arguments.
+
+
 ## qgert 0.2.10
 
 * Added shell script create_comp_plot_report_cas.sh and R functions to create comparison plot reports for cas.
