@@ -8,7 +8,7 @@
 ### ###################################################################### ###
 
 # ================================ # ======================================= #
-# prog paths                       # required for cronjob                    #  
+# prog paths                       # required for cronjob                    #
 UT_ECHO=/bin/echo                  # PATH to echo                            #
 UT_DATE=/bin/date                  # PATH to date                            #
 UT_MKDIR=/bin/mkdir                # PATH to mkdir                           #
@@ -75,14 +75,16 @@ check_exist_dir_fail () {
   fi
 }
 
-### # check whether directory exists, if not create it
+#' ### Create Dir
+#' Specified directory is created, if it does not yet exist
+#+ check-exist-dir-create-fun
 check_exist_dir_create () {
   local l_check_dir=$1
   if [ ! -d "$l_check_dir" ]
   then
     log_msg check_exist_dir_create "CANNOT find directory: $l_check_dir ==> create it"
-    $UT_MKDIR -p $l_check_dir    
-  fi  
+    $UT_MKDIR -p $l_check_dir
+  fi
 
 }
 
