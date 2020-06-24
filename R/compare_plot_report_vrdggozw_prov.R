@@ -15,9 +15,16 @@
 #' A comparison plot report containing all generated plots of a GE side-by-side
 #' with the plots from the previous GE are constructed for VRDGGOZW_PROV
 #'
+#' @details
+#' Comparisons can be specified by either giving the labels of the current and
+#' the previous evaluation or by directly specifying the directory roots where
+#' the plots to be compared are located.
+#'
 #' @param pn_cur_ge_label label of current genetic evaluation (GE)
 #' @param pn_prev_ge_label label of previous GE
 #' @param ps_prevgsrun_label run label of first bi-weekly prediction after previous publication
+#' @param ps_cur_plot_root directory with plots of current evaluation
+#' @param ps_prev_plot_root directory with plots from previous evaluation
 #' @param ps_template template document for report
 #' @param ps_breed create comparison plot report for just one breed
 #' @param pl_plot_opts list of options specifying input for plot report creator
@@ -36,23 +43,27 @@
 create_ge_compare_plot_report_vrdggozw_prov <- function(pn_cur_ge_label,
                                                pn_prev_ge_label,
                                                ps_prevgsrun_label,
-                                               ps_template  = system.file("templates", "compare_plots.Rmd.template", package = 'qgert'),
-                                               ps_breed     = NULL,
-                                               pl_plot_opts = NULL,
-                                               pb_debug     = FALSE,
-                                               plogger       = NULL){
+                                               ps_cur_plot_root  = NULL,
+                                               ps_prev_plot_root = NULL,
+                                               ps_template       = system.file("templates", "compare_plots.Rmd.template", package = 'qgert'),
+                                               ps_breed          = NULL,
+                                               pl_plot_opts      = NULL,
+                                               pb_debug          = FALSE,
+                                               plogger           = NULL){
   # debugging message at the beginning
   if (pb_debug) {
+    # get the function name
+    s_fun_name <- sys.call()
     if (is.null(plogger)){
-      lgr <- get_qgert_logger(ps_logfile = 'create_ge_compare_plot_report_vrdggozw_prov.log', ps_level = 'INFO')
+      lgr <- get_qgert_logger(ps_logfile = paste0(s_fun_name, '.log'), ps_level = 'INFO')
     } else {
       lgr <- plogger
     }
-    qgert_log_info(plogger = lgr, ps_caller = 'create_ge_plot_report',
-                   ps_msg = " Start of function create_ge_compare_plot_report_vrdggozw_prov ... ")
-    qgert_log_info(plogger = lgr, ps_caller = "create_ge_compare_plot_report_vrdggozw_prov",
+    qgert_log_info(plogger = lgr, ps_caller = s_fun_name,
+                   ps_msg = paste0(" * Start of function: ", s_fun_name, " ... "))
+    qgert_log_info(plogger = lgr, ps_caller = s_fun_name,
                    ps_msg    = paste0(" * Label of current GE: ", pn_cur_ge_label))
-    qgert_log_info(plogger = lgr, ps_caller = "create_ge_compare_plot_report_vrdggozw_prov",
+    qgert_log_info(plogger = lgr, ps_caller = s_fun_name,
                    ps_msg    = paste0(" * Label of previous GE: ", pn_prev_ge_label))
   }
 
@@ -68,54 +79,66 @@ create_ge_compare_plot_report_vrdggozw_prov <- function(pn_cur_ge_label,
     vec_breed <- c(ps_breed)
   }
 
+  # check whether root of directory of current plots is specified
+  s_cur_plot_root <- l_plot_opts$ge_dir_stem
+  if (!is.null(ps_cur_plot_root)){
+    s_cur_plot_root <- ps_cur_plot_root
+  }
+
+  # check whether root of directory of previous plots is specified
+  s_prev_plot_root <- file.path(l_plot_opts$arch_dir_stem,
+                                pn_prev_ge_label,
+                                "calcVRDGGOZW",
+                                paste0("result", ps_prevgsrun_label, collapse = ""))
+  if (!is.null(ps_prev_plot_root)){
+    s_prev_plot_root <- ps_prev_plot_root
+  }
+
 
   # loop over breeds
   for (breed in vec_breed){
     # loop over breeds
     if (pb_debug)
-      qgert_log_info(plogger = lgr, ps_caller = "create_ge_compare_plot_report_vrdggozw_prov",
+      qgert_log_info(plogger = lgr, ps_caller = s_fun_name,
                ps_msg    = paste0(" ** Loop for breed: ", breed, collapse = ""))
     # loop over types of zw
     for (zwt in l_plot_opts$vec_zw_type){
       if (pb_debug)
-        qgert_log_info(plogger = lgr, ps_caller = "create_ge_compare_plot_report_vrdggozw_prov",
+        qgert_log_info(plogger = lgr, ps_caller = s_fun_name,
                  ps_msg    = paste0(" ** Loop for zw-type: ", zwt, collapse = ""))
 
       # put together all directory names, start with GE working directory
-      s_ge_dir <- file.path(l_plot_opts$ge_dir_stem,
+      s_ge_dir <- file.path(s_cur_plot_root,
                             paste0(breed, "basis", collapse = ""),
                             paste0("comp", zwt, collapse = ""))
       if (pb_debug)
-        qgert_log_info(plogger = lgr, ps_caller = "create_ge_compare_plot_report_vrdggozw_prov",
+        qgert_log_info(plogger = lgr, ps_caller = s_fun_name,
                  ps_msg    = paste0(" ** GE workdir: ", s_ge_dir, collapse = ""))
       # archive directory
-      s_arch_dir <- file.path(l_plot_opts$arch_dir_stem,
-                              pn_prev_ge_label,
-                              "calcVRDGGOZW",
-                              paste0("result", ps_prevgsrun_label, collapse = ""),
+      s_arch_dir <- file.path(s_prev_plot_root,
                               paste0(breed, "basis", collapse = ""),
                               paste0("comp", zwt, collapse = ""))
       if (pb_debug)
-        qgert_log_info(plogger = lgr, ps_caller = "create_ge_compare_plot_report_vrdggozw_prov",
+        qgert_log_info(plogger = lgr, ps_caller = s_fun_name,
                  ps_msg    = paste0(" ** Archive dir: ", s_arch_dir, collapse = ""))
 
       # Report text appears in all reports of this trait before the plots are drawn
       s_report_text <- glue::glue(l_plot_opts$report_text)
       if (pb_debug)
-        qgert_log_info(plogger = lgr, ps_caller = "create_ge_compare_plot_report_vrdggozw_prov",
+        qgert_log_info(plogger = lgr, ps_caller = s_fun_name,
                  ps_msg    = paste0(" ** Report text: ", s_report_text))
 
       # target directory
       l_arch_dir_split <- fs::path_split(s_arch_dir)
       s_trg_dir <- file.path(pn_prev_ge_label, l_arch_dir_split[[1]][length(l_arch_dir_split[[1]])])
       if (pb_debug)
-        qgert_log_info(plogger = lgr, ps_caller = "create_ge_compare_plot_report_vrdggozw_prov",
+        qgert_log_info(plogger = lgr, ps_caller = s_fun_name,
                  ps_msg    = paste0(" ** Target directory for restored plots: ", s_trg_dir))
 
       # specify the name of the report file
       s_rep_path <- file.path(s_ge_dir, paste0('ge_plot_report_vrdggozw_prov_compare_', breed, '_',zwt, '.Rmd', collapse = ''))
       if (pb_debug)
-        qgert_log_info(plogger = lgr, ps_caller = "create_ge_compare_plot_report_vrdggozw_prov",
+        qgert_log_info(plogger = lgr, ps_caller = s_fun_name,
                  ps_msg    = paste0(" ** Path to report created: ", s_rep_path))
       # create the report
       create_ge_plot_report(ps_gedir      = s_ge_dir,
@@ -131,7 +154,7 @@ create_ge_compare_plot_report_vrdggozw_prov <- function(pn_cur_ge_label,
 
   # debugging message at the end
   if (pb_debug)
-    qgert_log_info(plogger = lgr, ps_caller = "create_ge_compare_plot_report_vrdggozw_prov",
+    qgert_log_info(plogger = lgr, ps_caller = s_fun_name,
              ps_msg    = " * End of function create_ge_compare_plot_report_vrdggozw_prov")
 
   # return nothing

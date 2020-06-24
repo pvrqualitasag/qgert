@@ -18,6 +18,8 @@
 #'
 #' @param pn_cur_ge_label label of current genetic evaluation (GE)
 #' @param pn_prev_ge_label label of previous GE
+#' @param ps_cur_plot_root directory with plots of current evaluation
+#' @param ps_prev_plot_root directory with plots from previous evaluation
 #' @param ps_template template document for report
 #' @param ps_breed create comparison plot report for just one breed
 #' @param pl_plot_opts list of options specifying input for plot report creator
@@ -34,11 +36,13 @@
 #' @export create_ge_compare_plot_report_gal
 create_ge_compare_plot_report_gal <- function(pn_cur_ge_label,
                                               pn_prev_ge_label,
-                                              ps_template  = system.file("templates", "compare_plots.Rmd.template", package = 'qgert'),
-                                              ps_breed     = NULL,
-                                              pl_plot_opts = NULL,
-                                              pb_debug     = FALSE,
-                                              plogger      = NULL){
+                                              ps_cur_plot_root  = NULL,
+                                              ps_prev_plot_root = NULL,
+                                              ps_template       = system.file("templates", "compare_plots.Rmd.template", package = 'qgert'),
+                                              ps_breed          = NULL,
+                                              pl_plot_opts      = NULL,
+                                              pb_debug          = FALSE,
+                                              plogger           = NULL){
   # debugging message at the beginning
   if (pb_debug) {
     if (is.null(plogger)){
@@ -66,6 +70,20 @@ create_ge_compare_plot_report_gal <- function(pn_cur_ge_label,
     vec_breed <- c(ps_breed)
   }
 
+  # check whether root of directory of current plots is specified
+  s_cur_plot_root <- l_plot_opts$ge_dir_stem
+  if (!is.null(ps_cur_plot_root)){
+    s_cur_plot_root <- ps_cur_plot_root
+  }
+
+  # check whether root of directory of previous plots is specified
+  s_prev_plot_root <- file.path(l_plot_opts$arch_dir_stem,
+                                pn_prev_ge_label,
+                                "gal/work")
+  if (!is.null(ps_prev_plot_root)){
+    s_prev_plot_root <- ps_prev_plot_root
+  }
+
 
   # loop over breeds
   for (breed in vec_breed){
@@ -82,19 +100,19 @@ create_ge_compare_plot_report_gal <- function(pn_cur_ge_label,
 
       # put together all directory names, start with GE working directory
       if ("gebv_subdir" %in% names(l_plot_opts)){
-        s_ge_dir <- file.path(l_plot_opts$ge_dir_stem, breed, l_plot_opts$gebv_subdir, paste0("compare", comp))
+        s_ge_dir <- file.path(s_cur_plot_root, breed, l_plot_opts$gebv_subdir, paste0("compare", comp))
       } else {
-        s_ge_dir <- file.path(l_plot_opts$ge_dir_stem, breed, paste0("compare", comp))
+        s_ge_dir <- file.path(s_cur_plot_root, breed, paste0("compare", comp))
       }
       if (pb_debug)
         qgert_log_info(plogger = lgr, ps_caller = "create_ge_compare_plot_report_gal",
                  ps_msg    = paste0(" ** GE workdir: ", s_ge_dir, collapse = ""))
       # archive directory
-      s_arch_dir <- file.path(l_plot_opts$arch_dir_stem,
-                              pn_prev_ge_label,
-                              "gal/work",
-                              breed,
-                              paste0("compare", comp))
+      if ("garch_subdir" %in% names(l_plot_opts)){
+        s_arch_dir <- file.path(s_prev_plot_root, breed, l_plot_opts$garch_subdir, paste0("compare", comp))
+      } else {
+        s_arch_dir <- file.path(s_prev_plot_root, breed, paste0("compare", comp))
+      }
       if (pb_debug)
         qgert_log_info(plogger = lgr, ps_caller = "create_ge_compare_plot_report_gal",
                  ps_msg    = paste0(" ** Archive dir: ", s_arch_dir, collapse = ""))
