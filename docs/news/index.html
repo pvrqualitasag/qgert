@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -53,7 +57,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -121,7 +125,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/pvrqualitasag/qgert">
+  <a href="https://github.com/pvrqualitasag/qgert/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -139,107 +143,107 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Changelog <small></small></h1>
+      <h1 data-toc-skip>Changelog <small></small></h1>
       <small>Source: <a href='https://github.com/pvrqualitasag/qgert/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="qgert-0-2-11" class="section level2">
+    <div id="qgert-0211" class="section level2">
 <h2 class="hasAnchor">
-<a href="#qgert-0-2-11" class="anchor"></a>qgert 0.2.11</h2>
+<a href="#qgert-0211" class="anchor"></a>qgert 0.2.11</h2>
 <ul>
 <li>Changed interface of wrapper functions such that directories with current and previous plots can be specified as additional arguments.</li>
 </ul>
 </div>
-    <div id="qgert-0-2-10" class="section level2">
+    <div id="qgert-0210" class="section level2">
 <h2 class="hasAnchor">
-<a href="#qgert-0-2-10" class="anchor"></a>qgert 0.2.10</h2>
+<a href="#qgert-0210" class="anchor"></a>qgert 0.2.10</h2>
 <ul>
 <li>Added shell script create_comp_plot_report_cas.sh and R functions to create comparison plot reports for cas.</li>
 </ul>
 </div>
-    <div id="qgert-0-2-9" class="section level2">
+    <div id="qgert-029" class="section level2">
 <h2 class="hasAnchor">
-<a href="#qgert-0-2-9" class="anchor"></a>qgert 0.2.9</h2>
+<a href="#qgert-029" class="anchor"></a>qgert 0.2.9</h2>
 <ul>
 <li>Fixing issues <a href='https://github.com/pvrqualitasag/qgert/issues/20'>#20</a> and <a href='https://github.com/pvrqualitasag/qgert/issues/21'>#21</a></li>
 </ul>
 </div>
-    <div id="qgert-0-2-8" class="section level2">
+    <div id="qgert-028" class="section level2">
 <h2 class="hasAnchor">
-<a href="#qgert-0-2-8" class="anchor"></a>qgert 0.2.8</h2>
+<a href="#qgert-028" class="anchor"></a>qgert 0.2.8</h2>
 <ul>
 <li>Fixed problems described in issues <a href='https://github.com/pvrqualitasag/qgert/issues/18'>#18</a> and <a href='https://github.com/pvrqualitasag/qgert/issues/19'>#19</a> with splitting gsRuns-lists.</li>
 </ul>
 </div>
-    <div id="qgert-0-2-7" class="section level2">
+    <div id="qgert-027" class="section level2">
 <h2 class="hasAnchor">
-<a href="#qgert-0-2-7" class="anchor"></a>qgert 0.2.7</h2>
+<a href="#qgert-027" class="anchor"></a>qgert 0.2.7</h2>
 <ul>
 <li>Add script to construct sorted gsRuns list. The jobs are sorted according to their predicted running times in the log file of the previous evaluation.</li>
 </ul>
 </div>
-    <div id="qgert-0-2-6" class="section level2">
+    <div id="qgert-026" class="section level2">
 <h2 class="hasAnchor">
-<a href="#qgert-0-2-6" class="anchor"></a>qgert 0.2.6</h2>
+<a href="#qgert-026" class="anchor"></a>qgert 0.2.6</h2>
 <ul>
 <li>Fix problem with batch_diff_update.sh</li>
 </ul>
 </div>
-    <div id="qgert-0-2-5" class="section level2">
+    <div id="qgert-025" class="section level2">
 <h2 class="hasAnchor">
-<a href="#qgert-0-2-5" class="anchor"></a>qgert 0.2.5</h2>
+<a href="#qgert-025" class="anchor"></a>qgert 0.2.5</h2>
 <ul>
 <li>Added breed rh to ordinary lbe comparison plot report.</li>
 </ul>
 </div>
-    <div id="qgert-0-2-4" class="section level2">
+    <div id="qgert-024" class="section level2">
 <h2 class="hasAnchor">
-<a href="#qgert-0-2-4" class="anchor"></a>qgert 0.2.4</h2>
+<a href="#qgert-024" class="anchor"></a>qgert 0.2.4</h2>
 <ul>
 <li>Adding new functionality of batch difference between directories</li>
 <li>Improved spin_sh.R to include date of latest change.</li>
 </ul>
 </div>
-    <div id="qgert-0-2-3" class="section level2">
+    <div id="qgert-023" class="section level2">
 <h2 class="hasAnchor">
-<a href="#qgert-0-2-3" class="anchor"></a>qgert 0.2.3</h2>
+<a href="#qgert-023" class="anchor"></a>qgert 0.2.3</h2>
 <ul>
 <li>Add comparison plots for deregression plots in GS</li>
 </ul>
 </div>
-    <div id="qgert-0-2-2-minor-release" class="section level2">
+    <div id="qgert-022-minor-release" class="section level2">
 <h2 class="hasAnchor">
-<a href="#qgert-0-2-2-minor-release" class="anchor"></a>qgert 0.2.2 (Minor release)</h2>
+<a href="#qgert-022-minor-release" class="anchor"></a>qgert 0.2.2 (Minor release)</h2>
 <ul>
 <li>Added creation of comparison for trait group GAL</li>
 </ul>
 </div>
-    <div id="qgert-0-2-1-bug-fix" class="section level2">
+    <div id="qgert-021-bug-fix" class="section level2">
 <h2 class="hasAnchor">
-<a href="#qgert-0-2-1-bug-fix" class="anchor"></a>qgert 0.2.1 (Bug fix)</h2>
+<a href="#qgert-021-bug-fix" class="anchor"></a>qgert 0.2.1 (Bug fix)</h2>
 <ul>
 <li>Bug fix for <a href="https://github.com/pvrqualitasag/qgert/issues/13">issue <a href='https://github.com/pvrqualitasag/qgert/issues/13'>#13</a></a>
 </li>
 <li>Updated bash scripts to use <code>qgert</code> for creation of comparisonplotreports</li>
 </ul>
 </div>
-    <div id="qgert-0-2-0" class="section level2">
+    <div id="qgert-020" class="section level2">
 <h2 class="hasAnchor">
-<a href="#qgert-0-2-0" class="anchor"></a>qgert 0.2.0</h2>
+<a href="#qgert-020" class="anchor"></a>qgert 0.2.0</h2>
 <ul>
 <li>Merge scripts from project <code>bashtools</code> into qgert.</li>
 </ul>
 </div>
-    <div id="qgert-0-1-0" class="section level2">
+    <div id="qgert-010" class="section level2">
 <h2 class="hasAnchor">
-<a href="#qgert-0-1-0" class="anchor"></a>qgert 0.1.0</h2>
+<a href="#qgert-010" class="anchor"></a>qgert 0.1.0</h2>
 <ul>
 <li>Migration of comparison plot report features from zwsroutine tools to qgert</li>
 </ul>
 </div>
-    <div id="qgert-0-0-0-9000" class="section level2">
+    <div id="qgert-0009000" class="section level2">
 <h2 class="hasAnchor">
-<a href="#qgert-0-0-0-9000" class="anchor"></a>qgert 0.0.0.9000</h2>
+<a href="#qgert-0009000" class="anchor"></a>qgert 0.0.0.9000</h2>
 <ul>
 <li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
 <li>Started Genetic Evaluation Routine Tools</li>
@@ -247,26 +251,10 @@
 </div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#qgert-0-2-11">0.2.11</a></li>
-        <li><a href="#qgert-0-2-10">0.2.10</a></li>
-        <li><a href="#qgert-0-2-9">0.2.9</a></li>
-        <li><a href="#qgert-0-2-8">0.2.8</a></li>
-        <li><a href="#qgert-0-2-7">0.2.7</a></li>
-        <li><a href="#qgert-0-2-6">0.2.6</a></li>
-        <li><a href="#qgert-0-2-5">0.2.5</a></li>
-        <li><a href="#qgert-0-2-4">0.2.4</a></li>
-        <li><a href="#qgert-0-2-3">0.2.3</a></li>
-        <li><a href="#qgert-0-2-2-minor-release">0.2.2</a></li>
-        <li><a href="#qgert-0-2-1-bug-fix">0.2.1</a></li>
-        <li><a href="#qgert-0-2-0">0.2.0</a></li>
-        <li><a href="#qgert-0-1-0">0.1.0</a></li>
-        <li><a href="#qgert-0-0-0-9000">0.0.0.9000</a></li>
-      </ul>
-    </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 
 </div>
@@ -278,7 +266,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

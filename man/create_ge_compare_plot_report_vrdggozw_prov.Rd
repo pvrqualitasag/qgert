@@ -25,6 +25,10 @@ create_ge_compare_plot_report_vrdggozw_prov(
 
 \item{ps_prevgsrun_label}{run label of first bi-weekly prediction after previous publication}
 
+\item{ps_cur_plot_root}{directory with plots of current evaluation}
+
+\item{ps_prev_plot_root}{directory with plots from previous evaluation}
+
 \item{ps_template}{template document for report}
 
 \item{ps_breed}{create comparison plot report for just one breed}
@@ -34,10 +38,6 @@ create_ge_compare_plot_report_vrdggozw_prov(
 \item{pb_debug}{flag whether debug output should be shown}
 
 \item{plogger}{log4r logger object}
-
-\item{ps_cur_plot_dir}{directory with plots of current evaluation}
-
-\item{ps_prev_plot_dir}{directory with plots from previous evaluation}
 }
 \description{
 A comparison plot report containing all generated plots of a GE side-by-side

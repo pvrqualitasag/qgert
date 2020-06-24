@@ -8,6 +8,8 @@ create_ge_compare_plot_report_vrdggozw(
   pn_cur_ge_label,
   pn_prev_ge_label,
   ps_prevgsrun_label,
+  ps_cur_plot_root = NULL,
+  ps_prev_plot_root = NULL,
   ps_template = system.file("templates", "compare_plots.Rmd.template", package =
     "qgert"),
   ps_breed = NULL,
@@ -22,6 +24,10 @@ create_ge_compare_plot_report_vrdggozw(
 \item{pn_prev_ge_label}{label of previous GE}
 
 \item{ps_prevgsrun_label}{label of bi-weekly gs-runs before publication date of pn_prev_ge_label}
+
+\item{ps_cur_plot_root}{directory with plots of current evaluation}
+
+\item{ps_prev_plot_root}{directory with plots from previous evaluation}
 
 \item{ps_template}{template document for report}
 

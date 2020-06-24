@@ -7,6 +7,8 @@
 create_ge_compare_plot_report_lbe_rh(
   pn_cur_ge_label,
   pn_prev_ge_label,
+  ps_cur_plot_root = NULL,
+  ps_prev_plot_root = NULL,
   ps_template = system.file("templates", "compare_plots.Rmd.template", package =
     "qgert"),
   pl_plot_opts = NULL,
@@ -18,6 +20,10 @@ create_ge_compare_plot_report_lbe_rh(
 \item{pn_cur_ge_label}{label of current genetic evaluation (GE)}
 
 \item{pn_prev_ge_label}{label of previous GE}
+
+\item{ps_cur_plot_root}{directory with plots of current evaluation}
+
+\item{ps_prev_plot_root}{directory with plots from previous evaluation}
 
 \item{ps_template}{template document for report}
 
