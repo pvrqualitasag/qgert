@@ -23,8 +23,8 @@
 #' @param pn_cur_ge_label label of current genetic evaluation (GE)
 #' @param pn_prev_ge_label label of previous GE
 #' @param ps_prevgsrun_label run label of first bi-weekly prediction after previous publication
-#' @param ps_cur_plot_dir directory with plots of current evaluation
-#' @param ps_prev_plot_dir directory with plots from previous evaluation
+#' @param ps_cur_plot_root directory with plots of current evaluation
+#' @param ps_prev_plot_root directory with plots from previous evaluation
 #' @param ps_template template document for report
 #' @param ps_breed create comparison plot report for just one breed
 #' @param pl_plot_opts list of options specifying input for plot report creator
@@ -45,11 +45,11 @@ create_ge_compare_plot_report_vrdggozw_prov <- function(pn_cur_ge_label,
                                                ps_prevgsrun_label,
                                                ps_cur_plot_root  = NULL,
                                                ps_prev_plot_root = NULL,
-                                               ps_template      = system.file("templates", "compare_plots.Rmd.template", package = 'qgert'),
-                                               ps_breed         = NULL,
-                                               pl_plot_opts     = NULL,
-                                               pb_debug         = FALSE,
-                                               plogger          = NULL){
+                                               ps_template       = system.file("templates", "compare_plots.Rmd.template", package = 'qgert'),
+                                               ps_breed          = NULL,
+                                               pl_plot_opts      = NULL,
+                                               pb_debug          = FALSE,
+                                               plogger           = NULL){
   # debugging message at the beginning
   if (pb_debug) {
     # get the function name
