@@ -108,8 +108,8 @@ create_ge_compare_plot_report_gal <- function(pn_cur_ge_label,
         qgert_log_info(plogger = lgr, ps_caller = "create_ge_compare_plot_report_gal",
                  ps_msg    = paste0(" ** GE workdir: ", s_ge_dir, collapse = ""))
       # archive directory
-      if ("gebv_subdir" %in% names(l_plot_opts)){
-        s_arch_dir <- file.path(s_prev_plot_root, breed, l_plot_opts$gebv_subdir, paste0("compare", comp))
+      if ("garch_subdir" %in% names(l_plot_opts)){
+        s_arch_dir <- file.path(s_prev_plot_root, breed, l_plot_opts$garch_subdir, paste0("compare", comp))
       } else {
         s_arch_dir <- file.path(s_prev_plot_root, breed, paste0("compare", comp))
       }
