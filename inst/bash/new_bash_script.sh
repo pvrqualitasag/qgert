@@ -85,7 +85,9 @@ start_msg $SCRIPT
 #' Notice there is no ":" after "h". The leading ":" suppresses error messages from
 #' getopts. This is required to get my unrecognized option code to work.
 #+ getopts-parsing, eval=FALSE
-while getopts :o:qt:h FLAG; do
+QUIET=FALSE
+VERBOSE=FALSE
+while getopts :o:qt:vh FLAG; do
   case $FLAG in
     o) # set option -o to specify output file
       OUTPUTPATH=$OPTARG
@@ -95,6 +97,9 @@ while getopts :o:qt:h FLAG; do
       ;;
     t) # set option "-t"  to specify the template file
       TEMPLATEPATH=$OPTARG
+	    ;;
+	  v)
+	    VERBOSE=TRUE
 	    ;;
 	  h) # option -h shows usage
   	  usage $SCRIPT "Help message" "$SCRIPT -t <template_file>"
@@ -201,7 +206,14 @@ do
     replacevalue=$inputvalue
   fi
   # replacement of current tag
-  $SED "s#$CURTAG#$replacevalue#g" < $OUTPUTPATH  > $OUTPUTPATH.new
+  if [ "$VERBOSE" == "TRUE" ];then log_msg "$SCRIPT" " * Replacing $CURTAG with $replacevalue ...";fi
+  # separate cases with tag followed by comment in {}
+  if [ `grep "${CURTAG} {" $OUTPUTPATH | wc -l` -eq 0 ]
+  then
+    $SED "s#$CURTAG#$replacevalue#g" < $OUTPUTPATH  > $OUTPUTPATH.new
+  else
+    $SED "s#$CURTAG {.*#$replacevalue#g" < $OUTPUTPATH  > $OUTPUTPATH.new
+  fi
   # prepare input of new round from output of current round
   $MV $OUTPUTPATH.new $OUTPUTPATH
 done
