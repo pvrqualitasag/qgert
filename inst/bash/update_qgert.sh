@@ -53,9 +53,12 @@ SERVER=`hostname`                          # put hostname of server in variable 
 usage () {
   local l_MSG=$1
   $ECHO "Usage Error: $l_MSG"
-  $ECHO "Usage: $SCRIPT  -m <server_name> -r <repo_reference>"
-  $ECHO "  where -m <server_name>     --  optional, run package update on single server"
+  $ECHO "Usage: $SCRIPT -a -m <server_name> -r <repo_reference> -u <user_name> -i <instance_name>"
+  $ECHO "  where -a                   --  optional, run update on all servers"
+  $ECHO "        -m <server_name>     --  optional, run package update on single server"
   $ECHO "        -r <repo_reference>  --  optional, update to a branch reference"
+  $ECHO "        -u <user_name>       --  optional username to run update on"
+  $ECHO "        -i <instance_name>   --  optional singularity instance name"
   $ECHO ""
   exit 1
 }
@@ -93,6 +96,32 @@ log_msg () {
   $ECHO "[${l_RIGHTNOW} -- ${l_CALLER}] $l_MSG"
 }
 
+#' ### Update On Local Host Machine
+#' The update is run on the local host machine outside of the container
+#+ update-pkg-local-host-fun
+update_pkg_local_host () {
+  local l_REFERENCE=$1
+    if [ "$l_REFERENCE" != "" ]
+    then
+      singularity exec instance://$SIMGINSTANCENAME R -e 'devtools::install_github(\"pvrqualitasag/qgert\", ref = \"${l_REFERENCE}\")'
+    else
+      singularity exec instance://$SIMGINSTANCENAME R -e 'devtools::install_github(\"pvrqualitasag/qgert\")'
+    fi
+}
+
+#' ### Update On Local Container
+#' The update is run on the local machine from inside the container.
+#+ update-pkg-local-simg-fun
+update_pkg_local_simg () {
+  local l_REFERENCE=$1
+    if [ "$l_REFERENCE" != "" ]
+    then
+      R -e 'devtools::install_github(\"pvrqualitasag/qgert\", ref = \"${l_REFERENCE}\")'
+    else
+      R -e 'devtools::install_github(\"pvrqualitasag/qgert\")'
+    fi
+}
+
 #' ### Update For a Given Server
 #' The following function runs the package update on a
 #' specified server.
@@ -102,18 +131,19 @@ update_pkg () {
   log_msg 'update_pkg' "Running update on $l_SERVER"
   if [ "$l_SERVER" == "$SERVER" ]
   then
-   if [ "$REFERENCE" != "" ]
+    # check whether we run in container
+    if [ `env | grep -i singularity | wc -l` -gt 0 ]
     then
-      singularity exec instance://sizws R -e 'devtools::install_github(\"pvrqualitasag/qgert\", ref = \"${REFERENCE}\")'
+      update_pkg_local_simg $REFERENCE
     else
-      singularity exec instance://sizws R -e 'devtools::install_github(\"pvrqualitasag/qgert\")'
+      update_pkg_local_host $REFERENCE
     fi
   else
     if [ "$REFERENCE" != "" ]
     then
-      ssh zws@$l_SERVER "singularity exec instance://sizws R -e 'devtools::install_github(\"pvrqualitasag/qgert\", ref = \"${REFERENCE}\")'"
+      ssh ${USERNAME}@$l_SERVER "singularity exec instance://$SIMGINSTANCENAME R -e 'devtools::install_github(\"pvrqualitasag/qgert\", ref = \"${REFERENCE}\")'"
     else
-      ssh zws@$l_SERVER "singularity exec instance://sizws R -e 'devtools::install_github(\"pvrqualitasag/qgert\")'"
+      ssh ${USERNAME}@$l_SERVER "singularity exec instance://$SIMGINSTANCENAME R -e 'devtools::install_github(\"pvrqualitasag/qgert\")'"
     fi
   fi
 }
@@ -128,19 +158,31 @@ start_msg
 #' Notice there is no ":" after "h". The leading ":" suppresses error messages from
 #' getopts. This is required to get my unrecognized option code to work.
 #+ getopts-parsing, eval=FALSE
-SERVERS=(beverin castor niesen speer)
+SERVERS=(beverin castor dom niesen speer)
 SERVERNAME=""
 REFERENCE=""
-while getopts ":m:r:h" FLAG; do
+USERNAME=zws
+SIMGINSTANCENAME=sizws
+RUNONALLSERVERS=FALSE
+while getopts ":ai:m:r:u:h" FLAG; do
   case $FLAG in
     h)
       usage "Help message for $SCRIPT"
+      ;;
+    a)
+      RUNONALLSERVERS='TRUE'
+      ;;
+    i)
+      SIMGINSTANCENAME=$OPTARG
       ;;
     m)
       SERVERNAME=$OPTARG
       ;;
     r)
       REFERENCE=$OPTARG
+      ;;
+    u)
+      USERNAME=$OPTARG
       ;;
     :)
       usage "-$OPTARG requires an argument"
@@ -159,13 +201,20 @@ shift $((OPTIND-1))  #This tells getopts to move on to the next argument.
 #+ server-update
 if [ "$SERVERNAME" != "" ]
 then
+  log_msg "$SCRIPT" " * Upate on given server: $SERVERNAME ..."
   update_pkg $SERVERNAME
 else
-  for s in ${SERVERS[@]}
-  do
-    update_pkg $s
-    sleep 2
-  done
+  if [ "$RUNONALLSERVERS" == 'TRUE' ]
+  then
+    log_msg "$SCRIPT" " * Upate on all servers ..."
+    for s in ${SERVERS[@]}
+    do
+      update_pkg $s
+      sleep 2
+    done
+  else
+    log_msg "$SCRIPT" " * No servername and no option -a ..."
+  fi
 fi
 
 
