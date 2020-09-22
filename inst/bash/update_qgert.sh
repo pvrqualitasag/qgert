@@ -103,9 +103,9 @@ update_pkg_local_host () {
   local l_REFERENCE=$1
     if [ "$l_REFERENCE" != "" ]
     then
-      singularity exec instance://$SIMGINSTANCENAME R -e 'devtools::install_github(\"pvrqualitasag/qgert\", ref = \"${l_REFERENCE}\")'
+      singularity exec instance://$SIMGINSTANCENAME R -e "remotes::install_github('pvrqualitasag/qgert', ref = '${l_REFERENCE}', dependencies = FALSE, upgrade = 'never')"
     else
-      singularity exec instance://$SIMGINSTANCENAME R -e 'devtools::install_github(\"pvrqualitasag/qgert\")'
+      singularity exec instance://$SIMGINSTANCENAME R -e "remotes::install_github('pvrqualitasag/qgert', dependencies = FALSE, upgrade = 'never')"
     fi
 }
 
@@ -116,9 +116,9 @@ update_pkg_local_simg () {
   local l_REFERENCE=$1
     if [ "$l_REFERENCE" != "" ]
     then
-      R -e 'devtools::install_github(\"pvrqualitasag/qgert\", ref = \"${l_REFERENCE}\")'
+      R -e "remotes::install_github('pvrqualitasag/qgert', ref = '${l_REFERENCE}', dependencies = FALSE, upgrade = 'never')"
     else
-      R -e 'devtools::install_github(\"pvrqualitasag/qgert\")'
+      R -e "remotes::install_github('pvrqualitasag/qgert', dependencies = FALSE, upgrade = 'never')"
     fi
 }
 
@@ -141,10 +141,12 @@ update_pkg () {
   else
     if [ "$REFERENCE" != "" ]
     then
-      ssh ${USERNAME}@$l_SERVER "singularity exec instance://$SIMGINSTANCENAME R -e 'devtools::install_github(\"pvrqualitasag/qgert\", ref = \"${REFERENCE}\")'"
+      SIMG_CMD="singularity exec instance://$SIMGINSTANCENAME R -e 'remotes::install_github(\"pvrqualitasag/qgert\", ref = \"${REFERENCE}\", dependencies = FALSE, upgrade = \"never\")'"
     else
-      ssh ${USERNAME}@$l_SERVER "singularity exec instance://$SIMGINSTANCENAME R -e 'devtools::install_github(\"pvrqualitasag/qgert\")'"
+      SIMG_CMD="singularity exec instance://$SIMGINSTANCENAME R -e 'remotes::install_github(\"pvrqualitasag/qgert\", dependencies = FALSE, upgrade = \"never\")'"
     fi
+    log_msg 'update_pkg' " ** Running command: $SIMG_CMD ..."
+    ssh ${USERNAME}@$l_SERVER "$SIMG_CMD"
   fi
 }
 
