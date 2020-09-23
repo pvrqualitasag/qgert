@@ -1,0 +1,38 @@
+---
+title: "Toplists of Bulls for BVCH"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Toplists of Bulls for BVCH}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(qgert)
+```
+
+
+## Disclaimer
+The features to create toplists of bulls for BVCH are described here. Originally these features were included in a RStudio-project called 'toplistbvch'. 
+
+
+## Terminology
+Toplists of bulls are rankings of bulls according to the predicted breeding values in different traits. The lists are exported from the database and are entered into an excel spreadsheet. The ranking of the bulls for a certain trait is entered in a different workbook. The ranking lists for the two subgroups 'BV' and 'OB' are separated by a few empty lines in the same workbook. 
+
+
+## Input
+The input consists of the lists of predicted breeding values for all bulls. These lists come as csv-files and they are in two different files for 'BV' and 'OB'. 
+
+
+## Procedure
+The procedure to create the Toplists is done according to the following steps.
+
+
+1. 
