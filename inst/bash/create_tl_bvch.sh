@@ -242,7 +242,8 @@ check_exist_dir_create $RESULTDIR
 #+ create-toplists
 RESULTFILE="$RESULTDIR/Toplisten_Stiere_CHbv_${CURRENTGE}.xlsx"
 log_msg "$SCRIPT" " * Resultfile: $RESULTFILE ..."
-R -e "qgert::create_toplist_bvch_bull(ps_eval_label = '$CURRENTGE', pl_breed_input = list(breeds = c('BV', 'OB'), inputfiles = c($RINPUTARG), numbertop  = c(12, 5)), ps_xlsx_file = '$RESULTFILE'"
+R -e "qgert::create_toplist_bvch_bull(ps_eval_label = '$CURRENTGE', pl_breed_input = list(breeds = c('BV', 'OB'), inputfiles = c($RINPUTARG), numbertop  = c(12, 5)), ps_xlsx_file = '$RESULTFILE')"
+
 
 #' ## End of Script
 #+ end-msg, eval=FALSE
