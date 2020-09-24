@@ -125,7 +125,7 @@ start_msg
 CURRENTGE=''
 DBINSTANCE='fendt'
 DBEXDIR=''
-INPUTFILES=(Toplisten_Stiere_OB.csv Toplisten_Stiere_BV.csv)
+INPUTFILES=(Toplisten_Stiere_BV.csv Toplisten_Stiere_OB.csv)
 INPUTSTRING=''
 while getopts ":c:d:i:h" FLAG; do
   case $FLAG in
