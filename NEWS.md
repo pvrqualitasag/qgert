@@ -1,3 +1,8 @@
+## qgert 0.2.12
+
+* Added creation of toplists for bulls of BVCH (BV and OB) from exported csv files.
+
+
 ## qgert 0.2.11
 
 * Changed interface of wrapper functions such that directories with current and previous plots can be specified as additional arguments.
