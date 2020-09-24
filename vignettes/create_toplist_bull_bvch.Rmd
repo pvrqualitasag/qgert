@@ -43,6 +43,6 @@ The procedure to create the Toplists is done according to the following steps.
 A shell script is used as a wrapper to locate the input data and to place the result in the correct directory.
 
 ```
-./create_tl_bvch -c 2008 -d fendt 
+./create_tl_bvch -c 2008
 ```
 
