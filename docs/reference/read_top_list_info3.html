@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Default Plot Options For LBE_RH — get_default_plot_opts_lbe_rh • qgert</title>
+<title>Read Toplist Input From CSV-Files — read_top_list_info3 • qgert</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,9 @@
 
 
 
-<meta property="og:title" content="Default Plot Options For LBE_RH — get_default_plot_opts_lbe_rh" />
-<meta property="og:description" content="Return a list with specific defaults and constants that are used
-to produce the comparison plot report for the trait group
-Lineare Beschreibung for RH (LBE_RH)." />
+<meta property="og:title" content="Read Toplist Input From CSV-Files — read_top_list_info3" />
+<meta property="og:description" content="The content of the csv-files are read into a tibble and all tibbles are
+combined into a list." />
 
 
 
@@ -149,20 +148,53 @@ Lineare Beschreibung for RH (LBE_RH)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Default Plot Options For LBE_RH</h1>
-    <small class="dont-index">Source: <a href='https://github.com/pvrqualitasag/qgert/blob/master/R/compare_plot_report_constant.R'><code>R/compare_plot_report_constant.R</code></a></small>
-    <div class="hidden name"><code>get_default_plot_opts_lbe_rh.Rd</code></div>
+    <h1>Read Toplist Input From CSV-Files</h1>
+    <small class="dont-index">Source: <a href='https://github.com/pvrqualitasag/qgert/blob/master/R/toplist_bull_bvch.R'><code>R/toplist_bull_bvch.R</code></a></small>
+    <div class="hidden name"><code>read_top_list_info3.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Return a list with specific defaults and constants that are used
-to produce the comparison plot report for the trait group
-Lineare Beschreibung for RH (LBE_RH).</p>
+    <p>The content of the csv-files are read into a tibble and all tibbles are
+combined into a list.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_default_plot_opts_lbe_rh</span>()</pre>
+    <pre class="usage"><span class='fu'>read_top_list_info3</span>(
+  <span class='no'>pl_breed_input</span>,
+  <span class='no'>ptbl_trait</span>,
+  <span class='kw'>pvec_resultcols</span> <span class='kw'>=</span> <span class='fu'><a href='get_vec_resultcols_bvch.html'>get_vec_resultcols_bvch</a></span>(),
+  <span class='kw'>pb_debug</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>plogger</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>pl_breed_input</th>
+      <td><p>list with input information about breeds</p></td>
+    </tr>
+    <tr>
+      <th>ptbl_trait</th>
+      <td><p>tibble with trait information</p></td>
+    </tr>
+    <tr>
+      <th>pb_debug</th>
+      <td><p>flag for debugging mode</p></td>
+    </tr>
+    <tr>
+      <th>plogger</th>
+      <td><p>logger object</p></td>
+    </tr>
+    </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>list of toplist input</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>--- Reading TopList Input ------------------------------------------------- #</p>
+
+<p>This function assumes that there is a separate csv-file for each breed.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

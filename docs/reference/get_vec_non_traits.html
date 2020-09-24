@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Default Plot Options For LBE_RH — get_default_plot_opts_lbe_rh • qgert</title>
+<title>Determine Vector of Trait Names — get_vec_non_traits • qgert</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,11 @@
 
 
 
-<meta property="og:title" content="Default Plot Options For LBE_RH — get_default_plot_opts_lbe_rh" />
-<meta property="og:description" content="Return a list with specific defaults and constants that are used
-to produce the comparison plot report for the trait group
-Lineare Beschreibung for RH (LBE_RH)." />
+<meta property="og:title" content="Determine Vector of Trait Names — get_vec_non_traits" />
+<meta property="og:description" content="Inspect first line of input files for the possible set of column names.
+All the column names that are not in pvec_non_trait are taken as traits.
+This function returns a fixed vector of columns that are not treated as
+traits." />
 
 
 
@@ -149,20 +150,41 @@ Lineare Beschreibung for RH (LBE_RH)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Default Plot Options For LBE_RH</h1>
-    <small class="dont-index">Source: <a href='https://github.com/pvrqualitasag/qgert/blob/master/R/compare_plot_report_constant.R'><code>R/compare_plot_report_constant.R</code></a></small>
-    <div class="hidden name"><code>get_default_plot_opts_lbe_rh.Rd</code></div>
+    <h1>Determine Vector of Trait Names</h1>
+    <small class="dont-index">Source: <a href='https://github.com/pvrqualitasag/qgert/blob/master/R/toplist_bull_bvch.R'><code>R/toplist_bull_bvch.R</code></a></small>
+    <div class="hidden name"><code>get_vec_non_traits.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Return a list with specific defaults and constants that are used
-to produce the comparison plot report for the trait group
-Lineare Beschreibung for RH (LBE_RH).</p>
+    <p>Inspect first line of input files for the possible set of column names.
+All the column names that are not in pvec_non_trait are taken as traits.</p>
+<p>This function returns a fixed vector of columns that are not treated as
+traits.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_default_plot_opts_lbe_rh</span>()</pre>
+    <pre class="usage"><span class='fu'>get_vec_non_traits</span>()</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>pvec_input</th>
+      <td><p>vector with input files</p></td>
+    </tr>
+    <tr>
+      <th>pvec_non_trait</th>
+      <td><p>vector with column names that are not traits.</p></td>
+    </tr>
+    </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>vector of trait names to be considered
+--- Defaults and Constants ------------------------------------------------- #</p>
+<p>Vector of column names that are not to be treated as traits</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This assumes that the inputfiles have the first line as header line.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Default Plot Options For LBE_RH — get_default_plot_opts_lbe_rh • qgert</title>
+<title>Create Toplists for BVCH-Bulls — create_toplist_bvch_bull • qgert</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,11 @@
 
 
 
-<meta property="og:title" content="Default Plot Options For LBE_RH — get_default_plot_opts_lbe_rh" />
-<meta property="og:description" content="Return a list with specific defaults and constants that are used
-to produce the comparison plot report for the trait group
-Lineare Beschreibung for RH (LBE_RH)." />
+<meta property="og:title" content="Create Toplists for BVCH-Bulls — create_toplist_bvch_bull" />
+<meta property="og:description" content="Based on information for the breeds consisting of input files, breed names and
+number of records that should be listed in the toplist and a tibble with trait
+names, the results are extracted from the input files and are then written to
+an xlsx-file." />
 
 
 
@@ -149,20 +150,54 @@ Lineare Beschreibung for RH (LBE_RH)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Default Plot Options For LBE_RH</h1>
-    <small class="dont-index">Source: <a href='https://github.com/pvrqualitasag/qgert/blob/master/R/compare_plot_report_constant.R'><code>R/compare_plot_report_constant.R</code></a></small>
-    <div class="hidden name"><code>get_default_plot_opts_lbe_rh.Rd</code></div>
+    <h1>Create Toplists for BVCH-Bulls</h1>
+    <small class="dont-index">Source: <a href='https://github.com/pvrqualitasag/qgert/blob/master/R/toplist_bull_bvch.R'><code>R/toplist_bull_bvch.R</code></a></small>
+    <div class="hidden name"><code>create_toplist_bvch_bull.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Return a list with specific defaults and constants that are used
-to produce the comparison plot report for the trait group
-Lineare Beschreibung for RH (LBE_RH).</p>
+    <p>Based on information for the breeds consisting of input files, breed names and
+number of records that should be listed in the toplist and a tibble with trait
+names, the results are extracted from the input files and are then written to
+an xlsx-file.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_default_plot_opts_lbe_rh</span>()</pre>
+    <pre class="usage"><span class='fu'>create_toplist_bvch_bull</span>(
+  <span class='no'>ps_eval_label</span>,
+  <span class='kw'>pl_breed_input</span> <span class='kw'>=</span> <span class='fu'><a href='get_l_breed_input_bvch.html'>get_l_breed_input_bvch</a></span>(),
+  <span class='kw'>ptbl_trait_name</span> <span class='kw'>=</span> <span class='fu'><a href='get_default_tbl_trait_name_bvch.html'>get_default_tbl_trait_name_bvch</a></span>(),
+  <span class='kw'>ps_xlsx_file</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>pb_debug</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>plogger</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>ps_eval_label</th>
+      <td><p>evaluation label</p></td>
+    </tr>
+    <tr>
+      <th>pl_breed_input</th>
+      <td><p>list with input items consisting of breed names, input files and length of rankings</p></td>
+    </tr>
+    <tr>
+      <th>pb_debug</th>
+      <td><p>flag indicating debugging mode</p></td>
+    </tr>
+    <tr>
+      <th>plogger</th>
+      <td><p>logger object</p></td>
+    </tr>
+    </table>
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>---
+title: Create Toplists for BVCH-Bulls
+date: 2020-08-11
+---</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
