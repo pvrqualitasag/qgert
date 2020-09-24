@@ -136,6 +136,8 @@ done
 shift $((OPTIND-1))  #This tells getopts to move on to the next argument.
 
 #' ## Check whether required arguments have been specified
+#' Arguments which are not allowed to have an empty value are to be checked in
+#' this section.
 #+ argument-test, eval=FALSE
 if test "$a_example" == ""; then
     usage "-a a_example not defined"
@@ -143,6 +145,7 @@ fi
 
 
 #' ## Check evaluation directory
+#' This script must be run out of a subdirectory called 'prog'.
 #+ dir-check, eval=FALSE
 dir4check=$(echo $SCRIPT_DIR | rev | cut -d/ -f1 | rev)
 if test "$dir4check" != "prog"; then
@@ -150,6 +153,7 @@ if test "$dir4check" != "prog"; then
     exit 1
 fi
 
+#' ## Change to evaluation directory
 #' assign evaluation directory and change dir to it
 #+ assign-eval-dir, eval=FALSE
 EVAL_DIR=$(dirname $SCRIPT_DIR)
