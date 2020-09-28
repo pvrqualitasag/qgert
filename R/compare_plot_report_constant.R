@@ -300,3 +300,27 @@ get_default_plot_opts_cas <- function(){
               vec_breed       = c("bv", "rh"),
               vec_sex         = c("Bull", "Cow")))
 }
+
+## -- Defaults for AG
+
+#' @title Default Plot Options For AG
+#'
+#' @description
+#' Return a list with specific defaults and constants that are used
+#' to produce the comparison plot report for the trait group
+#' Weaning (AG).
+#'
+get_default_plot_opts_ag <- function(){
+  # return list of default options
+  return(list(ge_dir_stem     = "/qualstorzws01/data_zws/work/AG",
+              arch_dir_stem   = "/qualstorzws01/data_archiv/zws",
+              rmd_templ       = system.file("templates/compare_plots.Rmd.template", package = 'qgert'),
+              rmd_report_stem = "ge_plot_report_ag",
+              vec_breed       = c("bv", "je", "rh"),#???vms
+              vec_sex         = c("Bull", "Cow"),
+              report_text     = paste0('## Comparison Of Plots\nPlots compare estimates of Weaning (AG) for {tolower(sex)}',
+                                       ' of breed {breed}',
+                                       ' between GE-run {pn_prev_ge_label}',
+                                       ' on the left and the current GE-run {pn_cur_ge_label}',
+                                       ' on the right.', collapse = '')))
+}
