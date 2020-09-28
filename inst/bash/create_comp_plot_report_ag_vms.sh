@@ -5,16 +5,14 @@
 #' author: Sophie Kunz
 #' ---
 #' ## Purpose
-#' 
+#' This shell script is a wrapper to the R-package `qgert` which creates the comparison
+#' plot reports. There is a separate shell script for every trait-group. The trait
+#' group is determined by the variable `TRAIT` defined below.
 #'
 #' ## Description
-#' Compare plot report will be written
-#'
-#' ## Details
-#' 
-#'
-#' ## Example
-#' 
+#' The wrapper sets a number of variables that define the input parameters for report
+#' creator function inside of the R-package `qgert`. The R-function call is done via
+#' Rscript -e which takes a string that contains the function call.
 #'
 #' ## Set Directives
 #' General behavior of the script is driven by the following settings
@@ -44,10 +42,14 @@ INSTALLDIR=`$DIRNAME ${BASH_SOURCE[0]}`    # installation dir of bashtools on ho
 #' hostname in a variable. Both variables are important for logfiles to be able to
 #' trace back which output was produced by which script and on which server.
 #+ script-files, eval=FALSE
+SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 SCRIPT=`$BASENAME ${BASH_SOURCE[0]}`       # Set Script Name variable                #
 SERVER=`hostname`                          # put hostname of server in variable      #
 
-
+#' ### Trait
+#' The trait abbreviation used in this comparison plot report
+#+ trait-abbrev
+TRAIT=ag
 
 #' ## Functions
 #' The following definitions of general purpose functions are local to this script.
@@ -58,10 +60,11 @@ SERVER=`hostname`                          # put hostname of server in variable 
 usage () {
   local l_MSG=$1
   $ECHO "Usage Error: $l_MSG"
-  $ECHO "Usage: $SCRIPT -a <a_example> -b <b_example> -c"
-  $ECHO "  where -a <a_example> ..."
-  $ECHO "        -b <b_example> (optional) ..."
-  $ECHO "        -c (optional) ..."
+  $ECHO "Usage: $SCRIPT -c <current_evaluation_label> -p <previous_evaluation_label>"
+  $ECHO "  where -c <current_evaluation_label>  --  label of current evaluation, given by %YY%mm of publication date"
+  $ECHO "        -p <previous_evaluation_label>  -- label of previous evaluation"
+  $ECHO "        -u                              -- optional argument to force update of R-package"
+  $ECHO "        -b <specific_breed>             -- specify a single breed, can eiter be {bv, je, rh}"
   $ECHO ""
   exit 1
 }
@@ -109,34 +112,26 @@ start_msg
 #' Notice there is no ":" after "h". The leading ":" suppresses error messages from
 #' getopts. This is required to get my unrecognized option code to work.
 #+ getopts-parsing, eval=FALSE
-a_example=""
-b_example=""
-c_example=""
-while getopts ":a:b:ch" FLAG; do
+CURGE=""
+PREVGE=""
+PACKAGEUPDATE=""
+BREED=""
+while getopts ":b:c:p:uh" FLAG; do
   case $FLAG in
-    h)
+    h) # produce usage message
       usage "Help message for $SCRIPT"
       ;;
-    a)
-      a_example=$OPTARG
-# OR for files
-#      if test -f $OPTARG; then
-#        a_example=$OPTARG
-#      else
-#        usage "$OPTARG isn't a regular file"
-#      fi
-# OR for directories
-#      if test -d $OPTARG; then
-#        a_example=$OPTARG
-#      else
-#        usage "$OPTARG isn't a directory"
-#      fi
-      ;;
     b)
-      b_example=$OPTARG
+      BREED=$OPTARG
       ;;
-    c)
-      c_example="c_example_value"
+    c) # specify label of current GE
+      CURGE=$OPTARG
+      ;;
+    p) # specify label of previous GE
+      PREVGE=$OPTARG
+      ;;
+    u) # specify whether update of package zwsroutine is needed
+      PACKAGEUPDATE=TRUE
       ;;
     :)
       usage "-$OPTARG requires an argument"
@@ -153,16 +148,59 @@ shift $((OPTIND-1))  #This tells getopts to move on to the next argument.
 #' The following statements are used to check whether required arguments
 #' have been assigned with a non-empty value
 #+ argument-test, eval=FALSE
-if test "$a_example" == ""; then
-  usage "-a a_example not defined"
+if test "$CURGE" == ""; then
+  usage "-c <current_ge_label> not defined"
+fi
+
+if test "$PREVGE" == ""; then
+  usage "-p <previous_ge_label> not defined"
 fi
 
 
+#' ## Creation of comparison plot reports
+#' This is the beginning of the main part of the creation of the comparison plot reports.
+#' After setting directory variables, the parameter file of the current evaluation run
+#' is sourced to get all variables from the input parameters.
+#+ dir-settings
+EVAL_DIR=$(dirname $SCRIPT_DIR)
+PROG_DIR=$EVAL_DIR/prog
+PAR_DIR=$EVAL_DIR/par
+source $PAR_DIR/par.par
+log_msg $SCRIPT 'Basic directories and source parameters set'
+log_msg $SCRIPT "EVAL_DIR=$EVAL_DIR"
+log_msg $SCRIPT "PROG_DIR=$PROG_DIR"
+log_msg $SCRIPT "PAR_DIR=$PAR_DIR"
 
-#' ## Your Code
-#' Continue to put your code here
-#+ your-code-here
+#' The current working directory is changed to the evaluation directory
+#+ cd-eval-dir
+cd $EVAL_DIR
 
+#' ### R-Package Check
+#' Before running the report creation, we check whether the required R-packages are installed
+#+ r-package-check
+Rscript -e 'vec_req_cran_pkg <- c("devtools", "R.utils", "fs");vec_pkgidx_to_install <- (!is.element(vec_req_cran_pkg, installed.packages()));install.packages(vec_req_cran_pkg[vec_pkgidx_to_install], lib = "/home/zws/lib/R/library", repos="https://cran.rstudio.com")'
+
+#' ### Update
+#' In case package update was specified, then update, otherwise only if package is not available
+#+ update-qgert
+if [ "$PACKAGEUPDATE" == "TRUE" ]
+then
+  # update anyway
+  Rscript -e 'devtools::install_github("pvrqualitasag/qgert", lib = "/home/zws/lib/R/library")'
+else
+  # check whether qgert are installed
+  Rscript -e 'if (!is.element("qgert", installed.packages())) devtools::install_github("pvrqualitasag/qgert", lib = "/home/zws/lib/R/library")'
+fi
+
+#' ## Report Creation
+#' The report for the specified trait is created.
+#+ create-report
+if [ "$BREED" == "" ]
+then
+  Rscript -e "qgert::create_ge_compare_plot_report_${TRAIT}(pn_cur_ge_label=${CURGE}, pn_prev_ge_label = ${PREVGE})"
+else
+  Rscript -e "qgert::create_ge_compare_plot_report_${TRAIT}(pn_cur_ge_label=${CURGE}, pn_prev_ge_label = ${PREVGE}, ps_breed='${BREED}')"
+fi
 
 
 #' ## End of Script
