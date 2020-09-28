@@ -1,3 +1,7 @@
+## qgert 0.2.13
+
+* Added compare plot report for Swiss Beef Cattle Organisation (Mutterkuh Schweiz)
+
 ## qgert 0.2.12
 
 * Added creation of toplists for bulls of BVCH (BV and OB) from exported csv files.
