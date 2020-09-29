@@ -2,28 +2,17 @@
 % Please edit documentation in R/toplist_bull_bvch.R
 \name{get_vec_non_traits}
 \alias{get_vec_non_traits}
-\title{Determine Vector of Trait Names}
+\title{Vector of Non-Trait Columns}
 \usage{
 get_vec_non_traits()
 }
-\arguments{
-\item{pvec_input}{vector with input files}
-
-\item{pvec_non_trait}{vector with column names that are not traits.}
-}
 \value{
-vector of trait names to be considered
---- Defaults and Constants ------------------------------------------------- #
-
 Vector of column names that are not to be treated as traits
 }
 \description{
-Inspect first line of input files for the possible set of column names.
-All the column names that are not in pvec_non_trait are taken as traits.
-
 This function returns a fixed vector of columns that are not treated as
 traits.
 }
 \details{
-This assumes that the inputfiles have the first line as header line.
+--- Defaults and Constants ------------------------------------------------- #
 }
