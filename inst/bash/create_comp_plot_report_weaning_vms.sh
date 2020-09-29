@@ -49,7 +49,7 @@ SERVER=`hostname`                          # put hostname of server in variable 
 #' ### Trait
 #' The trait abbreviation used in this comparison plot report
 #+ trait-abbrev
-TRAIT=ag
+TRAIT=weaning
 
 #' ## Functions
 #' The following definitions of general purpose functions are local to this script.
@@ -115,14 +115,10 @@ start_msg
 CURGE=""
 PREVGE=""
 PACKAGEUPDATE=""
-BREED=""
-while getopts ":b:c:p:uh" FLAG; do
+while getopts ":c:p:uh" FLAG; do
   case $FLAG in
     h) # produce usage message
       usage "Help message for $SCRIPT"
-      ;;
-    b)
-      BREED=$OPTARG
       ;;
     c) # specify label of current GE
       CURGE=$OPTARG
@@ -195,12 +191,7 @@ fi
 #' ## Report Creation
 #' The report for the specified trait is created.
 #+ create-report
-if [ "$BREED" == "" ]
-then
-  Rscript -e "qgert::create_ge_compare_plot_report_${TRAIT}(pn_cur_ge_label=${CURGE}, pn_prev_ge_label = ${PREVGE})"
-else
-  Rscript -e "qgert::create_ge_compare_plot_report_${TRAIT}(pn_cur_ge_label=${CURGE}, pn_prev_ge_label = ${PREVGE}, ps_breed='${BREED}')"
-fi
+Rscript -e "qgert::create_ge_compare_plot_report_${TRAIT}(pn_cur_ge_label=${CURGE}, pn_prev_ge_label = ${PREVGE})"
 
 
 #' ## End of Script
