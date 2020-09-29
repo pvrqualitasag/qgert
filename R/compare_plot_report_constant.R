@@ -321,3 +321,24 @@ get_default_plot_opts_weaning <- function(){
                                        ' on the left and the current GE-run {pn_cur_ge_label}',
                                        ' on the right.', collapse = '')))
 }
+
+## -- Defaults for BIRTH
+
+#' @title Default Plot Options For BIRTH
+#'
+#' @description
+#' Return a list with specific defaults and constants that are used
+#' to produce the comparison plot report for the trait group
+#' BIRTH
+#'
+get_default_plot_opts_birth <- function(){
+  # return list of default options
+  return(list(ge_dir_stem     = "/qualstorzws01/data_zws/vms/work/GA",
+              arch_dir_stem   = "/qualstorzws01/data_archiv/zws",
+              rmd_templ       = system.file("templates/compare_plots.Rmd.template", package = 'qgert'),
+              rmd_report_stem = "ge_plot_report_birth",
+              report_text     = paste0('## Comparison Of Plots\nPlots compare estimates of Birth}',
+                                       ' between GE-run {pn_prev_ge_label}',
+                                       ' on the left and the current GE-run {pn_cur_ge_label}',
+                                       ' on the right.', collapse = '')))
+}
