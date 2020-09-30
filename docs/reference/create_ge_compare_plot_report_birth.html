@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create log4r Logger for package — get_qgert_logger • qgert</title>
+<title>Comparison Plot Report Creator Function For Production (BIRTH) — create_ge_compare_plot_report_birth • qgert</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,10 @@
 
 
 
-<meta property="og:title" content="Create log4r Logger for package — get_qgert_logger" />
-<meta property="og:description" content="Create log4r Logger for package" />
+<meta property="og:title" content="Comparison Plot Report Creator Function For Production (BIRTH) — create_ge_compare_plot_report_birth" />
+<meta property="og:description" content="A comparison plot report containing all generated plots of a GE side-by-side
+with the plots from the previous GE are constructed for the trait
+group BIRTH" />
 
 
 
@@ -147,37 +149,76 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create log4r Logger for package</h1>
-    <small class="dont-index">Source: <a href='https://github.com/pvrqualitasag/qgert/blob/master/R/logger.R'><code>R/logger.R</code></a></small>
-    <div class="hidden name"><code>get_qgert_logger.Rd</code></div>
+    <h1>Comparison Plot Report Creator Function For Production (BIRTH)</h1>
+    <small class="dont-index">Source: <a href='https://github.com/pvrqualitasag/qgert/blob/master/R/compare_plot_report_birth.R'><code>R/compare_plot_report_birth.R</code></a></small>
+    <div class="hidden name"><code>create_ge_compare_plot_report_birth.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create log4r Logger for package</p>
+    <p>A comparison plot report containing all generated plots of a GE side-by-side
+with the plots from the previous GE are constructed for the trait
+group BIRTH</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_qgert_logger</span>(<span class='kw'>ps_logfile</span> <span class='kw'>=</span> <span class='st'>"qgert.log"</span>, <span class='kw'>ps_level</span> <span class='kw'>=</span> <span class='st'>"FATAL"</span>)</pre>
+    <pre class="usage"><span class='fu'>create_ge_compare_plot_report_birth</span>(
+  <span class='no'>pn_cur_ge_label</span>,
+  <span class='no'>pn_prev_ge_label</span>,
+  <span class='kw'>ps_cur_plot_root</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>ps_prev_plot_root</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>ps_template</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"templates"</span>, <span class='st'>"compare_plots.Rmd.template"</span>, <span class='kw'>package</span> <span class='kw'>=</span>
+    <span class='st'>"qgert"</span>),
+  <span class='kw'>pl_plot_opts</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>pb_debug</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>plogger</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>ps_logfile</th>
-      <td><p>name of the logfile</p></td>
+      <th>pn_cur_ge_label</th>
+      <td><p>label of current genetic evaluation (GE)</p></td>
     </tr>
     <tr>
-      <th>ps_level</th>
-      <td><p>logger level</p></td>
+      <th>pn_prev_ge_label</th>
+      <td><p>label of previous GE</p></td>
+    </tr>
+    <tr>
+      <th>ps_cur_plot_root</th>
+      <td><p>directory with plots of current evaluation</p></td>
+    </tr>
+    <tr>
+      <th>ps_prev_plot_root</th>
+      <td><p>directory with plots from previous evaluation</p></td>
+    </tr>
+    <tr>
+      <th>ps_template</th>
+      <td><p>template document for report</p></td>
+    </tr>
+    <tr>
+      <th>pl_plot_opts</th>
+      <td><p>list of options specifying input for plot report creator</p></td>
+    </tr>
+    <tr>
+      <th>pb_debug</th>
+      <td><p>flag whether debug output should be shown</p></td>
+    </tr>
+    <tr>
+      <th>plogger</th>
+      <td><p>log4r logger object</p></td>
+    </tr>
+    <tr>
+      <th>ps_breed</th>
+      <td><p>create comparison plot report for just one breed</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>qgert_logger</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='no'>qgert_logger</span> <span class='kw'>&lt;-</span> <span class='fu'>get_qgert_logger</span>()
+<span class='fu'>create_ge_compare_plot_report_birth</span>(<span class='kw'>pn_cur_ge_label</span>  <span class='kw'>=</span> <span class='fl'>2008</span>,
+                                 <span class='kw'>pn_prev_ge_label</span> <span class='kw'>=</span> <span class='fl'>2004</span>,
+                                 <span class='kw'>pb_debug</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
