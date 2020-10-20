@@ -95,7 +95,7 @@ create_ge_compare_plot_report_nd <- function(pn_cur_ge_label,
 
 
     # put together all directory names, start with GE working directory
-    s_ge_dir <- file.path(s_cur_plot_root, breed, "compare")
+    s_ge_dir <- file.path(s_cur_plot_root, breed, "YearMinus0/compare")
     if (pb_debug)
       qgert_log_info(plogger = lgr,ps_caller = "create_ge_compare_plot_report_nd",
                ps_msg    = paste0(" ** GE workdir: ", s_ge_dir, collapse = ""))
