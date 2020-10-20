@@ -161,12 +161,13 @@ cd $EVAL_DIR
 
 
 #' ## Your Code
-# Continue to put your code here
+#' Continue to put your code here
 #+ your-code-here
 
 
 
 #' ## End of Script
+#' The script ends here with an end message.
 #+ end-msg, eval=FALSE
 end_msg
 
