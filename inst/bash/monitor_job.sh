@@ -8,10 +8,11 @@
 #' Seamless monitoring of long running jobs
 #'
 #' ## Description
-#' Monitoring long running processes based on their result files or logfiles can be important and is done with this script.
+#' Monitoring long running processes based on their result files, logfiles and top-dumps can be important and is done with this script.
 #'
 #' ## Details
-#' The monitoring is done based on the nuumber of lines of a result files or a logfile and the tail output for these files.
+#' The monitoring is done based on the listing, the number of lines and the tail output of the files to be monitored. Additional information
+#' about the machine on which to job runs is obtained by the top-dump which can be generated using the option -t.
 #'
 #' ## Example
 #' ./monitor_job.sh -r <result_file> -l <log_file>
@@ -101,7 +102,8 @@ log_msg () {
 }
 
 #' ### Monitor File
-#' The given file is monitored based on number of lines and tail
+#' The given file is monitored based on the listing created by `ls`, the number
+#' of lines obtained by `wc -l` and the tail of the file to be monitored.
 #+ monitor-file-fun
 monitor_file () {
   local l_MFILE=$1
@@ -166,8 +168,10 @@ shift $((OPTIND-1))  #This tells getopts to move on to the next argument.
 
 
 
-#' ## Show Tail of Resultfile and Logfile
-#' For the specified files, the number of lines are shown and the tail output is given
+#' ## Monitoring Components
+#' The different monitoring components consist of a logfile, a resultfile,
+#' the tail-output. These components are all produced by the function `monitor_file`.
+#' If specified, a top-dump of the machine where the job runs is produced and shown.
 #+ monitoring files
 while [ TRUE ]
 do
