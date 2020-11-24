@@ -105,6 +105,10 @@ log_msg () {
 #+ monitor-file-fun
 monitor_file () {
   local l_MFILE=$1
+
+  log_msg 'monitor_file' " ** Listing of $l_MFILE ..."
+  ls -l $l_MFILE
+
   log_msg 'monitor_file' " ** Number of lines in $l_MFILE ..."
   wc -l $l_MFILE
 
