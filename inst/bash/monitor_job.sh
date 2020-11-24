@@ -58,11 +58,12 @@ SERVER=`hostname`                          # put hostname of server in variable 
 usage () {
   local l_MSG=$1
   $ECHO "Usage Error: $l_MSG"
-  $ECHO "Usage: $SCRIPT -l <log_file> -r <result_file> -n <number_lines_tail> -s <sleep_seconds>"
+  $ECHO "Usage: $SCRIPT -l <log_file> -r <result_file> -n <number_lines_tail> -s <sleep_seconds> -t"
   $ECHO "  where -l <log_file>           --  path to log file"
   $ECHO "        -r <result_file>        --  path to result file"
   $ECHO "        -n <number_lines_tail>  --  number of lines shown in tail output  (optional) ..."
   $ECHO "        -s <sleep_seconds>      --  seconds to sleep between loops        (optional) ..."
+  $ECHO "        -t                      --  show a top dump of the machine        (optional) ..."
   $ECHO ""
   exit 1
 }
@@ -127,7 +128,8 @@ LOGFILE=""
 RESULTFILE=""
 NRLTAIL="10"
 SLEEPSEC="60"
-while getopts ":l:r:n:s:h" FLAG; do
+TOPDUMP='false'
+while getopts ":l:r:n:s:th" FLAG; do
   case $FLAG in
     h)
       usage "Help message for $SCRIPT"
@@ -143,6 +145,9 @@ while getopts ":l:r:n:s:h" FLAG; do
       ;;
     s)
       SLEEPSEC=$OPTARG
+      ;;
+    t)
+      TOPDUMP='true'
       ;;
     :)
       usage "-$OPTARG requires an argument"
@@ -162,6 +167,12 @@ shift $((OPTIND-1))  #This tells getopts to move on to the next argument.
 #+ monitoring files
 while [ TRUE ]
 do
+if [ "$TOPDUMP" == 'true' ]
+then
+  top -b -n1 > top_dump.txt
+  head -$(nproc) top_dump.txt
+  rm top_dump.txt
+fi
 if [ "$LOGFILE" != "" ]
 then
   log_msg "$SCRIPT" " * Monitoring logfile: $LOGFILE ..."
