@@ -56,8 +56,9 @@ usage () {
   local l_MSG=$1
   $ECHO "Usage Error: $l_MSG"
   $ECHO "Usage: $SCRIPT -c <current_evaluation_label> -p <previous_evaluation_label>"
-  $ECHO "  where -c <current_evaluation_label>  --  label of current evaluation, given by %YY%mm of publication date"
+  $ECHO "  where -c <current_evaluation_label>   --  label of current evaluation, given by %YY%mm of publication date"
   $ECHO "        -p <previous_evaluation_label>  -- label of previous evaluation"
+  $ECHO "        -g <previous_gs_run>            -- run label of first bi-weekly prediction after previous publication"
   $ECHO "        -b <specific_breed>             -- specify a single breed, can eiter be {bv, ob, rh, sf, si}"
   $ECHO ""
   exit 1
@@ -102,8 +103,9 @@ start_msg
 #+ getopts-parsing, eval=FALSE
 CURGE=""
 PREVGE=""
+PREVGS=""
 BREED=""
-while getopts ":b:c:p:h" FLAG; do
+while getopts ":b:c:g:p:h" FLAG; do
   case $FLAG in
     h) # produce usage message
       usage "Help message for $SCRIPT"
@@ -113,6 +115,9 @@ while getopts ":b:c:p:h" FLAG; do
       ;;
     c) # specify label of current GE
       CURGE=$OPTARG
+      ;;
+    g)
+      PREVGS=$OPTARG
       ;;
     p) # specify label of previous GE
       PREVGE=$OPTARG
@@ -139,6 +144,10 @@ if test "$PREVGE" == ""; then
   usage "-p <previous_ge_label> not defined"
 fi
 
+if test "$PREVGS" == ""; then
+  usage "-g <previous_gs_label> not defined"
+fi
+
 
 #' ## Creation of comparison plot reports
 #' This is the beginning of the main part of the creation of the comparison plot reports.
@@ -163,9 +172,9 @@ cd $EVAL_DIR
 #+ create-report
 if [ "$BREED" == "" ]
 then
-  Rscript -e "qgert::create_ge_compare_plot_report_${TRAIT}(pn_cur_ge_label=${CURGE}, pn_prev_ge_label = ${PREVGE})"
+  Rscript -e "qgert::create_ge_compare_plot_report_${TRAIT}(pn_cur_ge_label=${CURGE}, pn_prev_ge_label = ${PREVGE}, ps_prevgsrun_label='${PREVGS}')"
 else
-  Rscript -e "qgert::create_ge_compare_plot_report_${TRAIT}(pn_cur_ge_label=${CURGE}, pn_prev_ge_label = ${PREVGE}, ps_breed='${BREED}')"
+  Rscript -e "qgert::create_ge_compare_plot_report_${TRAIT}(pn_cur_ge_label=${CURGE}, pn_prev_ge_label = ${PREVGE}, ps_prevgsrun_label='${PREVGS}', ps_breed='${BREED}')"
 fi
 
 #' ## End of Script
