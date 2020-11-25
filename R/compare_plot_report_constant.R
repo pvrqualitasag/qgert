@@ -164,7 +164,7 @@ get_default_plot_opts_vrdggozw <- function(){
               arch_dir_stem   = '/qualstorzws01/data_archiv/zws',
               rmd_templ       = system.file('templates/compare_plots.Rmd.template', package = 'qgert'),
               rmd_report_stem = 'ge_plot_report_vrdggozw',
-              vec_breed       = c('bv', 'ob', 'rh', 'sf', 'si'),
+              vec_breed       = c('bv', 'ob', 'rh', 'sf', 'si', 'lm'),
               vec_zw_type     = c('VRZW', 'DGZW', 'GOZW'),
               report_text     = '## Comparison Of Plots\nPlots compare estimates of ZW-type {zwt} for breed {breed} between GE-run {pn_prev_ge_label} on the left and the current GE-run {pn_cur_ge_label} on the right.'))
 }
@@ -185,7 +185,7 @@ get_default_plot_opts_vrdggozw_prov <- function(){
               arch_dir_stem   = '/qualstorzws01/data_archiv/zws',
               rmd_templ       = system.file('templates/compare_plots.Rmd.template', package = 'qgert'),
               rmd_report_stem = 'ge_plot_report_vrdggozw_prov',
-              vec_breed       = c('bv', 'ob', 'rh', 'sf', 'si'),
+              vec_breed       = c('bv', 'ob', 'rh', 'sf', 'si', 'lm'),
               vec_zw_type     = c('VRZW', 'DGZW', 'GOZW'),
               report_text     = '## Comparison Of Plots\nPlots compare estimates of ZW-type {zwt} for breed {breed} between GE-run {pn_prev_ge_label} on the left and the current GE-run {pn_cur_ge_label} on the right.'))
 }
