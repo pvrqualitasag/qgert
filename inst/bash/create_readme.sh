@@ -129,7 +129,7 @@ set_default_for_tag () {
   # version
   if [ "$l_TAG" == '__VERSION__' ]
   then
-    DEFAULTVALUE='0.0.900'
+    DEFAULTVALUE='0.0.0.900'
   fi
   # StartDate:
   if [ "$l_TAG" == '__STARTDATE__' ]
