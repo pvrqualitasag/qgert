@@ -59,7 +59,7 @@ usage () {
   local l_MSG=$1
   $ECHO "Usage Error: $l_MSG"
   $ECHO "Usage: $SCRIPT -p <project_name> -t <template_path> -v"
-  $ECHO "  where -p <project_name>   --  (optional) specify the project name ..."
+  $ECHO "  where -p <project_dir>    --  (optional) specify the project directory ..."
   $ECHO "        -t <template_path>  --  (optional) specify path to template file"
   $ECHO "        -v                  --  (optional) produce verbose output"
   $ECHO ""

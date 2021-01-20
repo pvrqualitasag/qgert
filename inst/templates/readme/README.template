@@ -4,5 +4,5 @@ Maintainer: __MAINTAINER__<__MAINTAINER_EMAIL__>
 Version: __VERSION__
 StartDate: __STARTDATE__
 EndDate: __ENDDATE__
-Description: __DESCRIPTION__
 Depends: __DEPENDS__
+Description: __DESCRIPTION__
