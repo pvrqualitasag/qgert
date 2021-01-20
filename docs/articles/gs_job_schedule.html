@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">qgert</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.14</span>
       </span>
     </div>
 
@@ -135,7 +135,7 @@
 <a href="#alternative-strategy" class="anchor"></a>Alternative Strategy</h1>
 <p>An alternative is to omit the creation of the batches of runs files. The runs in gsRuns.txt are sorted according to the estimated run time from the previous evaluation and are written to one file gsSortedRuns.txt. Then we use a larger number of screens for the parallelisation. The number of screens should be about equal to the number of cores that a server has. Within each screen we do a loop over the lines of gsSortedRuns.txt and start the individual runs one after each other. After starting a given run, we write a file to a subdirectory called <code>started</code> which notifies this run to be started. Before starting a different new run, we first check, whether it has not already been started.</p>
 <hr>
-<p><em>Latest Changes: 2020-09-30 10:47:03 (skn)</em></p>
+<p><em>Latest Changes: 2021-01-20 15:10:04 (pvr)</em></p>
 </div>
   </div>
 

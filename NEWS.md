@@ -1,3 +1,7 @@
+## qgert 0.2.14
+
+* Added script to create project README files
+
 ## qgert 0.2.13
 
 * Added compare plot report for Swiss Beef Cattle Organisation (Mutterkuh Schweiz)

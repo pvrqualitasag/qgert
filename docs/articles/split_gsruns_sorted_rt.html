@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">qgert</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.14</span>
       </span>
     </div>
 
@@ -116,23 +116,23 @@
 
     
     
-<div class="sourceCode"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">qgert</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">qgert</span>)</pre></body></html></div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
 <p>The split of the gsRuns can be done using the following shell script</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="bu">cd</span> /qualstorzws01/data_zws/gs
-<span class="ex">./prog/split_gsRuns_sorted_rt.sh</span> -g work/gsRuns.txt -d 1908 -m first -n 100</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="bu">cd</span> /qualstorzws01/data_zws/gs</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="ex">./prog/split_gsRuns_sorted_rt.sh</span> -g work/gsRuns.txt -d 1908 -m first -n 100</span></code></pre></div>
 <p>This uses the gsRuns-list stored under <code>work/gsRuns.txt</code>, it takes the runtime information from the logfiles of the archive of the 1908 evaluation and it produces 100 small job files.</p>
 </div>
 <div id="update-and-installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#update-and-installation" class="anchor"></a>Update and Installation</h2>
 <p>This script can only be used if the R-package <code>qgert</code> is installed. On the ZWS-servers this is the case. An update of the package can be done with</p>
-<div class="sourceCode"><html><body><pre class="r"><span class="co"># install.packages("devtools")</span>
+<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="co"># install.packages("devtools")</span>
 <span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"pvrqualitasag/qgert"</span>)</pre></body></html></div>
 <p>Then the bash script <code>split_gsRuns_sorted_rt.sh</code> must be installed into the subdirectory <code>prog</code> of the GS-evaluation directory</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">/home/zws/lib/R/library/qgert/bash/install_script.sh</span> -s ~/lib/R/library/qgert/bash/split_gsRuns_sorted_rt.sh -t /qualstorzws01/data_zws/gs/prog</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="ex">/home/zws/lib/R/library/qgert/bash/install_script.sh</span> -s ~/lib/R/library/qgert/bash/split_gsRuns_sorted_rt.sh -t /qualstorzws01/data_zws/gs/prog</span></code></pre></div>
 </div>
 <div id="purpose---why-this-is-done" class="section level2">
 <h2 class="hasAnchor">

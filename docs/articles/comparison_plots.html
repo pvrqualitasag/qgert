@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">qgert</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.14</span>
       </span>
     </div>
 
@@ -116,7 +116,7 @@
 
     
     
-<div class="sourceCode"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">qgert</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">qgert</span>)</pre></body></html></div>
 <div id="introduction" class="section level2">
 <h2 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h2>
@@ -128,32 +128,32 @@
 <a href="#comparison-plot" class="anchor"></a>Comparison Plot</h2>
 <p>The creation of a single comparison plot is already implemented. The implementation uses a shell script (<code>stdfmtprogs/prog/compare.sh</code>) to prepare the data that are then shown in the comparison scatter plot. This script is called with specific input parameter for each evaluation via a specific wrapper script.</p>
 <p>Although, the functionality is already available for creating the single plots, it might still be interesting to give a short outline about how a comparison plot is constructed. In principle, a comparison plot just needs two pieces of input. These consist of the two result files from the two subsequent analyses for which we want to compare the evaluation results. The basic ideas are shown with two small example datasets.</p>
-<div class="sourceCode"><html><body><pre class="r"><span class="no">s_current_result_path</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"current_results.txt"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">'qgert'</span>)
+<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">s_current_result_path</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"current_results.txt"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">'qgert'</span>)
 <span class="no">s_previous_result_path</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"previous_results.txt"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">'qgert'</span>)</pre></body></html></div>
 <p>In a first step the two datasets must be read</p>
-<div class="sourceCode"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)
+<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)
 <span class="no">tbl_current_result</span> <span class="kw">&lt;-</span> <span class="kw pkg">readr</span><span class="kw ns">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_delim</a></span>(<span class="kw">file</span> <span class="kw">=</span> <span class="no">s_current_result_path</span>, <span class="kw">delim</span> <span class="kw">=</span> <span class="st">' '</span>)
 <span class="no">tbl_current_result</span> <span class="kw">&lt;-</span> <span class="no">tbl_current_result</span> <span class="kw">%&gt;%</span>
-  <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">rename</a></span>(<span class="kw">current.estimate</span> <span class="kw">=</span> <span class="no">estimate</span>)
+  <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span>(<span class="kw">current.estimate</span> <span class="kw">=</span> <span class="no">estimate</span>)
 <span class="co"># tbl_current_result</span></pre></body></html></div>
 <p>The previous results</p>
-<div class="sourceCode"><html><body><pre class="r"><span class="no">tbl_previous_result</span> <span class="kw">&lt;-</span> <span class="kw pkg">readr</span><span class="kw ns">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_delim</a></span>(<span class="kw">file</span> <span class="kw">=</span> <span class="no">s_previous_result_path</span>, <span class="kw">delim</span> <span class="kw">=</span> <span class="st">' '</span>)
+<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">tbl_previous_result</span> <span class="kw">&lt;-</span> <span class="kw pkg">readr</span><span class="kw ns">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_delim</a></span>(<span class="kw">file</span> <span class="kw">=</span> <span class="no">s_previous_result_path</span>, <span class="kw">delim</span> <span class="kw">=</span> <span class="st">' '</span>)
 <span class="no">tbl_previous_result</span> <span class="kw">&lt;-</span> <span class="no">tbl_previous_result</span> <span class="kw">%&gt;%</span>
-  <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">rename</a></span>(<span class="kw">previous.estimate</span> <span class="kw">=</span> <span class="no">estimate</span>)
+  <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span>(<span class="kw">previous.estimate</span> <span class="kw">=</span> <span class="no">estimate</span>)
 <span class="co"># tbl_previous_result</span></pre></body></html></div>
 <p>The quantity that is plotted can be found in the column entitled <code>estimate</code>. For each of the traits different plots should be produced.</p>
-<div class="sourceCode"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span>(<span class="no">tbl_current_result</span>$<span class="no">trait</span>))
+<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span>(<span class="no">tbl_current_result</span>$<span class="no">trait</span>))
 <span class="co">#&gt; [1] "nrk" "nrr" "raz" "vzk" "vzr"</span></pre></body></html></div>
 <p>The data from the two tibbles are joined to be used for the plotting afterwards</p>
-<div class="sourceCode"><html><body><pre class="r"><span class="no">tbl_plot_result</span> <span class="kw">&lt;-</span> <span class="no">tbl_current_result</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/join.html">inner_join</a></span>(<span class="no">tbl_previous_result</span>, <span class="kw">by</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"idaItb16"</span> <span class="kw">=</span> <span class="st">"idaItb16"</span>, <span class="st">"trait"</span> <span class="kw">=</span> <span class="st">"trait"</span>))
+<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">tbl_plot_result</span> <span class="kw">&lt;-</span> <span class="no">tbl_current_result</span> <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span>(<span class="no">tbl_previous_result</span>, <span class="kw">by</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"idaItb16"</span> <span class="kw">=</span> <span class="st">"idaItb16"</span>, <span class="st">"trait"</span> <span class="kw">=</span> <span class="st">"trait"</span>))
 <span class="co"># tbl_plot_result</span></pre></body></html></div>
 <p>For a single trait, we get</p>
-<div class="sourceCode"><html><body><pre class="r"><span class="no">tbl_plot_nrk</span> <span class="kw">&lt;-</span> <span class="no">tbl_plot_result</span> <span class="kw">%&gt;%</span>
+<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">tbl_plot_nrk</span> <span class="kw">&lt;-</span> <span class="no">tbl_plot_result</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">trait</span> <span class="kw">==</span> <span class="st">'nrk'</span>)
 <span class="co"># tbl_plot_nrk</span></pre></body></html></div>
 <p>This can now be used to do a scatter plot</p>
-<div class="sourceCode"><html><body><pre class="r"><span class="no">n_cor_current_prev</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span>(<span class="no">tbl_plot_nrk</span>$<span class="no">previous.estimate</span>, <span class="no">tbl_plot_nrk</span>$<span class="no">current.estimate</span>)
+<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">n_cor_current_prev</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span>(<span class="no">tbl_plot_nrk</span>$<span class="no">previous.estimate</span>, <span class="no">tbl_plot_nrk</span>$<span class="no">current.estimate</span>)
 <span class="no">n_mean_previous</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span>(<span class="no">tbl_plot_nrk</span>$<span class="no">previous.estimate</span>)
 <span class="no">n_sd_previous</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span>(<span class="no">tbl_plot_nrk</span>$<span class="no">previous.estimate</span>)
 <span class="no">n_mean_current</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span>(<span class="no">tbl_plot_nrk</span>$<span class="no">current.estimate</span>)
