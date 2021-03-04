@@ -301,7 +301,7 @@ get_default_plot_opts_cas <- function(){
               vec_sex         = c("Bull", "Cow")))
 }
 
-## -- Defaults for WEANING
+## -- Defaults for WEANING ---------------------------------------------------
 
 #' @title Default Plot Options For WEANING
 #'
@@ -322,7 +322,7 @@ get_default_plot_opts_weaning <- function(){
                                        ' on the right.', collapse = '')))
 }
 
-## -- Defaults for BIRTH
+## -- Defaults for BIRTH ---------------------------------------------------
 
 #' @title Default Plot Options For BIRTH
 #'
@@ -343,7 +343,7 @@ get_default_plot_opts_birth <- function(){
                                        ' on the right.', collapse = '')))
 }
 
-## -- Defaults for CARCASS
+## -- Defaults for CARCASS ---------------------------------------------------
 
 #' @title Default Plot Options For CARCASS
 #'
@@ -359,6 +359,25 @@ get_default_plot_opts_carcass <- function(){
               rmd_templ       = system.file("templates/compare_plots.Rmd.template", package = 'qgert'),
               rmd_report_stem = "ge_plot_report_carcass",
               report_text     = paste0('## Comparison Of Plots\nPlots compare estimates of Carcass}',
+                                       ' between GE-run {pn_prev_ge_label}',
+                                       ' on the left and the current GE-run {pn_cur_ge_label}',
+                                       ' on the right.', collapse = '')))
+}
+
+## --- Defaults for TEM BV ----------------------------------------------------
+#'
+#' @title
+#'
+get_default_plot_opts_tem_bv <- function() {
+  # return defaults
+  return(list(ge_dir_stem     = "/qualstorzws01/data_zws/tem/work",
+              arch_dir_stem   = "/qualstorzws01/data_archiv/zws",
+              rmd_templ       = system.file("templates/compare_plots.Rmd.template", package = 'qgert'),
+              rmd_report_stem = "ge_plot_report_tem_bv",
+              vec_breed       = c("bv"),
+              vec_sex         = c("Bull", "Cow"),
+              report_text     = paste0('## Comparison Of Plots\nPlots compare estimates of Milking Temperament for BV (TEM_BV) for {tolower(sex)}',
+                                       ' of breed {breed}',
                                        ' between GE-run {pn_prev_ge_label}',
                                        ' on the left and the current GE-run {pn_cur_ge_label}',
                                        ' on the right.', collapse = '')))
