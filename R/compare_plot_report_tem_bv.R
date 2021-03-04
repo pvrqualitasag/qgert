@@ -89,12 +89,12 @@ create_ge_compare_plot_report_tem_bv <- function(pn_cur_ge_label,
                  ps_msg    = paste0(" ** Loop for sex: ", sex, collapse = ""))
 
       # put together all directory names, start with GE working directory
-      s_ge_dir <- file.path(s_cur_plot_root, breed, paste0("compare", sex, collapse = ""))
+      s_ge_dir <- file.path(s_cur_plot_root, breed, paste0("YearMinus0/compare", sex, collapse = ""))
       if (pb_debug)
         qgert_log_info(plogger = lgr, ps_caller = "create_ge_compare_plot_report_tem_bv",
                  ps_msg    = paste0(" ** GE workdir: ", s_ge_dir, collapse = ""))
       # archive directory
-      s_arch_dir <- file.path(s_prev_plot_root, breed, paste0("compare", sex, collapse = ""))
+      s_arch_dir <- file.path(s_prev_plot_root, breed, paste0("YearMinus0/compare", sex, collapse = ""))
       if (pb_debug)
         qgert_log_info(plogger = lgr, ps_caller = "create_ge_compare_plot_report_tem_bv",
                  ps_msg    = paste0(" ** Archive dir: ", s_arch_dir, collapse = ""))
