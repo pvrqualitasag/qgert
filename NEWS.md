@@ -1,4 +1,10 @@
+# qgert 0.4.0
+
+* Added compare plot for TEM for BVCH
+
 # qgert 0.3.0
+
+* started to port compare plots to shiny before starting own package
 
 ## qgert 0.2.14
 
