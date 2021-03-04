@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">qgert</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -89,7 +89,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/pvrqualitasag/qgert/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -103,7 +103,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="comparison_plot_report_files/header-attrs-2.7/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Generate Comparison Plot Reports</h1>
@@ -140,8 +140,8 @@
 <div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="kw pkg">qgert</span><span class="kw ns">::</span><span class="fu"><a href="../reference/create_ge_compare_plot_report_fbk.html">create_ge_compare_plot_report_fbk</a></span>(<span class="kw">pn_cur_ge_label</span> <span class="kw">=</span> <span class="fl">1912</span>, <span class="kw">pn_prev_ge_label</span> <span class="kw">=</span> <span class="fl">1908</span>)</pre></body></html></div>
 <p>The above function call creates the comparison plot reports for trait group <code>fbk</code>.</p>
 <p>The same comparison plot report can be genrated using the shell script called <code>create_comp_plot_report_fbk.sh</code>. After changing to the evaluation directory, the call to the shell script shown below produces the comparison plot report.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="bu">cd</span> /qualstorzws01/data_zws/fbk</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="ex">./prog/create_comp_plot_report_fbk.sh</span> -c 1912 -p 1908</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /qualstorzws01/data_zws/fbk</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./prog/create_comp_plot_report_fbk.sh</span> <span class="at">-c</span> 1912 <span class="at">-p</span> 1908</span></code></pre></div>
 <p>For trait groups other than <code>fbk</code> there are analogous R wrapper functions and corresponding bash scripts.</p>
 </div>
 <div id="updates" class="section level2">
@@ -152,8 +152,8 @@
 <li>Update the R-package <code>qgert</code> using <code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">devtools::install_github("pvrqualitasag/qgert")</a></code> and</li>
 <li>Updating the bash scripts using the following statement</li>
 </ol>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="bu">cd</span> /qualstorzws01/data_zws/fbk</span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="ex">/home/zws/lib/R/library/qgert/bash/install_script.sh</span> -s /home/zws/lib/R/library/qgert/bash/create_comp_plot_report_fbk.sh -t prog</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /qualstorzws01/data_zws/fbk</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/zws/lib/R/library/qgert/bash/install_script.sh</span> <span class="at">-s</span> /home/zws/lib/R/library/qgert/bash/create_comp_plot_report_fbk.sh <span class="at">-t</span> prog</span></code></pre></div>
 <p>The above statement updates the bash script <code>create_comp_plot_report_fbk.sh</code> in subdirectory <code>prog</code> for the trait group <code>fbk</code>.</p>
 </div>
   </div>

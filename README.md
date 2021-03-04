@@ -4,7 +4,6 @@
 # QGERT
 
 <!-- badges: start -->
-
 <!-- badges: end -->
 
 QGERT stands for **Qualitas Genetic Evaluation Routine Tools**. The goal
@@ -35,24 +34,24 @@ Examples of basic use cases are shown in the different articles that are
 available from this site. A short description of all available articles
 is listed below.
 
-  - [Getting
+-   [Getting
     Started](https://pvrqualitasag.github.io/qgert/articles/qgert_getting_started.html):
     Description of basic usage of the functionality provided by `qgert`.
-  - [Comparison
+-   [Comparison
     Plots](https://pvrqualitasag.github.io/qgert/articles/comparison_plots.html):
     Explanation of what a comparison plot is.
-  - [Comparison Plot
+-   [Comparison Plot
     Report](https://pvrqualitasag.github.io/qgert/articles/comparison_plot_report.html):
     Combination of comparison plots in a single report. Reports can be
     generated from within R or with a wrapper bash-script.
-  - [Spinning bash
+-   [Spinning bash
     script](https://pvrqualitasag.github.io/qgert/articles/spin_bash_script.html):
     Conversion of specially annotated bash scripts into an HTML page.
-  - [Split gsRuns According To Predicted
+-   [Split gsRuns According To Predicted
     Runtimes](https://pvrqualitasag.github.io/qgert/articles/split_gsruns_sorted_rt.html):
     A list of computing jobs is split into smaller computation batches
     according to estimated runtimes from a previous evaluation.
 
 ## Latest Change
 
-    #> Thu Mar 19 15:08:31 2020 CET  --  pvr
+    #> Thu Mar 04 16:37:54 2021 CET  --  pvr

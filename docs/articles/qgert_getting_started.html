@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">qgert</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -89,7 +89,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/pvrqualitasag/qgert/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -103,7 +103,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="qgert_getting_started_files/header-attrs-2.7/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Getting Started With QGERT</h1>
@@ -147,19 +147,20 @@
 <span class="co">#&gt; ─ Session info ───────────────────────────────────────────────────────────────</span>
 <span class="co">#&gt;  setting  value                       </span>
 <span class="co">#&gt;  version  R version 4.0.2 (2020-06-22)</span>
-<span class="co">#&gt;  os       macOS Catalina 10.15.4      </span>
+<span class="co">#&gt;  os       macOS  10.16                </span>
 <span class="co">#&gt;  system   x86_64, darwin17.0          </span>
 <span class="co">#&gt;  ui       X11                         </span>
 <span class="co">#&gt;  language (EN)                        </span>
 <span class="co">#&gt;  collate  en_US.UTF-8                 </span>
 <span class="co">#&gt;  ctype    en_US.UTF-8                 </span>
 <span class="co">#&gt;  tz       Europe/Zurich               </span>
-<span class="co">#&gt;  date     2021-01-20                  </span>
+<span class="co">#&gt;  date     2021-03-04                  </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; ─ Packages ───────────────────────────────────────────────────────────────────</span>
 <span class="co">#&gt;  package     * version  date       lib source        </span>
 <span class="co">#&gt;  assertthat    0.2.1    2019-03-21 [2] CRAN (R 4.0.0)</span>
 <span class="co">#&gt;  backports     1.1.6    2020-04-05 [2] CRAN (R 4.0.0)</span>
+<span class="co">#&gt;  bslib         0.2.4    2021-01-25 [2] CRAN (R 4.0.2)</span>
 <span class="co">#&gt;  cli           2.0.2    2020-02-28 [2] CRAN (R 4.0.0)</span>
 <span class="co">#&gt;  crayon        1.3.4    2017-09-16 [2] CRAN (R 4.0.0)</span>
 <span class="co">#&gt;  desc          1.2.0    2018-05-01 [2] CRAN (R 4.0.0)</span>
@@ -168,33 +169,35 @@
 <span class="co">#&gt;  fansi         0.4.1    2020-01-08 [2] CRAN (R 4.0.0)</span>
 <span class="co">#&gt;  fs            1.4.1    2020-04-04 [2] CRAN (R 4.0.0)</span>
 <span class="co">#&gt;  glue          1.4.0    2020-04-03 [2] CRAN (R 4.0.0)</span>
-<span class="co">#&gt;  htmltools     0.4.0    2019-10-04 [2] CRAN (R 4.0.0)</span>
+<span class="co">#&gt;  htmltools     0.5.1.1  2021-01-22 [2] CRAN (R 4.0.2)</span>
+<span class="co">#&gt;  jquerylib     0.1.3    2020-12-17 [2] CRAN (R 4.0.2)</span>
+<span class="co">#&gt;  jsonlite      1.6.1    2020-02-02 [2] CRAN (R 4.0.0)</span>
 <span class="co">#&gt;  knitr         1.28     2020-02-06 [2] CRAN (R 4.0.0)</span>
 <span class="co">#&gt;  magrittr      1.5      2014-11-22 [2] CRAN (R 4.0.0)</span>
 <span class="co">#&gt;  MASS          7.3-51.6 2020-04-26 [2] CRAN (R 4.0.2)</span>
 <span class="co">#&gt;  memoise       1.1.0    2017-04-21 [2] CRAN (R 4.0.0)</span>
 <span class="co">#&gt;  pkgdown       1.5.1    2020-04-09 [2] CRAN (R 4.0.0)</span>
 <span class="co">#&gt;  R6            2.4.1    2019-11-12 [2] CRAN (R 4.0.0)</span>
-<span class="co">#&gt;  Rcpp          1.0.4.6  2020-04-09 [2] CRAN (R 4.0.0)</span>
-<span class="co">#&gt;  rlang         0.4.6    2020-05-02 [2] CRAN (R 4.0.0)</span>
-<span class="co">#&gt;  rmarkdown     2.1      2020-01-20 [2] CRAN (R 4.0.0)</span>
+<span class="co">#&gt;  rlang         0.4.10   2020-12-30 [2] CRAN (R 4.0.2)</span>
+<span class="co">#&gt;  rmarkdown     2.7      2021-02-19 [2] CRAN (R 4.0.2)</span>
 <span class="co">#&gt;  rprojroot     1.3-2    2018-01-03 [2] CRAN (R 4.0.0)</span>
 <span class="co">#&gt;  rstudioapi    0.11     2020-02-07 [2] CRAN (R 4.0.0)</span>
+<span class="co">#&gt;  sass          0.3.1    2021-01-24 [2] CRAN (R 4.0.2)</span>
 <span class="co">#&gt;  sessioninfo   1.1.1    2018-11-05 [2] CRAN (R 4.0.0)</span>
 <span class="co">#&gt;  stringi       1.4.6    2020-02-17 [2] CRAN (R 4.0.0)</span>
 <span class="co">#&gt;  stringr       1.4.0    2019-02-10 [2] CRAN (R 4.0.0)</span>
 <span class="co">#&gt;  withr         2.2.0    2020-04-20 [2] CRAN (R 4.0.0)</span>
-<span class="co">#&gt;  xfun          0.13     2020-04-13 [2] CRAN (R 4.0.0)</span>
+<span class="co">#&gt;  xfun          0.21     2021-02-10 [2] CRAN (R 4.0.2)</span>
 <span class="co">#&gt;  yaml          2.2.1    2020-02-01 [2] CRAN (R 4.0.0)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; [1] /private/var/folders/2v/jfsqj8zj2f122jcgy15nzfn00000gn/T/Rtmp8cg2D5/temp_libpath198a1a3598f9</span>
+<span class="co">#&gt; [1] /private/var/folders/2v/jfsqj8zj2f122jcgy15nzfn00000gn/T/RtmpPflbef/temp_libpath266855d5c3ff</span>
 <span class="co">#&gt; [2] /Library/Frameworks/R.framework/Versions/4.0/Resources/library</span></pre></body></html></div>
 </div>
 <div id="latest-update" class="section level2">
 <h2 class="hasAnchor">
 <a href="#latest-update" class="anchor"></a>Latest Update</h2>
 <div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span>()
-<span class="co">#&gt; [1] "2021-01-20 15:10:05 CET"</span></pre></body></html></div>
+<span class="co">#&gt; [1] "2021-03-04 16:36:54 CET"</span></pre></body></html></div>
 </div>
   </div>
 
