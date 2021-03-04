@@ -1,3 +1,5 @@
+# qgert 0.3.0
+
 ## qgert 0.2.14
 
 * Added script to create project README files

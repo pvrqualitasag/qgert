@@ -1,6 +1,6 @@
 Package: qgert
 Title: Qualitas Genetic Evaluation Routine Tools
-Version: 0.2.14
+Version: 0.3.0
 Authors@R: 
     person(given = "Peter",
            family = "von Rohr",
