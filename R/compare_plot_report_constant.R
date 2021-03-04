@@ -366,7 +366,12 @@ get_default_plot_opts_carcass <- function(){
 
 ## --- Defaults for TEM BV ----------------------------------------------------
 #'
-#' @title
+#' @title Default Plot Options For TEM BV
+#'
+#' @description
+#' Return a list with specific defaults and constants that are used
+#' to produce the comparison plot report for the trait group
+#' TEM BV
 #'
 get_default_plot_opts_tem_bv <- function() {
   # return defaults
