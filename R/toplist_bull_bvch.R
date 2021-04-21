@@ -160,11 +160,16 @@ read_top_list_info3 <- function(pl_breed_input,
     qgert_log_info(plogger = lgr, ps_caller = 'read_top_list_info3',
                    ps_msg = paste0(" number of top candidates:\n", pl_breed_input$numbertop, collapse = ' '))
   }
+  # vector of trait abbreviations
   vec_trait <- ptbl_trait$Abk
   if (pb_debug) {
       qgert_log_info(plogger = lgr, ps_caller = 'read_top_list_info3',
                      ps_msg = paste0(" traits: \n", vec_trait, collapse = ' '))
   }
+  # list of sort criteria
+  l_sort <- lapply(1:nrow(ptbl_trait), function(x) return(c(ptbl_trait$Abk[x], ptbl_trait$Secondary[x])) )
+  names(l_sort) <- ptbl_trait$Abk
+
   ### # initialize final result
   l_final_result <- NULL
   ### # loop over breeds and do the extraction
@@ -172,11 +177,12 @@ read_top_list_info3 <- function(pl_breed_input,
     ### # read current input file
     tbl_cur_tl <- readr::read_csv2(file = pl_breed_input$inputfiles[nbidx])
     ### # extract the current result
-    l_cur_result <- lapply(vec_trait, function(x) {
-      if (x %in% names(tbl_cur_tl)){
+    l_cur_result <- lapply(l_sort, function(x) {
+      if (x[1] %in% names(tbl_cur_tl)){
         tbl_cur_trait <- dplyr::bind_cols(tibble::tibble(Rang = 1:pl_breed_input$numbertop[nbidx]),
-                                          tbl_cur_tl[order(tbl_cur_tl[[x]], decreasing = TRUE), c(pvec_resultcols, x)][1:pl_breed_input$numbertop[nbidx],])
-        names(tbl_cur_trait)[ncol(tbl_cur_trait)] <- ptbl_trait[ptbl_trait$Abk == x,]$Name
+                                          tbl_cur_tl[order(tbl_cur_tl[[x[1]]], tbl_cur_tl[[x[2]]], decreasing = TRUE),
+                                                     c(pvec_resultcols, x[1])][1:pl_breed_input$numbertop[nbidx],])
+        names(tbl_cur_trait)[ncol(tbl_cur_trait)] <- ptbl_trait[ptbl_trait$Abk == x[1],]$Name
         return(tbl_cur_trait)
       } else {
         return(NULL)
