@@ -372,7 +372,7 @@ get_default_plot_opts_carcass_smt <- function(){
 #' to produce the comparison plot report for the trait group
 #' CARCASS SMK
 #'
-get_default_plot_opts_carcass_smt <- function(){
+get_default_plot_opts_carcass_smk <- function(){
   # return list of default options
   return(list(ge_dir_stem     = "/qualstorzws01/data_zws/vms/work/FLP_BK",
               arch_dir_stem   = "/qualstorzws01/data_archiv/zws",
@@ -392,7 +392,7 @@ get_default_plot_opts_carcass_smt <- function(){
 #' to produce the comparison plot report for the trait group
 #' CARCASS SMN
 #'
-get_default_plot_opts_carcass_smt <- function(){
+get_default_plot_opts_carcass_smn <- function(){
   # return list of default options
   return(list(ge_dir_stem     = "/qualstorzws01/data_zws/vms/work/FLP_NB",
               arch_dir_stem   = "/qualstorzws01/data_archiv/zws",

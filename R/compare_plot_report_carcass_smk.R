@@ -60,7 +60,7 @@ create_ge_compare_plot_report_carcass_smk <- function(pn_cur_ge_label,
   # if no options are specified, we have to get the default options
   l_plot_opts <- pl_plot_opts
   if (is.null(l_plot_opts)){
-    l_plot_opts <- get_default_plot_opts_carcass_smt()
+    l_plot_opts <- get_default_plot_opts_carcass_smk()
   }
 
   # check whether root of directory of current plots is specified
