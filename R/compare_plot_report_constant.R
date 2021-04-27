@@ -345,24 +345,65 @@ get_default_plot_opts_birth <- function(){
 
 ## -- Defaults for CARCASS ---------------------------------------------------
 
-#' @title Default Plot Options For CARCASS
+#' @title Default Plot Options For CARCASS SMT
 #'
 #' @description
 #' Return a list with specific defaults and constants that are used
 #' to produce the comparison plot report for the trait group
-#' CARCASS
+#' CARCASS SMT
 #'
-get_default_plot_opts_carcass <- function(){
+get_default_plot_opts_carcass_smt <- function(){
   # return list of default options
-  return(list(ge_dir_stem     = "/qualstorzws01/data_zws/vms/work/FLP",
+  return(list(ge_dir_stem     = "/qualstorzws01/data_zws/vms/work/FLP_BT",
               arch_dir_stem   = "/qualstorzws01/data_archiv/zws",
               rmd_templ       = system.file("templates/compare_plots.Rmd.template", package = 'qgert'),
-              rmd_report_stem = "ge_plot_report_carcass",
-              report_text     = paste0('## Comparison Of Plots\nPlots compare estimates of Carcass}',
+              rmd_report_stem = "ge_plot_report_carcass_smt",
+              report_text     = paste0('## Comparison Of Plots\nPlots compare estimates of Carcass smt}',
                                        ' between GE-run {pn_prev_ge_label}',
                                        ' on the left and the current GE-run {pn_cur_ge_label}',
                                        ' on the right.', collapse = '')))
 }
+
+
+#' @title Default Plot Options For CARCASS SMK
+#'
+#' @description
+#' Return a list with specific defaults and constants that are used
+#' to produce the comparison plot report for the trait group
+#' CARCASS SMK
+#'
+get_default_plot_opts_carcass_smt <- function(){
+  # return list of default options
+  return(list(ge_dir_stem     = "/qualstorzws01/data_zws/vms/work/FLP_BK",
+              arch_dir_stem   = "/qualstorzws01/data_archiv/zws",
+              rmd_templ       = system.file("templates/compare_plots.Rmd.template", package = 'qgert'),
+              rmd_report_stem = "ge_plot_report_carcass_smk",
+              report_text     = paste0('## Comparison Of Plots\nPlots compare estimates of Carcass smk}',
+                                       ' between GE-run {pn_prev_ge_label}',
+                                       ' on the left and the current GE-run {pn_cur_ge_label}',
+                                       ' on the right.', collapse = '')))
+}
+
+
+#' @title Default Plot Options For CARCASS SMN
+#'
+#' @description
+#' Return a list with specific defaults and constants that are used
+#' to produce the comparison plot report for the trait group
+#' CARCASS SMN
+#'
+get_default_plot_opts_carcass_smt <- function(){
+  # return list of default options
+  return(list(ge_dir_stem     = "/qualstorzws01/data_zws/vms/work/FLP_NB",
+              arch_dir_stem   = "/qualstorzws01/data_archiv/zws",
+              rmd_templ       = system.file("templates/compare_plots.Rmd.template", package = 'qgert'),
+              rmd_report_stem = "ge_plot_report_carcass_smn",
+              report_text     = paste0('## Comparison Of Plots\nPlots compare estimates of Carcass smn}',
+                                       ' between GE-run {pn_prev_ge_label}',
+                                       ' on the left and the current GE-run {pn_cur_ge_label}',
+                                       ' on the right.', collapse = '')))
+}
+
 
 ## --- Defaults for TEM BV ----------------------------------------------------
 #'
